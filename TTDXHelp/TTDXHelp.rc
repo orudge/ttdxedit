@@ -1,0 +1,30 @@
+#include <windows.h>
+
+1 VERSIONINFO 
+FILEVERSION 1, 20, 0, 0
+PRODUCTVERSION 1, 20, 0, 0
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_DLL
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "Owen Rudge\000\000"
+   VALUE "FileDescription", "TTDX Editor Utility DLL\000"
+   VALUE "FileVersion", "1.20\000\000"
+   VALUE "InternalName", "TTDXHelp\000"
+   VALUE "LegalCopyright", "Copyright © Owen Rudge 2003-2012\000\000"
+   VALUE "ProductName", "TTDX Editor\000"
+   VALUE "ProductVersion", "1.20\000"
+   VALUE "OriginalFilename", "TTDXHelp.dll\000"
+  }
+
+ }
+
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 0x0809, 1252
+ }
+
+}
