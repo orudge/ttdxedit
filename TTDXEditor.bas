@@ -16,6 +16,14 @@ Sub Main()
     Wsa = Trim(Command$): Wdo = 0
     fAutoMode = False
     If Wsa > " " Then
+        If Wsa = "/ASSOCIATE" Then
+            frmFileTypes.Show vbModal
+            End
+        ElseIf Wsa = "/SGM" Then
+            frmSGM.Show vbModal
+            End
+        End If
+        
         If InStr(UCase(Wsa), "/SU") Then
             Wdo = 1: Wsa = Replace(Wsa, "/su", "", 1, -1, vbTextCompare)
             fAutoMode = True

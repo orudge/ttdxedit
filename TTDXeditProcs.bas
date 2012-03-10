@@ -7,9 +7,47 @@ Private Declare Function GetUNIXTime Lib "TTDXHelp.dll" () As Long
 Declare Function CheckMenuRadioItem Lib "user32" (ByVal hMenu As Long, ByVal un1 As Long, ByVal un2 As Long, ByVal un3 As Long, ByVal un4 As Long) As Boolean
 Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
 Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
-Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
+
+Declare Function ShellExecuteEx Lib "shell32.dll" Alias "ShellExecuteExA" (lpSEI As SHELLEXECUTEINFO) As Long
+Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Declare Function ShellExecuteExElevated Lib "elevate.dll" Alias "ShellExecuteExElevatedA" (lpSEI As SHELLEXECUTEINFO) As Long
+
+Declare Function GetVersionExA Lib "kernel32" (lpVersionInformation As OSVERSIONINFO) As Integer
+Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVal dwMilliseconds As Long) As Long
+Declare Function IsUserAnAdmin Lib "TTDXHelp.dll" () As Long
 
 Global Const MF_BYPOSITION = &H400&
+
+Public Type OSVERSIONINFO
+    dwOSVersionInfoSize As Long
+    dwMajorVersion As Long
+    dwMinorVersion As Long
+    dwBuildNumber As Long
+    dwPlatformId As Long
+    szCSDVersion As String * 128
+End Type
+
+Public Type SHELLEXECUTEINFO
+    cbSize        As Long
+    fMask         As Long
+    hWnd          As Long
+    lpVerb        As String
+    lpFile        As String
+    lpParameters  As String
+    lpDirectory   As String
+    nShow         As Long
+    hInstApp      As Long
+    lpIDList      As Long     'Optional
+    lpClass       As String   'Optional
+    hkeyClass     As Long     'Optional
+    dwHotKey      As Long     'Optional
+    hIcon         As Long     'Optional
+    hProcess      As Long     'Optional
+End Type
+
+Global Const SEE_MASK_NOCLOSEPROCESS = &H40&
+Global Const INFINITE = -1&
 
 Private Const Poff As Long = &H52A62
 
@@ -155,6 +193,106 @@ Global CurrencyMultiplier As Double
 Global CurrencyLabel As String
 Global CurrencySeparator As String
 Global CurrencySymbolBefore As Boolean
+
+Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
+    On Error GoTo Error
+    
+    Dim sei As SHELLEXECUTEINFO
+    Dim osinfo As OSVERSIONINFO
+    Dim retvalue As Integer
+    Dim RetVal As Long
+    
+    osinfo.dwOSVersionInfoSize = 148
+    osinfo.szCSDVersion = Space$(128)
+    retvalue = GetVersionExA(osinfo)
+    
+    sei.cbSize = Len(sei)
+    sei.fMask = SEE_MASK_NOCLOSEPROCESS
+    sei.hWnd = hWnd
+    sei.lpVerb = "open"
+    sei.lpFile = AppName
+    sei.lpParameters = Params
+    sei.lpDirectory = WorkingDir
+    sei.nShow = Show
+    
+    If osinfo.dwPlatformId = 2 Then
+        RetVal = IsUserAnAdmin()
+        
+        If RetVal = 0 Then
+            If MsgBox(Message, vbExclamation Or vbYesNo, "TTDX Editor") = vbNo Then
+                StartElevated = False
+                Exit Function
+            End If
+            
+            If osinfo.dwMajorVersion >= 6 Then
+                RetVal = ShellExecuteExElevated(sei)
+            Else
+                sei.lpVerb = "runas"
+                RetVal = ShellExecuteEx(sei)
+            End If
+        
+            GoTo WaitForTermination
+        End If
+    End If
+    
+    RetVal = ShellExecuteEx(sei)
+
+WaitForTermination:
+    If RetVal = 1 Then
+        WaitForSingleObject sei.hProcess, INFINITE
+        StartElevated = True
+    End If
+    
+    StartElevated = False
+    Exit Function
+    
+Error:
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hWnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
+        Case 3:
+            End
+        Case 2:
+            Resume Next
+        Case 1:
+            Resume
+    End Select
+End Function
+
+Public Function RunningWin9x() As Boolean
+    On Error GoTo Error
+    
+    Dim osinfo As OSVERSIONINFO
+    Dim retvalue As Integer
+    
+    osinfo.dwOSVersionInfoSize = 148
+    osinfo.szCSDVersion = Space$(128)
+    retvalue = GetVersionExA(osinfo)
+    
+    If osinfo.dwPlatformId = 1 Then
+        RunningWin9x = True
+    Else
+        RunningWin9x = False
+    End If
+    
+    Exit Function
+Error:
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.RunningWin9x()")
+        Case 3:
+            End
+        Case 2:
+            Resume Next
+        Case 1:
+            Resume
+    End Select
+End Function
+Function MakePath(Path As String) As String
+    On Error Resume Next
+    
+    If Right$(Path, 1) = "\" Then
+        MakePath = Path
+    Else
+        MakePath = Path & "\"
+    End If
+End Function
 Function FlipSign(ByVal Value As Long) As Long
     FlipSign = -Value
     

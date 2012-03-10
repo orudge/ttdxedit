@@ -97,7 +97,8 @@ Begin VB.Form frmSGM
       End
    End
    Begin VB.CommandButton cmdDo 
-      Caption         =   "Setup"
+      Caption         =   "&Setup"
+      Default         =   -1  'True
       Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "Tahoma"
@@ -116,7 +117,7 @@ Begin VB.Form frmSGM
    End
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
-      Caption         =   "Exit"
+      Caption         =   "&Cancel"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
