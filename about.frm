@@ -31,7 +31,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   375
       Left            =   2198
-      TabIndex        =   7
+      TabIndex        =   0
       Top             =   2640
       Width           =   1335
    End
@@ -45,7 +45,7 @@ Begin VB.Form frmAbout
       ScaleHeight     =   337.12
       ScaleMode       =   0  'User
       ScaleWidth      =   337.12
-      TabIndex        =   0
+      TabIndex        =   1
       Top             =   240
       Width           =   480
    End
@@ -126,7 +126,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   195
       Left            =   1080
-      TabIndex        =   6
+      TabIndex        =   7
       Top             =   2280
       Width           =   480
    End
@@ -144,7 +144,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   195
       Left            =   1080
-      TabIndex        =   5
+      TabIndex        =   6
       Top             =   2040
       Width           =   690
    End
@@ -162,7 +162,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   195
       Left            =   1080
-      TabIndex        =   4
+      TabIndex        =   5
       Top             =   1080
       Width           =   4260
    End
@@ -181,7 +181,7 @@ Begin VB.Form frmAbout
       ForeColor       =   &H00000000&
       Height          =   195
       Left            =   1080
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   840
       Width           =   4335
    End
@@ -200,7 +200,7 @@ Begin VB.Form frmAbout
       ForeColor       =   &H00000000&
       Height          =   195
       Left            =   1080
-      TabIndex        =   2
+      TabIndex        =   3
       Top             =   240
       Width           =   975
    End
@@ -218,7 +218,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   195
       Left            =   1080
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   480
       Width           =   525
    End
