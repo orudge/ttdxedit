@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmAbout 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "About TTDX Editor"
-   ClientHeight    =   2700
+   ClientHeight    =   3135
    ClientLeft      =   2340
    ClientTop       =   1935
    ClientWidth     =   5730
@@ -11,7 +11,7 @@ Begin VB.Form frmAbout
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   1863.588
+   ScaleHeight     =   2163.833
    ScaleMode       =   0  'User
    ScaleWidth      =   5380.766
    ShowInTaskbar   =   0   'False
@@ -30,9 +30,9 @@ Begin VB.Form frmAbout
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   2040
+      Left            =   2198
       TabIndex        =   7
-      Top             =   2160
+      Top             =   2640
       Width           =   1335
    End
    Begin VB.PictureBox picIcon 
@@ -48,6 +48,25 @@ Begin VB.Form frmAbout
       TabIndex        =   0
       Top             =   240
       Width           =   480
+   End
+   Begin VB.Label Label3 
+      AutoSize        =   -1  'True
+      Caption         =   "With thanks to Josef Drexler, Marcin Grzegorczyk and Nick Hundley."
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   390
+      Left            =   1080
+      TabIndex        =   10
+      Top             =   1440
+      Width           =   4455
+      WordWrap        =   -1  'True
    End
    Begin VB.Label lblEmail 
       Alignment       =   2  'Center
@@ -68,7 +87,7 @@ Begin VB.Form frmAbout
       MouseIcon       =   "about.frx":044E
       MousePointer    =   99  'Custom
       TabIndex        =   9
-      Top             =   1680
+      Top             =   2280
       Width           =   1665
    End
    Begin VB.Label lblURL 
@@ -90,7 +109,7 @@ Begin VB.Form frmAbout
       MouseIcon       =   "about.frx":05A0
       MousePointer    =   99  'Custom
       TabIndex        =   8
-      Top             =   1440
+      Top             =   2040
       Width           =   2445
    End
    Begin VB.Label Label4 
@@ -108,7 +127,7 @@ Begin VB.Form frmAbout
       Height          =   195
       Left            =   1080
       TabIndex        =   6
-      Top             =   1680
+      Top             =   2280
       Width           =   480
    End
    Begin VB.Label Label2 
@@ -126,7 +145,7 @@ Begin VB.Form frmAbout
       Height          =   195
       Left            =   1080
       TabIndex        =   5
-      Top             =   1440
+      Top             =   2040
       Width           =   690
    End
    Begin VB.Label Label1 
@@ -246,6 +265,7 @@ End Sub
 Private Sub cmdOK_Click()
     Unload Me
 End Sub
+
 
 Private Sub Form_Load()
     'Me.Caption = "About " & App.Title
