@@ -1,2 +1,8 @@
 modify industry production
 cargo rates
+
+
+---
+2012 todo list:
+
+go through and update messages, items, buttons, etc, where appropriate
