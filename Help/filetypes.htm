@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>File Types</title>
+<link rel="Stylesheet" href="standard.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>File Types</h1>
+
+<p>Transport Tycoon Deluxe uses the same format for saving games and scenarios. The only real difference is the file extension. This means that it's possible to load a scenario file into TTDX Editor and change many settings. However, not all options are available as no players are defined in scenarios.</p>
+
+<p>These file extensions are used by the game:</p>
+
+<table border=0 width=100%>
+    <tr>
+        <td bgcolor="#C0C0C0"><strong>Filetype</strong></td>
+        <td bgcolor="#C0C0C0"><strong>Description</strong></td>
+    </tr>
+    <tr>
+        <td valign="top" width=75>SS0</td>
+        <td>Built-in scenario</td>
+    </tr>
+    <tr>
+        <td valign="top" width=75>SS1</td>
+        <td>Built-in saved game</td>
+    </tr>
+    <tr>
+        <td valign="top" width=75>SV0</td>
+        <td>Player-created scenario</td>
+    </tr>
+    <tr>
+        <td valign="top" width=75>SV1</td>
+        <td>Normal saved game</td>
+    </tr>
+    <tr>
+        <td valign="top" width=75>SV2</td>
+        <td>Multiplayer saved game</td>
+    </tr>
+</table>
+
+<p><b>Compressing and Uncompressing Saved Games</b></p>
+
+<p>TTD compresses its data in a rather simple way. Unfortunately, TTD can only handle games saved in this way: files therefore have to be decompressed to be edited. TTDX Editor has options to save (and load) uncompressed files uncompressed as well as compressed files. This feature is targeted at people who wants to do further editing by hand. After editing, the file must then be loaded back in the editor and saved in the format known by TTD. If the filetypes have been associated with the editor both uncompressing and compressing options are included in the right-click menu in Explorer.</p>
+<p>Files saved uncompressed use the original name but adds "<b>hdr</b>" and "<b>dta</b>" to the extension. An <b>.sv1</b> (saved game) file becomes <b>.sv1hdr</b> and <b>.sv1dta</b>. The <b>hdr</b> file contains the header information for the game. This is just the display name of the game, there's usually nothing to change here. The <b>dta</b> file contains all the data from the actual savegame. Offsets listed in the Techinfo window point directly here.</p>
+
+<p><b>Notes</b></p>
+
+<p>The editor (just like the game) depends on the extensions for identification. In addition, the uncompressed size is also used for identification of the files.</p> 
+<p>There is a problem when using games and scenarios saved in the Windows version of TTD in the DOS version. This can be fixed by loading the file into this editor and then saving it again.</p>
+<p>In versions 1.10.013 and earlier of TTDX Editor, you may have had trouble loading games saved with certain versions of <a href="http://www.ttdpatch.net/" target="_blank">TTDPatch</a>. This was fixed in 1.10.014 (and a subsequent fix made in 1.10.015), and TTDX Editor can now load TTDPatch games fine.</p>
+</body>
+</html>

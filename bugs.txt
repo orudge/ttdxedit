@@ -1,0 +1,26 @@
+BUGS
+----
+
+- No aircraft shown in vehicle list
+- Describe "add buildings"
+
+okay when i open up the stations altering thing i alter the settings but when i close the window then open it again the settings don't seem to be modified 
+
+ 
+- Morevehicles = 40 = crash - FIXED
+
+- Add Save As function [TODO: Check this]
+
+Only trains show up in the vehicle editor 
+
+And sometimes when i edit the engines cargo capcity the overall weight of the train can get screwed up
+
+--------------
+Did a lot more testing this morning, and found following: 
+
+(a) Unable to edit Cities in Scenarios. 
+(b) Need to disable ability to change active vehicle consists eg coal to 
+mail. 
+
+A suggestion: 
+Perhaps when saving have it default to a new copy of file, to protect against unintended results. 

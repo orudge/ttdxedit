@@ -1,0 +1,17 @@
+body {font-size: 9pt; color: #000000; font-family: Verdana,Arial,Helvetica}
+td {font-size: 9pt; color: #000000; font-family: Verdana,Arial,Helvetica}
+th {font-size: 9pt; background: #C0C0C0; text-align: left; font-family: Verdana,Arial,Helvetica; font-weight: bold}
+p {font-size: 9pt; color: #000000; font-family: Verdana,Arial,Helvetica}
+h1 {font-size: 11pt; font-family: Verdana,Arial,Helvetica}
+h2 {font-size: 9pt; font-family: Verdana,Arial,Helvetica}
+pre {font-size: 10pt}
+
+A:link {color:#003399}
+A:visited {color:#003399}
+A:hover {color:#FF8000}
+
+.author {font-size: 8pt; color: #000000; font-family: Verdana,Arial,Helvetica}
+.version {font-size: 8pt; color: #000000; font-family: Verdana,Arial,Helvetica}
+
+.keyword {color: #000080}
+.comment {color: #008000}

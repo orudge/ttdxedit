@@ -1,0 +1,26 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>A Note About TDF Files</title>
+<link rel="Stylesheet" href="standard.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>A Note About TDF Files</h1>
+
+<p>TTDAlter 4.0 introduced the capability to save vehicle information in a small data file, called a TDF file. However, during the 4.0.<i>x</i> beta versions, new data was discovered and the TDF format had to change. In general, TDF files are forwards- and backwards-compatible within a minor version (eg, a 4.0.8 datafile will load into 4.0.9, and vice versa, but a 4.1.3 datafile will not load into 4.0.7), except in the following cases:</p>
+
+<ul>
+   <li>TTDAlter <b>4.0.4</b> files cannot be read by newer versions (4.0.4 was the first version of TTDAlter 4.0.<i>x</i>)</li>
+   <li>TTDAlter <b>4.0.5-4.0.8</b> datafiles are missing general data on vehicle life, introduction date, and climates, as well as data on disasters, as you could not alter disasters in these versions</li>
+   <li>TTDAlter <b>4.0.<i>x</i></b> datafiles had corrupt data on train cargo and double-headed values. Loading a TDF from a different version of TTD than yours (eg, loading a TDF created with the French DOS version into the to American Windows version) could actually corrupt your TTD EXE file!</li>
+   <li>TTDAlter <b>4.1</b> datafiles cannot be read by TTDAlter 4.0.<i>x</i>.</li>
+</ul>
+
+<p>In general, you should always use the latest version of TTDAlter. If you have an old TDF file you want to read, but for some reason can't (for example, you created a TDF with TTDAlter 4.0.4, and want to use this with TTDAlter 4.1), <a href="mailto:ttdalter@owenrudge.net">e-mail me</a> and I'll convert it to a 4.1 datafile.</p>
+
+</body>
+</html>
+

@@ -1,0 +1,3 @@
+LIBRARY	TTDXHelp
+
+EXPORTS		GetUNIXTime			@1

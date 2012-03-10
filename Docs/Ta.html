@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+ <TITLE>TTDX Editor</TITLE>
+ <LINK REL="StyleSheet" HREF="z-style.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<script LANGUAGE=JavaScript1.2 SRC=z-menut.js></script>
+
+<TABLE WIDTH=100%><TR><TD CLASS=TD0>File Structure</TD></TR></TABLE>
+
+<TABLE ALIGN=CENTER WIDTH=80%>
+<TR><TD>
+This list shows some mapped locations of the uncompressed savegame, most of them have been put to use by the
+editor. Note that some values are recalculated by the game and others are only used to show as stats.<P>
+Most values below are in hex (marked with "h"). Values noted in decimal are marked with "d".
+</TD></TR>
+<TR><TD HEIGHT=20> </TD></TR>
+<TR><TD CLASS=TD1>Industries</TD><TD></TD></TR>
+<TR><TD><PRE>
+First offset: h333670
+Number:       h5A
+Size each:    h35
+
+h00 b: X-pos
+h01 b: Y-Pos
+h02 w: Absolute City Reference (Counted from start of data)
+
+h06 b: Size-X
+h07 b: Size-Y
+h08 b: Cargo Type Prod 1
+h09 b: Cargo Type Prod 2
+
+h0E b: Production Rate 1
+h0F b: Production Rate 2
+h10 b: Cargo Accept 1
+h11 b: Cargo Accept 2
+h12 b: Cargo Accept 3
+
+h14 w: Produced 1 (Stat)
+h16 w: Produced 2 (Stat)
+h18 w: Transported 1 (Stat)
+h1A w: Transported 2 (Stat)
+
+h20 w: Production 1 (??)
+h22 w: Production 2 (??)
+
+h26 b: Industry Type
+</PRE></TD></TR>
+<TR><TD HEIGHT=20> </TD></TR>
+<TR><TD CLASS=TD1>Landscape, General Buildings</TD><TD></TD></TR>
+<TR><TD><PRE>
+L5=0, L3=hC0 If building is fully constructed
+Owner is always 0, Object is always 3.
+
+Types of house in L2 (Incomplete):
+h01: Office Block
+h02: Small Block Of Flats
+h03: Church
+h04: Large Office Block
+h06: Town Houses
+h07+h08 Hotel              (6/8p,2/8m,2/8g)
+h09: Statue                (2/8p)
+h0A: Fountain
+h0D: Office Block
+h11: Modern Office Block
+h12: Warehouse
+h13: Office Block          (6/8p,2/8m,6/8g)
+h14-h17: Stadium (Euro)
+h1A: Houses
+h1B: Flats
+h1C: Office Tower
+h1E: Shops/Offices
+h1F: Theater
+h20-h23: Stadium (US)
+h24: Offices
+h28-h2B: Shopping Mall
+h27: Cinema
+h32: Tall Offices
+</PRE></TD></TR>
+</TABLE>
+
+<script LANGUAGE=JavaScript1.2 SRC=z-menub.js></script>
+</BODY>
+</HTML>

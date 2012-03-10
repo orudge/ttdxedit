@@ -1,0 +1,14 @@
+44BBA = major
+44BBB = minor
+44BBC = revision
+
+44BBD = changes made
+
+bit 1   = players
+bit 2   = cities
+bit 4   = industries
+bit 8   = stations
+bit 16  = vehicles
+bit 32  = terrain
+bit 64  = (reserved)
+bit 128 = (reserved)

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+ <TITLE>TTDX Editor</TITLE>
+ <LINK REL="StyleSheet" HREF="z-style.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<script LANGUAGE=JavaScript1.2 SRC=z-menut.js></script>
+
+<TABLE WIDTH=100%><TR><TD CLASS=TD0>File Types</TD></TR></TABLE>
+
+<TABLE ALIGN=CENTER WIDTH=80%>
+<TR><TD CLASS=TD1>TTD Savegame files</TD></TR>
+<TR><TD>
+Our favorite game only uses 1 fileformat for saving the games and scenarios, so it's also posible to load
+a scenario file into this editor and change some settings, however not all editing options apply to a
+scenario file becourse no players have been defined in such a game..<P>
+These file-extensions are used by the game:
+<UL>
+<LI><B>.ss0</B>: Built-in scenario.
+<LI><B>.ss1</B>: Built-in save-game.
+<LI><B>.sv0</B>: Player created scenario.
+<LI><B>.sv1</B>: Normal save-game.
+<LI><B>.sv2</B>: Multiplayer save-game.
+</UL>
+</TD></TR>
+
+<TR><TD CLASS=TD1>(Un)Compressing</TD></TR>
+<TR><TD>
+TTD compresses it's data in a rather simple way, unfortually is this also the only way it knows how to
+handle. So the files have to be saved compressed for the game to be able to load them. This editor have
+options to save (and load) the files uncompressed as well, this is targeted at people who wants to do further
+editing by hand. After editing the file must then be loaded back in the editor and saved in the format known by 
+TTD. If the filetypes have been associated with the editor both uncompressing and compressing options are
+included in the right-click menu in explorer.<P>
+
+Files saved uncompressed uses the original name but adds "hdr" and "dta" to the extension so a ".sv1" files 
+becomes ".sv1hdr" and ".sv1dta". The hdr files contains the header information for the game, this is just the 
+displayname of the game, there's usually nothing to change here. The dta files contains all the data from the 
+actual savegame, offsets listed in the techinfo window points directly here..<P>
+</TD></TR>
+<TR><TD CLASS=TD1>NOTES</TD></TR>
+<TR><TD>
+The editor (just like the game) depends on the extensionnames for identification, in addition also the
+uncompressed size is used for identification of the files.. <P>
+There is a problem when using games and scenarios saved in the windows version of TTD in the ms-dos
+version. This can be fixed by loading the file into this editor and then saved again.<P>
+</TD></TR>
+</TABLE><P>
+
+
+
+<script LANGUAGE=JavaScript1.2 SRC=z-menub.js></script>
+
+</BODY>
+</HTML>

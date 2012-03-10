@@ -1,0 +1,23 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=..\TTDXEdit.chm
+Contents file=ttdxedit.hhc
+Default Window=main
+Default topic=welcome.htm
+Display compile progress=Yes
+Full-text search=Yes
+Language=0x809 English (United Kingdom)
+Title=TTDX Editor Help
+
+[WINDOWS]
+main="TTDX Editor Help","ttdxedit.hhc",,"welcome.htm",,,,,,0x2520,,0x380e,,0x1070000,,,,,,0
+
+
+[FILES]
+welcome.htm
+filetypes.htm
+associations.htm
+cmdline.htm
+
+[INFOTYPES]
+

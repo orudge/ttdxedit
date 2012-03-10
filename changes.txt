@@ -1,0 +1,127 @@
+TTDX Editor Changes
+===================
+
+Version 1.10.018 (24/05/2004)
+-----------------------------
+
+- Marked saved games with basic record of what was changed (24/05/2004)
+
+Version 1.10.017 (23/05/2004)
+-----------------------------
+
+- Fixed overflow bug with finance window (15/05/2004)
+- Added multiple currency support (15/05/2004)
+- Moved registry entries from JVP to Owen Rudge, made editor remember last window position (22/05/2004)
+- By Oskar Eisemuth: Fixed saving bug with TTDPatch 2.0.1 alpha 27 saved games (23/05/2004)
+- Updated SGM plug-in for new registry entries (23/05/2004)
+
+Version 1.10.016 (26/12/2003)
+-----------------------------
+
+- Added Finances window (14/10/2003)
+- Changed fonts to Tahoma (14/10/2003)
+- Fixed vehicle list problem (14/10/2003)
+- Added workaround for bug caused by abandonedroads (chunk size specified was different to
+  actual chunk size). This is fixed in TTDPatch 2.0.1 alpha 10. (26/12/2003)
+
+Version 1.10.015 (11/10/2003)
+-----------------------------
+
+- Rewrote message and fixed XP themes problem in File Types window (05/10/2003)
+- Made a few cosmetic changes here and there (05/10/2003)
+- Fixed bug caused by relocation of &H24CBC to &H44CB8 from TTDPatch 2.0 onwards (11/10/2003)
+
+Version 1.10.014 (30/08/2003)
+-----------------------------
+
+- Add buildings around a station
+- Techinfo in "free" window, can be resized
+- Fixed a very bad bug, would often cause games to crash.
+- Date sorting in select game fixed
+- Cleanout settings option
+- SGM Plugin setup redone, should work with v2.1 also
+
+- Owen Rudge became maintainer (10/07/2003)
+- Added support for games created with TTDPatch 1.9.1 alpha 32 or newer (10/07/2003)
+- Updated some windows, replaced About dialog (10/07/2003)
+- 'Marked' files that have been edited (12/07/2003)
+- Fixed overflow error with high morevehicles values in Vehicle Editor (14/07/2003)
+- Added Save As dialog (16/07/2003)
+- Got everything ready for release (30/08/2003)
+- Added code to support TTDPatch 2.0 beta 5.1 MG or higher (13/09/2003)
+
+Version 1.10.013 (05/05/2002)
+-----------------------------
+ 
+- Vehicle Editor
+- Own AI roads
+- Own city bridges
+- Techinfo rewritten (again)
+- Menu navigation keys (Thanks to Owen Rudge for reminding me)
+- Fixed some problems with file associations
+
+Version 1.00.012 (26/04/2002)
+-----------------------------
+ 
+- Stations can be filtered by owner and sorted
+- Added some shortcut keys
+- More speed when loading and saving
+- New map drawing procedure, should be faster
+- More sorting and filtering options in file selector
+- Plugin for Saved Game Manager by Owen Rudge
+- Fixed citynames in the industry section
+- Minor fixes in the about
+ 
+Version 1.00.010 (20/04/2002)
+-----------------------------
+
+- Quick fix: A very stupid bug in the path detection.
+ 
+Version 1.00.009 (20/04/2002)
+-----------------------------
+
+- Decode game-generated city names
+- Remove HQ for any player
+- New About Window
+- New status bar
+- Fixed X-cord on large/extreme map
+- Fixed crash in techinfo if minimized
+ 
+Version 1.00.008 (16/04/2002)
+-----------------------------
+
+- Change cargo ratings and amount at stations
+- The map window working, 3 sizes or turned off
+- Filetypes association
+- Minimize Industries production macro
+- Remove Trees
+- City ratings now set with a slider
+- Re-selecting an open editor now brings it to front
+ 
+Version 1.00.004 (06/04/2002)
+-----------------------------
+
+- Change player money and debt
+- Change city ratings and def. name
+- Load and Save uncompressed now working
+- Command line option to directly load a game
+- Techinfo moved to seperate window, can be hidden
+- Fixed: Citynames wouldn't show in games saved without the TTDPatch
+- Fixed: Multiplayer savegames (sv2) were handled as they were scenarios
+- Fixed: Some changed values would not be included in a save
+ 
+Version 1.00.003 (30/03/2002, first public alpha)
+-------------------------------------------------
+ 
+- All known industrial values now included
+- Industrial types and cargo for Toyland climate included
+- Well-known values are shown in different color in Tech-info
+- File requester shows the tycoon name of the games
+- File requester settings are stored
+- Header checksum re-calculated when saving
+- Supports drag-drop of savegames
+ 
+Version 1.00.001 (not public)
+-----------------------------
+ 
+- Everything

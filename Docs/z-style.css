@@ -1,0 +1,123 @@
+
+  BODY {
+   background-position: top left;
+   background-repeat: repeat-y;
+   background-color: #FFFFFF;
+   background-attachment: fixed;
+   margin-left:  0px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   margin-right: 2px;
+   font-family: "Arial";
+   font-size:   13px;   
+   letter-spacing: 0px;   
+   color:    "#000088";
+   text-align: center;
+  }
+  
+  a:link{
+   color: #00CCCC;
+  }  
+   
+  INPUT{
+   font-family: 'Arial';
+   font-size: 12px;
+   color: #000000;
+   font-weight: normal;
+  }
+  
+  .TDH{
+   padding-top: 6px; 
+   text-align: center;
+   font-family: 'Arial';
+   font-size: 11px;
+   background-color: #0000AA;
+   color: #FFFFFF;
+   font-weight: bold;
+  }
+  
+  .TD0{
+   padding-top: 0px; 
+   text-align: left;
+   font-family: 'Arial';
+   font-size:        36px;
+   background-color: #0000AA;
+   text-align:       center;
+   color: #FFFFFF;
+   font-weight: bold;
+  }
+
+  .TD1{
+   padding-top: 0px; 
+   text-align: left;
+   font-family: 'Arial';
+   font-size: 13px;
+   background-color: #000088;
+   color: #FFFFFF;
+   font-weight: bold;
+  }
+  
+  .TD2{
+   padding-top: 0px; 
+   text-align: left;
+   font-family: 'Arial';
+   font-size: 13px;
+   background-color: #000088;
+   color: #FFFFFF;
+   font-weight: normal;
+  }
+  
+  .TD3{
+   padding-top: 0px; 
+   text-align: left;
+   font-family: 'Arial';
+   font-size: 13px;
+   background-color: #000088;
+   color: #0000FF;
+   font-weight: normal;
+  }
+  
+  .TDM{
+   text-align: center;
+   font-family: 'Arial';
+   font-size: 11px;
+   background-color: #FFFFFF;
+   color: #0000FF;
+  }
+  
+  .TDD{
+   text-align: center;
+   font-family: 'Arial';
+   font-size: 9px;
+   background-color: #0000AA;
+   color: #EEEEEE;
+  }
+  
+  .lys {
+   height:60px;   
+   font-size : 42px;
+   font-family : 'Impact', 'Arial';
+   color : #9999FF;
+   margin-top : 0px;
+   filter: glow(color : #000099, strength : 16);
+  } 
+ 
+  .HE1 {
+   margin-top: -13px;   
+   font-size : 28px;
+   font-family : 'Arial Black', 'Arial';
+   color : #00CCCC;
+   letter-spacing: -2px;
+   font-weight: bold;
+  }
+  
+  .HE2 {
+   margin-top: 0px; 
+   margin-left: -28px; 
+   margin-right: 28px;    
+   font-size : 14px;
+   font-family : 'Arial';
+   color : #00FFFF;
+   letter-spacing: 0px;
+   font-weight: bold;
+  }

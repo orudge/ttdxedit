@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+ <TITLE>TTDX Editor</TITLE>
+ <LINK REL="StyleSheet" HREF="z-style.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<script LANGUAGE=JavaScript1.2 SRC=z-menut.js></script>
+
+<TABLE WIDTH=100%><TR><TD CLASS=TD0>Editing Stations</TD></TR></TABLE>
+
+<TABLE ALIGN=CENTER WIDTH=80%>
+
+
+<TR><TD CLASS=TD1>Cargo Ratings</TD></TR>
+<TR><TD>
+The checkmark at each cargo is intended for use with the "selectgoods" option in TTDPatch, removing it will preform 
+a reset of just that type of cargo in this station, unlike the "cht:resetstation" in TTDPatch that'll reset all 
+cargo everywhere...
+<P><BR><P>
+</TD></TR>
+<TR><TD CLASS=TD1>Add Buildings</TD></TR>
+<TR><TD>
+Warning: This option have only been tested in tempare climate, and I think it'll preform badly elsewhere.<P>
+This will fill all unused squares in the catchment area with buildings, make sure you reserve any areas you'll 
+need in the future before using this. In case you wish the city to look natural you'll also need to make some roads 
+in the area prior to using the option.<P>
+Note: The editor map is NOT updated after using this option, so the new buildings ain't visible until the map is
+refreshed, you can do this by reselecting the mapsize in the options menu.<P>
+Note: To insure everything in the game is updated proberly the buildings are placed "under construction", once the 
+game finishes the buildings, the statistics and cargo are updated.
+<P><BR><P>
+</TD></TR>
+
+<TR><TD CLASS=TD1>Add Rem(ote) Part</TD></TR>
+<TR><TD>
+This option will place a bus or truck stop at a location away from the station, this can ofcourse be used instead of
+"walking" a station, but the new location don't have to be at the same height as the rest of the station. Unfortunally
+this requires a bit preparations first.
+<P><HR><P>
+1) Make sure the station havn't got a bus or truck station, if it have neither then you can make 2 remote parts in 
+one go. 
+Note that the busstop will be placed before the truckstop !!
+<P><HR><P>
+2) Pick the spot for the remote part, <B>it must be within the catchment area of a part of the station.</b>
+(That's max 4 squares away). The function is a rather low-level one for the time be, so the entrence to the new 
+part is always to the NE. Build this on the square:<BR>
+<CENTER><IMG SRC="pics/3e-01.jpg"><BR>
+(All the pieces of plain railroad you can build)</CENTER>
+<P><HR><P>
+
+3) Now load the game into this editor, select the station and hit the button...
+<P><HR><P>
+Hint: It's perfectly legal to use the catchment area of one remote part to set the next.
+<P><BR><P>
+</TD></TR>
+<TR><TD CLASS=TD1>Future plans (Send a mail if you've got more ideas)</TD></TR>
+<TR><TD>
+Make the remote parts "turn" towards any roads.<BR>
+Placing railroad station-tracks "remote".<BR>
+Pick the spot for remote part directly on a map.<BR>
+<P><BR><P>
+</TD></TR>
+</TABLE>
+<script LANGUAGE=JavaScript1.2 SRC=z-menub.js></script>
+
+</BODY>
+</HTML>
