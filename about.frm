@@ -31,7 +31,7 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   375
       Left            =   2040
-      TabIndex        =   9
+      TabIndex        =   7
       Top             =   2160
       Width           =   1335
    End
@@ -49,7 +49,8 @@ Begin VB.Form frmAbout
       Top             =   240
       Width           =   480
    End
-   Begin VB.Label Label5 
+   Begin VB.Label lblEmail 
+      Alignment       =   2  'Center
       AutoSize        =   -1  'True
       Caption         =   "owen@owenrudge.net"
       BeginProperty Font 
@@ -57,15 +58,40 @@ Begin VB.Form frmAbout
          Size            =   8.25
          Charset         =   0
          Weight          =   400
-         Underline       =   0   'False
+         Underline       =   -1  'True
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H00FF0000&
       Height          =   195
       Left            =   1920
-      TabIndex        =   8
+      MouseIcon       =   "about.frx":044E
+      MousePointer    =   99  'Custom
+      TabIndex        =   9
       Top             =   1680
-      Width           =   1650
+      Width           =   1665
+   End
+   Begin VB.Label lblURL 
+      Alignment       =   2  'Center
+      AutoSize        =   -1  'True
+      Caption         =   "http://www.transporttycoon.net/"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FF0000&
+      Height          =   195
+      Left            =   1920
+      MouseIcon       =   "about.frx":05A0
+      MousePointer    =   99  'Custom
+      TabIndex        =   8
+      Top             =   1440
+      Width           =   2445
    End
    Begin VB.Label Label4 
       AutoSize        =   -1  'True
@@ -81,27 +107,9 @@ Begin VB.Form frmAbout
       EndProperty
       Height          =   195
       Left            =   1080
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   1680
       Width           =   480
-   End
-   Begin VB.Label Label3 
-      AutoSize        =   -1  'True
-      Caption         =   "http://www.owenrudge.net/TT/"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   195
-      Left            =   1920
-      TabIndex        =   6
-      Top             =   1440
-      Width           =   2310
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
@@ -123,7 +131,7 @@ Begin VB.Form frmAbout
    End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
-      Caption         =   "Copyright © Owen Rudge 2002-2004. All Rights Reserved."
+      Caption         =   "Copyright © Owen Rudge 2002-2012. All Rights Reserved."
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -301,7 +309,7 @@ Public Function GetKeyValue(KeyRoot As Long, KeyName As String, SubKeyRef As Str
                         
     If (rc <> ERROR_SUCCESS) Then GoTo GetKeyError          ' Handle Errors
     
-    If (Asc(Mid(tmpVal, KeyValSize, 1)) = 0) Then           ' Win95 Adds Null Terminated String...
+    If (Asc(MID(tmpVal, KeyValSize, 1)) = 0) Then           ' Win95 Adds Null Terminated String...
         tmpVal = Left(tmpVal, KeyValSize - 1)               ' Null Found, Extract From String
     Else                                                    ' WinNT Does NOT Null Terminate String...
         tmpVal = Left(tmpVal, KeyValSize)                   ' Null Not Found, Extract String Only
@@ -314,7 +322,7 @@ Public Function GetKeyValue(KeyRoot As Long, KeyName As String, SubKeyRef As Str
         KeyVal = tmpVal                                     ' Copy String Value
     Case REG_DWORD                                          ' Double Word Registry Key Data Type
         For i = Len(tmpVal) To 1 Step -1                    ' Convert Each Bit
-            KeyVal = KeyVal + Hex(Asc(Mid(tmpVal, i, 1)))   ' Build Value Char. By Char.
+            KeyVal = KeyVal + Hex(Asc(MID(tmpVal, i, 1)))   ' Build Value Char. By Char.
         Next
         KeyVal = Format$("&h" + KeyVal)                     ' Convert Double Word To String
     End Select
@@ -328,4 +336,17 @@ GetKeyError:      ' Cleanup After An Error Has Occured...
     GetKeyValue = False                                     ' Return Failure
     rc = RegCloseKey(hKey)                                  ' Close Registry Key
 End Function
+
+Private Sub lblEmail_Click()
+    On Error Resume Next
+    
+    ShellExecute Me.hwnd, "open", "mailto:owen@owenrudge.net", vbNullString, vbNullString, 1
+End Sub
+
+Private Sub lblURL_Click()
+    On Error Resume Next
+    
+    ShellExecute Me.hwnd, "open", "http://www.transporttycoon.net/", vbNullString, vbNullString, 1
+End Sub
+
 
