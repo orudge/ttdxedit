@@ -167,7 +167,7 @@ Begin VB.MDIForm frmMDI
    Begin VB.Menu mnFile 
       Caption         =   "&File"
       Begin VB.Menu mnFLoad 
-         Caption         =   "&Load Game"
+         Caption         =   "&Load Game..."
          Shortcut        =   ^L
       End
       Begin VB.Menu mnFsave 
@@ -175,7 +175,7 @@ Begin VB.MDIForm frmMDI
          Shortcut        =   ^S
       End
       Begin VB.Menu mnFsaveAs 
-         Caption         =   "Save Game As"
+         Caption         =   "Save Game &As..."
          Enabled         =   0   'False
          Visible         =   0   'False
       End
@@ -190,10 +190,10 @@ Begin VB.MDIForm frmMDI
          Caption         =   "-"
       End
       Begin VB.Menu mnQuit 
-         Caption         =   "&Quit"
+         Caption         =   "E&xit"
       End
       Begin VB.Menu mnCleanQuit 
-         Caption         =   "&Cleanout and Quit"
+         Caption         =   "&Cleanout and Exit"
       End
    End
    Begin VB.Menu mnView 
@@ -204,7 +204,7 @@ Begin VB.MDIForm frmMDI
          Shortcut        =   ^T
       End
       Begin VB.Menu mnVTech 
-         Caption         =   "Tech-&Info"
+         Caption         =   "Technical &Info"
          Shortcut        =   ^I
       End
       Begin VB.Menu mnVmap 
@@ -312,10 +312,10 @@ Begin VB.MDIForm frmMDI
          Caption         =   "-"
       End
       Begin VB.Menu mnOpFileAss 
-         Caption         =   "File &Associations"
+         Caption         =   "File &Associations..."
       End
       Begin VB.Menu mnOsgm 
-         Caption         =   "&SGM Plugin"
+         Caption         =   "&SGM Plugin..."
       End
    End
    Begin VB.Menu mnPlayer 
@@ -338,10 +338,10 @@ Begin VB.MDIForm frmMDI
          Caption         =   "Remove &Trees"
       End
       Begin VB.Menu mnTownAIr 
-         Caption         =   "Own AI Roads"
+         Caption         =   "Own AI &Roads"
       End
       Begin VB.Menu mnTownCbridge 
-         Caption         =   "Own City Bridges"
+         Caption         =   "Own City &Bridges"
       End
    End
    Begin VB.Menu mnCity 
@@ -355,7 +355,7 @@ Begin VB.MDIForm frmMDI
          Index           =   0
       End
       Begin VB.Menu mnCmaxrat 
-         Caption         =   "Maximize Ratings"
+         Caption         =   "Maximize &Ratings"
          Visible         =   0   'False
          Begin VB.Menu mnCmaxrate 
             Caption         =   "0"
@@ -410,7 +410,7 @@ Begin VB.MDIForm frmMDI
          Caption         =   "-"
       End
       Begin VB.Menu mnSownUn 
-         Caption         =   "Own Unowned"
+         Caption         =   "Own &Unowned"
          Visible         =   0   'False
       End
    End
@@ -428,7 +428,7 @@ Begin VB.MDIForm frmMDI
    Begin VB.Menu mnHelp 
       Caption         =   "&Help"
       Begin VB.Menu mnHAbout 
-         Caption         =   "&About"
+         Caption         =   "&About TTDX Editor..."
          Shortcut        =   ^A
       End
    End
