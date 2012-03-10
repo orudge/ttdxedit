@@ -3,14 +3,14 @@
 
 [Setup]
 AppName=TTDX Editor
-AppVerName=TTDX Editor 1.10.0017
+AppVerName=TTDX Editor 1.20.0000
 AppPublisher=Owen Rudge
-AppPublisherURL=http://www.owenrudge.net/TT/
-AppSupportURL=http://www.owenrudge.net/TT/
-AppUpdatesURL=http://www.owenrudge.net/TT/
+AppPublisherURL=http://www.transporttycoon.net/
+AppSupportURL=http://www.transporttycoon.net/
+AppUpdatesURL=http://www.transporttycoon.net/
 DefaultDirName={pf}\Owen Rudge\TTDX Editor
 DefaultGroupName=Owen Rudge\TTDX Editor
-InfoBeforeFile=C:\TTDXEdit\Readme.rtf
+InfoBeforeFile=..\Readme.rtf
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
@@ -20,124 +20,119 @@ PrivilegesRequired=admin
 Name: "desktopicon"; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"
 
 [Files]
-Source: "C:\TTDXEdit\TTDXedit.exe"; DestDir: "{app}"
-Source: "C:\TTDXEdit\Modified.exe"; DestDir: "{app}"
-Source: "C:\TTDXEdit\readme.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\TTDXEdit\changes.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\TTDXedit.exe"; DestDir: "{app}"
+Source: "..\Modified.exe"; DestDir: "{app}"
+Source: "..\readme.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\changes.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Elevate.exe"; DestDir: "{app}"
+Source: "..\Elevate.dll"; DestDir: "{app}"
+Source: "..\TTDXHelp.dll"; DestDir: "{app}"
 
-; begin VB system files
-; (Note: Scroll to the right to see the full lines!)
-Source: "d:\windows\system\msvcrt.dll";   DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\vbrun\stdole2.tlb";  DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regtypelib
-Source: "c:\TTDXEdit\Setup\vbrun\msvbvm60.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\vbrun\oleaut32.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\vbrun\olepro32.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\vbrun\asycfilt.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\vbrun\comcat.dll";   DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-; end VB system files
+Source: "..\SGMPlugin\TTDXEdit.dll"; DestDir: "{app}\SGMPlugin"; Flags: regserver
 
-Source: "d:\windows\system\mfc42.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile
-
-Source: "C:\WINDOWS\SYSTEM32\Mscomctl.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
-Source: "C:\WINDOWS\SYSTEM32\comdlg32.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
-
-Source: "C:\TTDXEdit\SGMPlugin\TTDXEdit.dll"; DestDir: "{app}\SGMPlugin"; Flags: regserver
-
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+; VB runtime files and OCXes
+Source: "vbrun\msvcrt.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "vbrun\mfc42.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\stdole2.tlb";  DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regtypelib
+Source: "vbrun\msvbvm60.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\oleaut32.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\olepro32.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\asycfilt.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "vbrun\comcat.dll";   DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\mfc42.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "vbrun\mscomctl.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\comdlg32.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 
 ; dcom95
-Source: "c:\TTDXEdit\Setup\vbrun\oleaut32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\vbrun\olepro32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\vbrun\asycfilt.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\advpack.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\comcat.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\compobj.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\dcom2w98.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\dcom95.inf"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\dllhost.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\eula95.txt"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\imagehlp.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\install.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\iprop.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\ole2.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\ole32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\olecnv32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\olethk32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\relnt95.txt"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcltc1.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcltc5.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcltccm.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpclts5.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcltscm.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcmqcl.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcmqsvr.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcns4.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcrt4.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\rpcss.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\secur32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\stdole2.tlb"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\stdole32.tlb"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\storage.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\w95inf16.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
-Source: "c:\TTDXEdit\Setup\DCOM95\w95inf32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "vbrun\oleaut32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "vbrun\olepro32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "vbrun\asycfilt.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\advpack.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\comcat.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\compobj.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\dcom2w98.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\dcom95.inf"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\dllhost.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\eula95.txt"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\imagehlp.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\install.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\iprop.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\ole2.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\ole32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\olecnv32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\olethk32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\relnt95.txt"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcltc1.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcltc5.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcltccm.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpclts5.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcltscm.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcmqcl.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcmqsvr.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcns4.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcrt4.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\rpcss.exe"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\secur32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\stdole2.tlb"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\stdole32.tlb"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\storage.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\w95inf16.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
+Source: "DCOM95\w95inf32.dll"; DestDir: "{tmp}"; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
 
 ; scripting runtime
-;Source: "c:\TTDXEdit\Setup\Scripting\advpack.dll"; DestDir: "{sys}" Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\Scripting\cscript.exe"; DestDir: "{win}\command"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\Scripting\wscript.exe"; DestDir: "{win}"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\advpack.dll"; DestDir: "{sys}" Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\cscript.exe"; DestDir: "{win}\command"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\wscript.exe"; DestDir: "{win}"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
 
-Source: "c:\TTDXEdit\Setup\Scripting\cscript.exe"; DestDir: "{sys}"; MinVersion: 0,4.0; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\Scripting\wscript.exe"; DestDir: "{sys}"; MinVersion: 0,4.0; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\cscript.exe"; DestDir: "{sys}"; MinVersion: 0,4.0; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\wscript.exe"; DestDir: "{sys}"; MinVersion: 0,4.0; Flags: restartreplace uninsneveruninstall sharedfile
 
-Source: "c:\TTDXEdit\Setup\Scripting\jscript.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\scrobj.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\scrrun.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\vbscript.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-;Source: "c:\TTDXEdit\Setup\Scripting\w95inf16.dll"; DestDir: "{tmp}\scripting"
-;Source: "c:\TTDXEdit\Setup\Scripting\w95inf32.dll"; DestDir: "{tmp}\scripting"
-Source: "c:\TTDXEdit\Setup\Scripting\wscript.exe"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\Scripting\wscript.hlp"; DestDir: "{win}\Help"; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "c:\TTDXEdit\Setup\Scripting\wshcon.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\wshext.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\wshom.ocx"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "c:\TTDXEdit\Setup\Scripting\9x\dispex.dll"; DestDir: "{sys}"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\9x\scr56en.cat"; DestDir: "{tmp}\scripting"; MinVersion: 4.0,0
-;Source: "c:\TTDXEdit\Setup\Scripting\9x\scr56en.inf"; DestDir: "{tmp}\scripting"; MinVersion: 4.0,0
-Source: "c:\TTDXEdit\Setup\Scripting\9x\dispex.dll"; DestDir: "{sys}"; MinVersion: 0,4.0; OnlyBelowVersion: 0,4.1; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\9x\scr56en.cat"; DestDir: "{tmp}\scripting"; MinVersion: 0,0; OnlyBelowVersion: 0,4.1
-;Source: "c:\TTDXEdit\Setup\Scripting\9x\scr56en.inf"; DestDir: "{tmp}\scripting"; MinVersion: 0,0; OnlyBelowVersion: 0,4.1
-Source: "c:\TTDXEdit\Setup\Scripting\2k\dispex.dll"; DestDir: "{sys}"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\2k\scripten.cat"; DestDir: "{tmp}\scripting"; MinVersion: 0,5.0
-;Source: "c:\TTDXEdit\Setup\Scripting\2k\scripten.inf"; DestDir: "{tmp}\scripting"; MinVersion: 0,5.0
-;Source: "c:\TTDXEdit\Setup\OpenINF\OpenINF.exe"; DestDir: "{tmp}\scripting"
+Source: "Scripting\jscript.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\scrobj.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\scrrun.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\vbscript.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+;Source: "Scripting\w95inf16.dll"; DestDir: "{tmp}\scripting"
+;Source: "Scripting\w95inf32.dll"; DestDir: "{tmp}\scripting"
+Source: "Scripting\wscript.exe"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\wscript.hlp"; DestDir: "{win}\Help"; Flags: restartreplace uninsneveruninstall sharedfile
+Source: "Scripting\wshcon.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\wshext.dll"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\wshom.ocx"; DestDir: "{sys}"; Flags: restartreplace uninsneveruninstall sharedfile regserver
+Source: "Scripting\9x\dispex.dll"; DestDir: "{sys}"; MinVersion: 4.0,0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\9x\scr56en.cat"; DestDir: "{tmp}\scripting"; MinVersion: 4.0,0
+;Source: "Scripting\9x\scr56en.inf"; DestDir: "{tmp}\scripting"; MinVersion: 4.0,0
+Source: "Scripting\9x\dispex.dll"; DestDir: "{sys}"; MinVersion: 0,4.0; OnlyBelowVersion: 0,4.1; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\9x\scr56en.cat"; DestDir: "{tmp}\scripting"; MinVersion: 0,0; OnlyBelowVersion: 0,4.1
+;Source: "Scripting\9x\scr56en.inf"; DestDir: "{tmp}\scripting"; MinVersion: 0,0; OnlyBelowVersion: 0,4.1
+Source: "Scripting\2k\dispex.dll"; DestDir: "{sys}"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\2k\scripten.cat"; DestDir: "{tmp}\scripting"; MinVersion: 0,5.0
+;Source: "Scripting\2k\scripten.inf"; DestDir: "{tmp}\scripting"; MinVersion: 0,5.0
+;Source: "OpenINF\OpenINF.exe"; DestDir: "{tmp}\scripting"
 
 ; scripting runtime - DLL cache files (Win2K/XP)
-;Source: "c:\TTDXEdit\Setup\Scripting\cscript.exe"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\jscript.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\scrobj.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\scrrun.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\vbscript.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\wscript.exe"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\wshcon.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\wshext.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\wshom.ocx"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
-;Source: "c:\TTDXEdit\Setup\Scripting\2k\dispex.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\cscript.exe"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\jscript.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\scrobj.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\scrrun.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\vbscript.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\wscript.exe"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\wshcon.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\wshext.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\wshom.ocx"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
+;Source: "Scripting\2k\dispex.dll"; DestDir: "{sys}\dllcache"; MinVersion: 0,5.0; Flags: restartreplace uninsneveruninstall sharedfile
 
 [INI]
-Filename: "{app}\Owen's Transport Tycoon Station.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.owenrudge.net/TT/"
+Filename: "{app}\Owen's Transport Tycoon Station.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.transporttycoon.net/"
 Filename: "{app}\The Transport Tycoon Forums.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.tt-forums.net/"
 
 [Icons]
 Name: "{group}\TTDX Editor"; Filename: "{app}\TTDXedit.exe"
-; NOTE: The following entry contains an English phrase ("on the Web"). You are free to translate it into another language if required.
 Name: "{group}\Owen's Transport Tycoon Station"; Filename: "{app}\Owen's Transport Tycoon Station.url"
 Name: "{group}\The Transport Tycoon Forums"; Filename: "{app}\The Transport Tycoon Forums.url"
-; NOTE: The following entry contains an English phrase ("Uninstall"). You are free to translate it into another language if required.
 Name: "{group}\Uninstall TTDX Editor"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\TTDX Editor"; Filename: "{app}\TTDXedit.exe"; Tasks: desktopicon
 
 [Run]
-; NOTE: The following entry contains an English phrase ("Launch"). You are free to translate it into another language if required.
 Filename: "{app}\TTDXedit.exe"; Description: "Launch TTDX Editor"; Flags: nowait postinstall skipifsilent
 Filename: "{tmp}\install.exe"; Parameters: "-q"; Flags: waituntilidle; MinVersion: 4.0,0; OnlyBelowVersion: 4.1,0
 ;Filename: "{tmp}\scripting\OpenINF.exe"; Parameters: "{tmp}\scripting\scr56en.inf"; MinVersion: 4.0,0

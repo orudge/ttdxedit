@@ -14,3 +14,5 @@ and display this icon:
 
 Do similar for the associations
  - also make that window a little larger
+
+Get rid of the WSH stuff from Setup, provide a download of scr56en.exe for Win95 users
