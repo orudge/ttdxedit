@@ -25,9 +25,9 @@ Begin VB.Form frmFinances
          Strikethrough   =   0   'False
       EndProperty
       Height          =   3180
-      ItemData        =   "finances.frx":000C
+      ItemData        =   "finances.frx":0442
       Left            =   120
-      List            =   "finances.frx":000E
+      List            =   "finances.frx":0444
       TabIndex        =   6
       Top             =   360
       Width           =   1335
