@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmVehicle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Vehicles"
@@ -279,7 +279,7 @@ Begin VB.Form frmVehicle
          Width           =   2895
       End
       Begin VB.Label Label1 
-         Caption         =   "Note: Some types of cargo have a bit odd values, like oil where 1 unit = 100 l."
+         Caption         =   "Liquid cargos are multiplied by 100 in TTD, 1000 in TTDPatch."
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   8.25

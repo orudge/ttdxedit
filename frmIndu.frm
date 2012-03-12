@@ -2,17 +2,17 @@ VERSION 5.00
 Begin VB.Form frmIndu 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Industries"
-   ClientHeight    =   4350
+   ClientHeight    =   4560
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   7215
+   ClientWidth     =   7425
    Icon            =   "frmIndu.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   4350
-   ScaleWidth      =   7215
+   ScaleHeight     =   4560
+   ScaleWidth      =   7425
    ShowInTaskbar   =   0   'False
    Begin VB.Frame FrmDta 
       Caption         =   "HomeTown"
@@ -27,7 +27,7 @@ Begin VB.Form frmIndu
       EndProperty
       Height          =   615
       Index           =   2
-      Left            =   5280
+      Left            =   5520
       TabIndex        =   15
       Top             =   840
       Width           =   1815
@@ -63,7 +63,7 @@ Begin VB.Form frmIndu
       EndProperty
       Height          =   1455
       Index           =   3
-      Left            =   3480
+      Left            =   3600
       TabIndex        =   18
       Top             =   840
       Width           =   1815
@@ -133,9 +133,9 @@ Begin VB.Form frmIndu
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1815
+      Height          =   2055
       Index           =   4
-      Left            =   3480
+      Left            =   3600
       TabIndex        =   10
       Top             =   2400
       Width           =   3615
@@ -211,8 +211,7 @@ Begin VB.Form frmIndu
          Top             =   240
          Width           =   1695
       End
-      Begin VB.Label Label5 
-         Caption         =   "Use a rate of 0 if the production should depend upon supply. Actual production becomes app. 7-9 times the rate.."
+      Begin VB.Label lblRate 
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   8.25
@@ -222,11 +221,46 @@ Begin VB.Form frmIndu
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   735
+         Height          =   255
+         Index           =   1
+         Left            =   2520
+         TabIndex        =   27
+         Top             =   600
+         Width           =   975
+      End
+      Begin VB.Label lblRate 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Index           =   0
+         Left            =   2520
+         TabIndex        =   26
+         Top             =   240
+         Width           =   975
+      End
+      Begin VB.Label Label5 
+         Caption         =   $"frmIndu.frx":0442
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   975
          Left            =   120
          TabIndex        =   17
          Top             =   960
-         Width           =   3015
+         Width           =   3375
       End
    End
    Begin VB.Frame FrmDta 
@@ -242,7 +276,7 @@ Begin VB.Form frmIndu
       EndProperty
       Height          =   615
       Index           =   1
-      Left            =   5280
+      Left            =   5520
       TabIndex        =   3
       Top             =   120
       Width           =   1815
@@ -330,7 +364,7 @@ Begin VB.Form frmIndu
       EndProperty
       Height          =   615
       Index           =   0
-      Left            =   3480
+      Left            =   3600
       TabIndex        =   0
       Top             =   120
       Width           =   1815
@@ -416,7 +450,7 @@ Begin VB.Form frmIndu
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   4095
+      Height          =   4335
       Left            =   120
       TabIndex        =   22
       Top             =   120
@@ -466,7 +500,7 @@ Begin VB.Form frmIndu
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   3375
+         Height          =   3570
          Left            =   120
          TabIndex        =   23
          Top             =   600
@@ -637,8 +671,10 @@ End Sub
 Private Sub txtProR_Change(Index As Integer)
     If jBetween(-1, Val(txtProR(Index).Text), 241) Then
         CurItm.ProR(Index) = Val(txtProR(Index))
+        lblRate(Index).Caption = CStr(CurItm.ProR(Index) * 8) & " / " & CStr(CurItm.ProR(Index) * 9)
     Else
         txtProR(Index) = CStr(CurItm.ProR(Index))
+        lblRate(Index).Caption = CStr(CurItm.ProR(Index) * 8) & " / " & CStr(CurItm.ProR(Index) * 9)
     End If
 End Sub
 Private Sub txtProR_KeyPress(Index As Integer, KeyAscii As Integer)
