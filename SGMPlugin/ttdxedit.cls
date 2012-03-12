@@ -13,10 +13,10 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 '''''''''''''''''''''''''''''''''''''''''''
 ' TTDXEdit Plug-in for Saved Game Manager '
-' Version 1.1.17                          '
+' Version 1.20                            '
 '                                         '
 ' Based on TTDEdit Plug-in for SGM        '
-' Copyright © Owen Rudge 2001-2004        '
+' Copyright © Owen Rudge 2001-2012        '
 '''''''''''''''''''''''''''''''''''''''''''
 
 Dim PID As Integer
@@ -102,13 +102,13 @@ Public Sub ExtensionProc()
     Games = EF.GetSelectedGames(1)
     
     For i = 1 To EF.GetSelectedGamesCount(1)
-        Shell FilePath & ".EXE " & MakePath(SrcDir) & Games(i), 1
+        Shell FilePath & " " & MakePath(SrcDir) & Games(i), 1
     Next i
     
     Games = EF.GetSelectedGames(2)
     
     For i = 1 To EF.GetSelectedGamesCount(2)
-        Shell FilePath & ".EXE " & MakePath(DestDir) & Games(i), 1
+        Shell FilePath & " " & MakePath(DestDir) & Games(i), 1
     Next i
     
     Exit Sub
@@ -133,13 +133,22 @@ Public Function InitExtension() As String
     GetKeyValue HKEY_LOCAL_MACHINE, "SOFTWARE\Owen Rudge\TTDX Editor", "Path", FilePath
     
     If FilePath = "" Then
-        GetKeyValue HKEY_LOCAL_MACHINE, "SOFTWARE\JVP\TTDXEdit", "Path", FilePath
+        GetKeyValue HKEY_CURRENT_USER, "SOFTWARE\Owen Rudge\TTDX Editor", "Path", FilePath
         
         If FilePath = "" Then
-            MsgBox "The TTDX Editor plug-in cannot find the TTDXEdit.exe path in the registry. Please start TTDX Editor then quit it, and restart the Manager.", vbExclamation, "TTDX Editor Plug-in"
+            GetKeyValue HKEY_LOCAL_MACHINE, "SOFTWARE\JVP\TTDXEdit", "Path", FilePath
+        
+            If FilePath = "" Then
+                MsgBox "The TTDX Editor plug-in cannot find the TTDXEdit.exe path in the registry. Please start TTDX Editor then quit it, and restart the Manager.", vbExclamation, "TTDX Editor Plug-in"
+                Exit Function
+            End If
         End If
     End If
 
+    If LCase$(Right$(FilePath, 4)) <> ".exe" Then
+        FilePath = FilePath & ".exe"
+    End If
+    
     Exit Function
 ExtensionError: ' You must use your own error handler here
     MsgBox "An error has occurred: " & Err & " (" & Error(Err) & ")", vbCritical, "TTDX Editor Plug-in"

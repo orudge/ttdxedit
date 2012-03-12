@@ -16,6 +16,7 @@ Global Const KEY_ALL_ACCESS = KEY_QUERY_VALUE + KEY_SET_VALUE + _
                               KEY_NOTIFY + KEY_CREATE_LINK + READ_CONTROL
                      
 ' Reg Key ROOT Types...
+Global Const HKEY_CURRENT_USER = &H80000001
 Global Const HKEY_LOCAL_MACHINE = &H80000002
 Global Const ERROR_SUCCESS = 0
 Global Const REG_SZ = 1                         ' Unicode nul terminated string
@@ -34,7 +35,7 @@ Public Function GetKeyValue(KeyRoot As Long, KeyName As String, SubKeyRef As Str
     '------------------------------------------------------------
     ' Open RegKey Under KeyRoot {HKEY_LOCAL_MACHINE...}
     '------------------------------------------------------------
-    rc = RegOpenKeyEx(KeyRoot, KeyName, 0, KEY_ALL_ACCESS, hKey) ' Open Registry Key
+    rc = RegOpenKeyEx(KeyRoot, KeyName, 0, KEY_QUERY_VALUE, hKey) ' Open Registry Key
     
     If (rc <> ERROR_SUCCESS) Then GoTo GetKeyError          ' Handle Error...
     
