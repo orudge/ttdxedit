@@ -53,7 +53,6 @@ Begin VB.MDIForm frmMDI
             Style           =   1
             Alignment       =   1
             AutoSize        =   2
-            Enabled         =   0   'False
             Object.Width           =   847
             MinWidth        =   441
             TextSave        =   "CAPS"
@@ -489,6 +488,7 @@ Private Sub cmdVeh_Click()
     frmVehicle.Show
     frmVehicle.SetFocus
 End Sub
+
 
 
 
@@ -1039,3 +1039,4 @@ Private Sub SetMenus()
         mnFsaveAs.Enabled = False
     End If
 End Sub
+

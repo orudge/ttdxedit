@@ -158,7 +158,7 @@ Public Sub UpdateInfo()
             End If
         Next Wa
     End If
-    For Wa = 0 To FrmDta.UBound: FrmDta(Wa).Enabled = False: Next Wa
+    For Wa = 0 To frmDta.UBound: frmDta(Wa).Enabled = False: Next Wa
     CurItmNo = -1
 End Sub
 
@@ -173,7 +173,7 @@ Private Sub cmdRemHQ_Click()
     Next Wx
     CurItm.HQx = 255: CurItm.HQy = 255
     
-    wData(&H44BBD) = wData(&H44BBD) Or 1
+    MarkGame 1
 End Sub
 
 Private Sub Form_Load()
@@ -195,7 +195,7 @@ Private Sub lstplay_Click()
     CurItm = TTDXPlayerInfo(Wb)
     CurItmNo = Wb
     UpdateFields
-    For Wa = 0 To FrmDta.UBound: FrmDta(Wa).Enabled = True: Next Wa
+    For Wa = 0 To frmDta.UBound: frmDta(Wa).Enabled = True: Next Wa
 End Sub
 Private Sub UpdateFields()
     Dim Wa As Integer
@@ -212,7 +212,7 @@ Private Sub txtDebt_Change()
         txtDebt = CStr(CurItm.Debt)
     End If
 
-    wData(&H44BBD) = wData(&H44BBD) Or 1
+    MarkGame 1
 End Sub
 
 Private Sub txtDebt_KeyPress(KeyAscii As Integer)
@@ -226,7 +226,7 @@ Private Sub txtMoney_Change()
         txtMoney = CStr(CurItm.Money)
     End If
     
-    wData(&H44BBD) = wData(&H44BBD) Or 1
+    MarkGame 1
 End Sub
 
 Private Sub txtMoney_KeyPress(KeyAscii As Integer)

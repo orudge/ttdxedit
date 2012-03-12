@@ -426,7 +426,7 @@ Private Sub chkChasrate_Click(Index As Integer)
         CurItm.CEnrout(Index) = 255
     End If
     
-    wData(&H44BBD) = wData(&H44BBD) Or 8
+    MarkGame 8
 End Sub
 
 Private Sub cmbShowO_Click()
@@ -454,7 +454,7 @@ Private Sub cmdAddHouse_Click()
         End With
         Wc = MsgBox(Format(Wc) + " buildings added.")
         
-        wData(&H44BBD) = wData(&H44BBD) Or 8
+        MarkGame 8
     End If
 End Sub
 Private Function DoAddBuild(vX As Byte, vY As Byte, vW As Byte, vH As Byte) As Long
@@ -542,7 +542,7 @@ Private Sub cmdRemStop_Click()
                 Wfa = Wfa Or AddRem(.DockX, .DockY, 2, 2)
                 If Wfa Then Wc = MsgBox("Station part(s) added.") Else: Wc = MsgBox("No new locations found.")
                 
-                wData(&H44BBD) = wData(&H44BBD) Or 8
+                MarkGame 8
             End If
         End With
     End If
@@ -626,7 +626,7 @@ End Sub
 
 Private Sub sliCrate_Change(Index As Integer)
     CurItm.CRate(Index) = sliCrate(Index).Value
-    wData(&H44BBD) = wData(&H44BBD) Or 8
+    MarkGame 8
 End Sub
 
 Private Sub txtCam_Change(Index As Integer)
@@ -638,7 +638,7 @@ Private Sub txtCam_Change(Index As Integer)
         End If
     End If
 
-    wData(&H44BBD) = wData(&H44BBD) Or 8
+    MarkGame 8
 End Sub
 Private Sub txtCam_KeyPress(Index As Integer, KeyAscii As Integer)
     KeyAscii = CheckNumInput("", KeyAscii)

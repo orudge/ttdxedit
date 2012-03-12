@@ -591,7 +591,7 @@ Private Sub cmbDel_Click(Wb As Integer)
     Else
         cmbDel(Wb).ListIndex = 0
     End If
-    wData(&H44BBD) = wData(&H44BBD) Or 4
+    MarkGame 4
 End Sub
 
 Private Sub cmbProd_Click(Wb As Integer)
@@ -603,7 +603,7 @@ Private Sub cmbProd_Click(Wb As Integer)
             txtProR(Wb).Enabled = True
         End If
     
-        wData(&H44BBD) = wData(&H44BBD) Or 4
+        MarkGame 4
     Else
         cmbProd(Wb).ListIndex = 0
     End If
@@ -620,7 +620,7 @@ End Sub
 Private Sub cmbTown_Click()
     If cmbTown.ListIndex > -1 Then
         CurItm.HomeTown = cmbTown.ItemData(cmbTown.ListIndex)
-        wData(&H44BBD) = wData(&H44BBD) Or 4
+        MarkGame 4
     End If
 End Sub
 

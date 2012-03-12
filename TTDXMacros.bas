@@ -45,7 +45,7 @@ Public Sub TTDXtermacRemWood()
             DoEvents
         Next Wa
     
-        wData(&H44BBD) = wData(&H44BBD) Or 32
+        MarkGame 32
     End If
 End Sub
 Public Sub TTDXtermacOwnAIRoad()
@@ -95,7 +95,7 @@ Public Sub TTDXtermacOwnAIRoad()
             DoEvents
         Next Wa
         Wa = MsgBox(Format(Wc) + " AI road tiles now owned by Player 1.")
-        wData(&H44BBD) = wData(&H44BBD) Or 32
+        MarkGame 32
     End If
 End Sub
 
@@ -121,7 +121,7 @@ Public Sub TTDXtermacOwnCityBridge()
             DoEvents
         Next Wa
         
-        wData(&H44BBD) = wData(&H44BBD) Or 32
+        MarkGame 32
         Wa = MsgBox(Format(Wc / 2) + " city bridges now owned by Player 1.")
     End If
 End Sub

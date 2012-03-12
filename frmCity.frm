@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmCity 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Cities"
@@ -482,7 +482,7 @@ Private Sub chkRatE_Click(Index As Integer)
     End If
     sliRat(Index).Value = CurItm.CRate(Index)
     
-    wData(&H44BBD) = wData(&H44BBD) Or 2
+    MarkGame 2
 End Sub
 
 Private Sub Form_Load()
@@ -518,6 +518,6 @@ End Sub
 
 Private Sub sliRat_Change(Index As Integer)
     CurItm.CRate(Index) = sliRat(Index).Value
-    wData(&H44BBD) = wData(&H44BBD) Or 2
+    MarkGame 2
 End Sub
 

@@ -275,6 +275,14 @@ Function IsElevated() As Boolean
 End Function
 
 
+Sub MarkGame(ByVal Value As Integer)
+    If GetLong(&H44CB4) = &H70445454 Then
+        wData(&H44BBD) = wData(&H44BBD) Or Value
+    Else
+        wData(&H24CCE) = wData(&H24CCE) Or Value
+    End If
+End Sub
+
 Public Sub RegisterSGMPlugin(ByVal MajorVer As Double, ByVal DllPath As String, ByVal SGMPath As String)
     Dim Wa As Long, Wb As Double
     Wb = Shell("Regsvr32 /s " + Chr(34) + DllPath + Chr(34))

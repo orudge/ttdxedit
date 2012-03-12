@@ -436,7 +436,7 @@ End Sub
 
 Private Sub cmbCargo_Click()
     CurItm.CargoT = cmbCargo.ItemData(cmbCargo.ListIndex)
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 
 Private Sub cmbShowC_Click()
@@ -531,19 +531,19 @@ End Sub
 Private Sub sliMaxLoad_Change()
     labCMax.Caption = "Max Units (" + Format(sliMaxLoad.Value) + ")"
     CurItm.CargoMax = sliMaxLoad.Value
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 
 Private Sub sliRDr_Change()
     CurItm.RelDropRate = sliRDr.Value
     labRel.Caption = "Reliability: " + Format(Fix(sliRel.Value / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 
 Private Sub sliRel_Change()
     CurItm.Rel = CByte(sliRel.Value)
     labRel.Caption = "Reliability: " + Format(Fix(sliRel.Value / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 
 Private Sub tvVeh_NodeClick(ByVal Node As MSComctlLib.Node)
@@ -563,7 +563,7 @@ Private Sub txtAge_Change()
         txtAge.Text = CStr(CurItm.Age)
     End If
     txtAge.ToolTipText = CStr(Fix(CurItm.Age / 364.25)) + " Years"
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 Private Sub txtAge_KeyPress(KeyAscii As Integer)
     KeyAscii = CheckNumInput(txtAge, KeyAscii)
@@ -576,7 +576,7 @@ Private Sub txtAgeMax_Change()
         txtAgeMax.Text = CStr(CurItm.AgeMax)
     End If
     txtAgeMax.ToolTipText = CStr(Fix(CurItm.AgeMax / 364.25)) + " Years"
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 Private Sub txtAgeMax_KeyPress(KeyAscii As Integer)
     KeyAscii = CheckNumInput(txtAgeMax, KeyAscii)
@@ -589,7 +589,7 @@ Private Sub txtVal_Change()
         txtVal.Text = CStr(CurItm.Value)
     End If
     
-    wData(&H44BBD) = wData(&H44BBD) Or 16
+    MarkGame 16
 End Sub
 Private Sub txtVal_KeyPress(KeyAscii As Integer)
     KeyAscii = CheckNumInput(txtVal, KeyAscii)
