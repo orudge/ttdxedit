@@ -7,10 +7,10 @@ Private Declare Function GetUNIXTime Lib "TTDXHelp.dll" () As Long
 Declare Function CheckMenuRadioItem Lib "user32" (ByVal hMenu As Long, ByVal un1 As Long, ByVal un2 As Long, ByVal un3 As Long, ByVal un4 As Long) As Boolean
 Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
 Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
-Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
+Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
 
-Declare Function ShellExecuteEx Lib "shell32.dll" Alias "ShellExecuteExA" (lpSEI As SHELLEXECUTEINFO) As Long
-Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Declare Function ShellExecuteEx Lib "Shell32.dll" Alias "ShellExecuteExA" (lpSEI As SHELLEXECUTEINFO) As Long
+Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Declare Function ShellExecuteExElevated Lib "elevate.dll" Alias "ShellExecuteExElevatedA" (lpSEI As SHELLEXECUTEINFO) As Long
 
 Declare Function GetVersionExA Lib "kernel32" (lpVersionInformation As OSVERSIONINFO) As Integer
@@ -31,7 +31,7 @@ End Type
 Public Type SHELLEXECUTEINFO
     cbSize        As Long
     fMask         As Long
-    hWnd          As Long
+    hwnd          As Long
     lpVerb        As String
     lpFile        As String
     lpParameters  As String
@@ -205,8 +205,8 @@ Public Sub RegisterSGMPlugin(ByVal MajorVer As Double, ByVal DllPath As String, 
         Wa = fWriteValue(F.BuildPath(SGMPath, "plugins2.ini"), "Plugins", "TTDXEdit", "S", "TTDXEdit")
     Else
         Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Class", "S", "SGMTTDXEdit")
-        Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Enabled", "S", 1)
         Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Filename", "S", DllPath)
+        Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Type", "S", "COM")
     End If
 End Sub
 
@@ -235,7 +235,7 @@ Public Sub RegisterSGMPluginStartup()
     
     RegisterSGMPlugin MajorVer, DllPath, SGMPath
 End Sub
-Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
+Public Function StartElevated(ByVal hwnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
     On Error GoTo Error
     
     Dim sei As SHELLEXECUTEINFO
@@ -249,7 +249,7 @@ Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal
     
     sei.cbSize = Len(sei)
     sei.fMask = SEE_MASK_NOCLOSEPROCESS
-    sei.hWnd = hWnd
+    sei.hwnd = hwnd
     sei.lpVerb = "open"
     sei.lpFile = AppName
     sei.lpParameters = Params
@@ -288,7 +288,7 @@ WaitForTermination:
     Exit Function
     
 Error:
-    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hWnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hwnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
         Case 3:
             End
         Case 2:
