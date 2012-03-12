@@ -542,8 +542,8 @@ End Sub
 Private Sub MDIForm_Unload(Cancel As Integer)
     Dim Wa As Long
     If FileChanged Then
-        Wa = MsgBox("Are you sure you want to exit without saving your changes?", vbYesNo, "TTDX Editor")
-        If Wa = 2 Then Cancel = 1: Exit Sub
+        Wa = MsgBox("Are you sure you want to exit without saving your changes?", vbYesNo Or vbExclamation, "TTDX Editor")
+        If Wa = vbNo Then Cancel = 1: Exit Sub
     End If
     Unload frmTechInfo
     Wa = fWriteValue("HKCU", RegBaseKey + "\Map", "Size", "D", frmMap.MapSize)
