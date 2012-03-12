@@ -7,12 +7,4 @@ cargo rates
 
 go through and update messages, items, buttons, etc, where appropriate
 
-for SGM, just elevate when registering (and use registry instead if 2.3 is detected)
-
-and display this icon:
-    http://www.codeproject.com/Articles/18509/Add-a-UAC-shield-to-a-button-when-elevation-is-req
-
-Do similar for the associations
- - also make that window a little larger
-
 Provide a download of scr56en.exe for Win95/98/2000/Me/NT 4.0 users, dcom95 for Windows 95 users
