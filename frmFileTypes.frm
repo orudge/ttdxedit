@@ -321,5 +321,9 @@ End Sub
 
 Private Sub Form_Load()
     RefreshTypes
+
+    If IsElevated() = False Then
+        SendMessage cmdDo.hwnd, BCM_SETSHIELD, 0, &HFFFFFFFF
+    End If
 End Sub
 
