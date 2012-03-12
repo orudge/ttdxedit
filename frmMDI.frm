@@ -215,9 +215,6 @@ Begin VB.MDIForm frmMDI
             Caption         =   "&Extreme"
             Shortcut        =   ^{F4}
          End
-         Begin VB.Menu mnSep9 
-            Caption         =   "-"
-         End
       End
       Begin VB.Menu mnuOCurrency 
          Caption         =   "&Currency"
