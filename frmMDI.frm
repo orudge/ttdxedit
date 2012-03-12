@@ -446,7 +446,7 @@ Sub CheckCurrencyItem(Item As Integer)
     
     Dim MID As Long, TLMID As Long, SMID As Long
     
-    MID = GetMenu(hWnd)
+    MID = GetMenu(hwnd)
     TLMID = GetSubMenu(MID, 1)
     SMID = GetSubMenu(TLMID, 3)
     
@@ -515,7 +515,7 @@ Private Sub MDIForm_Load()
     'On Error GoTo Error
     Dim Wa As Long, Wsa As String
     
-    Me.Caption = "TTDX Editor" ' V" + Format(App.Major) + "." + Format(App.Minor, "00") + "." + Format(App.Revision, "000") + "  (C)Jens Vang Petersen 2002"
+    Me.Caption = "TTDX Editor"
     Wa = fWriteValue("HKLM", RegBaseKey, "Version", "S", Format(App.Major) + "." + Format(App.Minor, "00") + "." + Format(App.Revision, "0000"))
     
     For Wa = 1 To 11: Load mnMaxPro(Wa): Load mnMinPro(Wa): Next Wa
@@ -568,7 +568,7 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     End If
     Unload frmTechInfo
     Wa = fWriteValue("HKCU", RegBaseKey + "\Map", "Size", "D", frmMap.MapSize)
-    Wa = fWriteValue("HKLM", RegBaseKey, "LastPath", "S", frmSelectGame.CurPath)
+    Wa = fWriteValue("HKCU", RegBaseKey, "LastPath", "S", frmSelectGame.CurPath)
     Wa = fWriteValue("HKCU", RegBaseKey + "\View", "ToolBar", "B", mnVtool.Checked)
     Wa = fWriteValue("HKCU", RegBaseKey + "\View", "TechBar", "B", mnVTech.Checked)
     Wa = fWriteValue("HKCU", RegBaseKey, "FastMode", "B", fFastMode)
@@ -725,7 +725,7 @@ Private Sub mnOpFileAss_Click()
         Screen.MousePointer = 11
         DoEvents
         
-        StartElevated Me.hWnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/ASSOCIATE", App.Path, 0, "In order to adjust your file associations, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
+        StartElevated Me.hwnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/ASSOCIATE", App.Path, 0, "In order to adjust your file associations, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
         Screen.MousePointer = 0
     End If
 End Sub
@@ -739,16 +739,31 @@ Private Sub mnPedit_Click()
 End Sub
 
 Private Sub BasTests()
-    Dim Wsa As String, Wa As Long
-    Wsa = F.BuildPath(App.Path, App.EXEName)
-    If fReadValue("HKLM", RegBaseKey, "Path", "S", "") <> Wsa Then
-        Wa = MsgBox("This program has been moved since last run" + Chr(10) + "If you have assigned filetypes you should update them now.", 48)
-        Wa = fWriteValue("HKLM", RegBaseKey, "Path", "S", Wsa)
+    Dim Wsa As String, Wa As Long, OK As Boolean
+    Wsa = F.BuildPath(App.Path, App.EXEName & ".exe")
+    
+    If RunningWin9x() = True Then
+        OK = True
+    Else
+        If IsUserAnAdmin() = 1 Then
+            OK = True
+        Else
+            OK = False
+        End If
     End If
-    'Wa = fReadValue("HKLM", RegBaseKey, "Version", "S", App.Revision)
+    
+    If OK = True Then
+        If fReadValue("HKLM", RegBaseKey, "Path", "S", "") <> Wsa Then
+            Wa = MsgBox("This program has been moved since last run." + Chr(10) + "If you have assigned filetypes you should update them now.", 48)
+            Wa = fWriteValue("HKLM", RegBaseKey, "Path", "S", Wsa)
+        End If
+    Else
+        Wa = fWriteValue("HKCU", RegBaseKey, "Path", "S", Wsa)
+    End If
+
     frmMap.MapSize = fReadValue("HKCU", RegBaseKey + "\Map", "Size", "D", 0)
     frmMap.Move 0, 0
-    frmSelectGame.CurPath = fReadValue("HKLM", RegBaseKey, "LastPath", "S", App.Path)
+    frmSelectGame.CurPath = fReadValue("HKCU", RegBaseKey, "LastPath", "S", App.Path)
     mnVtool.Checked = Not fReadValue("HKCU", RegBaseKey + "\View", "ToolBar", "B", True): mnVtool_Click
     mnVTech.Checked = Not fReadValue("HKCU", RegBaseKey + "\View", "TechBar", "B", False): mnVTech_Click
     fFastMode = True
