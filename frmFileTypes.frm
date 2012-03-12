@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmFileTypes 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "File Associations"
@@ -152,41 +152,109 @@ Option Explicit
 
 Private F As New FileSystemObject
 
+Public Sub AssociateCmdLine()
+    On Error GoTo Error
+    
+    Dim CmdLine As String
+    Dim CmdSplit() As String
+    Dim i As Integer
+    
+    CmdLine = Trim$(Right$(Command$, Len(Command$) - 4))
+    CmdSplit = Split(CmdLine, " ")
+    
+    SetAMaster "TTDXEdit.Save", 0, False
+    SetAMaster "TTDXEdit.Scenario", 1, False
+    SetAMaster "TTDXEdit.Unpack", 2, False
+
+    For i = LBound(CmdSplit) To UBound(CmdSplit)
+        Dim CmdOptions() As String
+        
+        CmdOptions = Split(CmdSplit(i), ":")
+        
+        If CmdOptions(0) = "o" Then
+            SetThisFileType CmdOptions(1), CInt(CmdOptions(2))
+        ElseIf CmdOptions(0) = "m" Then
+            SetAMaster CmdOptions(1), CInt(CmdOptions(2)), True
+        End If
+    Next i
+    
+    Exit Sub
+Error:
+    End
+End Sub
+
 Private Sub cmdCancel_Click()
     Unload Me
 End Sub
 
 Private Sub cmdDo_Click()
     Dim Wa As Integer, wDta As ListItem, Wsa As String
-    '
-    ' Set The Master Values
-    '
-    SetAMaster "TTDXEdit.Save", 1, False
-    SetAMaster "TTDXEdit.Scenario", 2, False
-    SetAMaster "TTDXEdit.Unpack", 3, False
-    '
-    ' Loop through the filetypes
-    '
-    For Each wDta In lvTypes.ListItems
+    Dim FiletypeList As String
+    
+    If RunningWin9x() Then
         '
-        ' Only do something to selected types
+        ' Set The Master Values
         '
-        If wDta.Checked Then
-            Wa = Val(wDta.Tag)
-            Wsa = fReadValue("HKCR", "." + wDta.Text, "", "S", "TTDXEdit")
-            If (Wsa Like "TTDXEdit*") Or optTOver.Value Then
-                '
-                ' Handle my own, unassigned and overwrite
-                '
-                SetThisFileType "." + wDta.Text, Wa
-            Else
-                '
-                ' Do plug-in
-                '
-                SetAMaster Wsa, Wa, True
+        SetAMaster "TTDXEdit.Save", 1, False
+        SetAMaster "TTDXEdit.Scenario", 2, False
+        SetAMaster "TTDXEdit.Unpack", 3, False
+        '
+        ' Loop through the filetypes
+        '
+        For Each wDta In lvTypes.ListItems
+            '
+            ' Only do something to selected types
+            '
+            If wDta.Checked Then
+                Wa = Val(wDta.Tag)
+                Wsa = fReadValue("HKCR", "." + wDta.Text, "", "S", "TTDXEdit")
+                If (Wsa Like "TTDXEdit*") Or optTOver.Value Then
+                    '
+                    ' Handle my own, unassigned and overwrite
+                    '
+                    SetThisFileType "." + wDta.Text, Wa
+                    FiletypeList = FiletypeList & "o:." & wDta.Text & ":" & Wa & " "
+                Else
+                    '
+                    ' Do plug-in
+                    '
+                    SetAMaster Wsa, Wa, True
+                    FiletypeList = FiletypeList & "m:" & Wsa & ":" & Wa & " "
+                End If
             End If
-        End If
-    Next wDta
+        Next wDta
+    Else
+        '
+        ' Loop through the filetypes
+        '
+        For Each wDta In lvTypes.ListItems
+            '
+            ' Only do something to selected types
+            '
+            If wDta.Checked Then
+                Wa = Val(wDta.Tag)
+                Wsa = fReadValue("HKCR", "." + wDta.Text, "", "S", "TTDXEdit")
+                If (Wsa Like "TTDXEdit*") Or optTOver.Value Then
+                    '
+                    ' Handle my own, unassigned and overwrite
+                    '
+                    FiletypeList = FiletypeList & "o:." & wDta.Text & ":" & Wa & " "
+                Else
+                    '
+                    ' Do plug-in
+                    '
+                    FiletypeList = FiletypeList & "m:" & Wsa & ":" & Wa & " "
+                End If
+            End If
+        Next wDta
+        
+        Screen.MousePointer = 11
+        DoEvents
+        
+        StartElevated Me.hwnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/FT " & FiletypeList, App.Path, 0, "In order to modify file associations, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
+        Screen.MousePointer = 0
+     End If
+
     Wa = MsgBox("The file associations you have selected have been set.", vbInformation)
     RefreshTypes
 End Sub
@@ -237,7 +305,7 @@ Private Sub RefreshTypes()
     For Wa = 0 To UBound(Wva)
         Set wDta = lvTypes.ListItems.Add
         ' Get curent file reference (if any)
-        Wsa = Mid(Wva(Wa), 2): Wsb = fReadValue("HKCR", "." + Wsa, "", "S", "")
+        Wsa = MID(Wva(Wa), 2): Wsb = fReadValue("HKCR", "." + Wsa, "", "S", "")
         wDta.Text = Wsa
         wDta.Checked = True: wDta.Tag = Left(Wva(Wa), 1)
         If Wsb Like "TTDXEdit*" Then

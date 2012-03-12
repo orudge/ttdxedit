@@ -719,15 +719,7 @@ Private Sub mnMinProAll_Click()
 End Sub
 
 Private Sub mnOpFileAss_Click()
-    If RunningWin9x() = True Then
-        frmFileTypes.Show vbModal, Me
-    Else
-        Screen.MousePointer = 11
-        DoEvents
-        
-        StartElevated Me.hwnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/ASSOCIATE", App.Path, 0, "In order to adjust your file associations, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
-        Screen.MousePointer = 0
-    End If
+    frmFileTypes.Show vbModal, Me
 End Sub
 
 Private Sub mnOsgm_Click()

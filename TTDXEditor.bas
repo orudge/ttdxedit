@@ -16,8 +16,8 @@ Sub Main()
     Wsa = Trim(Command$): Wdo = 0
     fAutoMode = False
     If Wsa > " " Then
-        If Wsa = "/ASSOCIATE" Then
-            frmFileTypes.Show vbModal
+        If Left(UCase(Wsa), 3) = "/FT" Then
+            frmFileTypes.AssociateCmdLine
             End
         ElseIf Wsa = "/SGM" Then
             RegisterSGMPluginStartup
