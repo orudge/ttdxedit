@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmStation 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Stations"
@@ -411,7 +411,7 @@ Private Sub ShowList()
             End If
         Next Wa
     End If
-    For Wa = 0 To FrmDta.UBound: FrmDta(Wa).Enabled = False: Next Wa
+    For Wa = 0 To frmDta.UBound: frmDta(Wa).Enabled = False: Next Wa
     CurItmNo = lstStation.ListIndex
 End Sub
 
@@ -452,7 +452,7 @@ Private Sub cmdAddHouse_Click()
             Wc = Wc + DoAddBuild(.TruckX, .TruckY, 1, 1)
             Wc = Wc + DoAddBuild(.DockX, .DockY, 2, 2)
         End With
-        Wc = MsgBox(Format(Wc) + " Buildings added")
+        Wc = MsgBox(Format(Wc) + " buildings added.")
         
         wData(&H44BBD) = wData(&H44BBD) Or 8
     End If
@@ -524,7 +524,7 @@ Private Sub cmdRemStop_Click()
     If CurItmNo > -1 Then
         With CurItm
             If .BusX > 0 And .TruckX > 0 Then
-                Wc = MsgBox("Bus and Truck stop allready present")
+                Wc = MsgBox("Bus and truck stop already present.")
             Else
                 Wfa = False
                 If .RailDir Then
@@ -540,7 +540,7 @@ Private Sub cmdRemStop_Click()
                 Wfa = Wfa Or AddRem(.BusX, .BusY, 1, 1)
                 Wfa = Wfa Or AddRem(.TruckX, .TruckY, 1, 1)
                 Wfa = Wfa Or AddRem(.DockX, .DockY, 2, 2)
-                If Wfa Then Wc = MsgBox("Station part(s) added") Else: Wc = MsgBox("No new locations found")
+                If Wfa Then Wc = MsgBox("Station part(s) added.") Else: Wc = MsgBox("No new locations found.")
                 
                 wData(&H44BBD) = wData(&H44BBD) Or 8
             End If
@@ -592,7 +592,7 @@ Private Sub lstStation_Click()
     CurItm = TTDXStationInfo(Wb)
     CurItmNo = Wb
     UpdateFields
-    For Wa = 0 To FrmDta.UBound: FrmDta(Wa).Enabled = True: Next Wa
+    For Wa = 0 To frmDta.UBound: frmDta(Wa).Enabled = True: Next Wa
 End Sub
 Private Sub UpdateFields()
     Dim Wa As Integer, Wb As Integer

@@ -11,7 +11,6 @@ Module=Tools; Tools.bas
 Form=frmSelectGame.frm
 Module=TTDXEditor; TTDXEditor.bas
 Form=frmWSplash.frm
-Form=frmAbout.frm
 Form=frmPlayer.frm
 Module=TTDXMacros; TTDXMacros.bas
 Form=frmMap.frm

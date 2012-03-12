@@ -90,15 +90,6 @@ Begin VB.MDIForm frmMDI
       TabIndex        =   0
       Top             =   0
       Width           =   11400
-      Begin VB.CommandButton Command1 
-         Caption         =   "Check 44BBD"
-         Height          =   375
-         Left            =   5160
-         TabIndex        =   8
-         Top             =   120
-         Visible         =   0   'False
-         Width           =   2055
-      End
       Begin VB.CommandButton cmdFinances 
          Height          =   540
          Left            =   720
@@ -494,22 +485,7 @@ Private Sub cmdVeh_Click()
     frmVehicle.SetFocus
 End Sub
 
-Private Sub Command1_Click()
-    Dim Tmpstr As String
-    Dim i As Integer
-    
-    Tmpstr = wData(&H44BBD) & vbCrLf & vbCrLf
 
-    For i = 0 To 7
-        If wData(&H44BBD) And (2 ^ i) Then
-            Tmpstr = Tmpstr & "i (" & (2 ^ i) & ") = Yes" & vbCrLf
-        Else
-            Tmpstr = Tmpstr & "i (" & (2 ^ i) & ") = No" & vbCrLf
-        End If
-    Next i
-    
-    MsgBox Tmpstr
-End Sub
 
 Private Sub MDIForm_Load()
     'On Error GoTo Error
@@ -589,7 +565,7 @@ End Sub
 
 Private Sub mnCleanQuit_Click()
     Dim Wa As Long
-    Wa = MsgBox("All TTDX Editor settings are now being removed." + Chr(10) + "NOTE: File associations and SGM Plugin are NOT affected", 33)
+    Wa = MsgBox("All TTDX Editor settings are now being removed." + Chr(10) + "NOTE: File associations and the Saved Game Manager plugin are not affected.", 33)
     If Wa = 1 Then
         CleanUp = True
         Unload Me
@@ -686,7 +662,7 @@ Public Sub CallFileSave(wMode As Integer, Optional ByVal wFile As String)
         DoEvents
         Me.Enabled = True
         Unload frmWSplash
-        If Wa <> 0 Then Wa = MsgBox("Save Failed", 48)
+        If Wa <> 0 Then Wa = MsgBox("Save failed.", 48)
     End If
 
 End Sub
@@ -764,7 +740,7 @@ End Sub
 Private Sub mnTEremwood_Click()
     Dim Wa As Integer
     TTDXtermacRemWood
-    Wa = MsgBox("Trees Removed")
+    Wa = MsgBox("Trees removed.")
     frmMap.UpdateInfo
 End Sub
 
