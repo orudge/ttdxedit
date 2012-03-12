@@ -1,10 +1,15 @@
 TTDX Editor Changes
 ===================
 
-Version 1.10.018 (24/05/2004)
------------------------------
+Version 1.20 (12/03/2012)
+-------------------------
 
 - Marked saved games with basic record of what was changed (24/05/2004)
+- Update MODIFIED.EXE to list game modifications (19/06/2004)
+- Assorted cosmetic changes (10/03/2012)
+- Run nicely on modern versions of Windows, and with limited privileges (10/03/2012)
+- Update SGM plug-in with support for 2.3 registration system (12/03/2012)
+- Setup program improvements; don't bundle WSH or DCOM95 (12/03/2012)
 
 Version 1.10.017 (23/05/2004)
 -----------------------------
