@@ -3,16 +3,16 @@ Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmFileTypes 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "File Associations"
-   ClientHeight    =   3510
+   ClientHeight    =   4200
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   5535
+   ClientWidth     =   7650
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3510
-   ScaleWidth      =   5535
+   ScaleHeight     =   4200
+   ScaleWidth      =   7650
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
    Begin VB.OptionButton optTOver 
@@ -27,7 +27,7 @@ Begin VB.Form frmFileTypes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   3900
+      Left            =   6060
       TabIndex        =   4
       Top             =   1200
       Width           =   1095
@@ -44,20 +44,20 @@ Begin VB.Form frmFileTypes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   3900
+      Left            =   6060
       TabIndex        =   3
       Top             =   1440
       Value           =   -1  'True
       Width           =   1095
    End
    Begin MSComctlLib.ListView lvTypes 
-      Height          =   3255
+      Height          =   3975
       Left            =   120
       TabIndex        =   2
       Top             =   120
-      Width           =   3615
-      _ExtentX        =   6376
-      _ExtentY        =   5741
+      Width           =   5775
+      _ExtentX        =   10186
+      _ExtentY        =   7011
       View            =   3
       LabelEdit       =   1
       Sorted          =   -1  'True
@@ -86,7 +86,7 @@ Begin VB.Form frmFileTypes
       BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
          SubItemIndex    =   1
          Text            =   "Assigned to:"
-         Object.Width           =   4498
+         Object.Width           =   7938
       EndProperty
    End
    Begin VB.CommandButton cmdCancel 
@@ -102,9 +102,9 @@ Begin VB.Form frmFileTypes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   3840
+      Left            =   6000
       TabIndex        =   1
-      Top             =   3000
+      Top             =   3720
       Width           =   1575
    End
    Begin VB.CommandButton cmdDo 
@@ -120,9 +120,9 @@ Begin VB.Form frmFileTypes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   3840
+      Left            =   6000
       TabIndex        =   0
-      Top             =   2520
+      Top             =   3240
       Width           =   1575
    End
    Begin VB.Label Label1 
@@ -137,7 +137,7 @@ Begin VB.Form frmFileTypes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   975
-      Left            =   3840
+      Left            =   6000
       TabIndex        =   5
       Top             =   120
       Width           =   1455
@@ -318,6 +318,7 @@ Private Sub RefreshTypes()
         wDta.SubItems(1) = Wsb
     Next Wa
 End Sub
+
 
 Private Sub Form_Load()
     RefreshTypes
