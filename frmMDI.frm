@@ -53,6 +53,7 @@ Begin VB.MDIForm frmMDI
             Style           =   1
             Alignment       =   1
             AutoSize        =   2
+            Enabled         =   0   'False
             Object.Width           =   847
             MinWidth        =   441
             TextSave        =   "CAPS"
@@ -544,7 +545,7 @@ End Sub
 Private Sub MDIForm_Unload(Cancel As Integer)
     Dim Wa As Long
     If FileChanged Then
-        Wa = MsgBox("Exit without saving changes?", 33)
+        Wa = MsgBox("Are you sure you want to exit without saving your changes?", vbYesNo, "TTDX Editor")
         If Wa = 2 Then Cancel = 1: Exit Sub
     End If
     Unload frmTechInfo

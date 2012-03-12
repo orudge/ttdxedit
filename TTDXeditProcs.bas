@@ -948,6 +948,8 @@ Public Function TTDXSaveUncom(ByVal vPath As String) As Integer
         Open vPath + "dta" For Binary As 1
         Put 1, , wData()
         Close 1
+        
+        FileChanged = False
     End If
     Exit Function
 TTDXsaveFileErr:
