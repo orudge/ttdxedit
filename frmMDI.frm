@@ -731,15 +731,7 @@ Private Sub mnOpFileAss_Click()
 End Sub
 
 Private Sub mnOsgm_Click()
-    If RunningWin9x() = True Then
-        frmSGM.Show vbModal, Me
-    Else
-        Screen.MousePointer = 11
-        DoEvents
-        
-        StartElevated Me.hWnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/SGM", App.Path, 0, "In order to install the Saved Game Manager plug-in, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
-        Screen.MousePointer = 0
-    End If
+    frmSGM.Show vbModal, Me
 End Sub
 
 Private Sub mnPedit_Click()

@@ -20,7 +20,7 @@ Sub Main()
             frmFileTypes.Show vbModal
             End
         ElseIf Wsa = "/SGM" Then
-            frmSGM.Show vbModal
+            RegisterSGMPluginStartup
             End
         End If
         

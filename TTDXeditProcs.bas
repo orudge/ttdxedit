@@ -194,6 +194,47 @@ Global CurrencyLabel As String
 Global CurrencySeparator As String
 Global CurrencySymbolBefore As Boolean
 
+Public Sub RegisterSGMPlugin(ByVal MajorVer As Double, ByVal DllPath As String, ByVal SGMPath As String)
+    Dim Wa As Long, Wb As Double
+    Wb = Shell("Regsvr32 /s " + Chr(34) + DllPath + Chr(34))
+    
+    If MajorVer < 2.3 Then
+        Wa = fWriteValue(F.BuildPath(SGMPath, "plugins2.ini"), "TTDXEdit", "Class", "S", "SGMTTDXEdit")
+        Wa = fWriteValue(F.BuildPath(SGMPath, "plugins2.ini"), "TTDXEdit", "Enabled", "S", 1)
+        Wa = fWriteValue(F.BuildPath(SGMPath, "plugins2.ini"), "TTDXEdit", "Filename", "S", DllPath)
+        Wa = fWriteValue(F.BuildPath(SGMPath, "plugins2.ini"), "Plugins", "TTDXEdit", "S", "TTDXEdit")
+    Else
+        Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Class", "S", "SGMTTDXEdit")
+        Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Enabled", "S", 1)
+        Wa = fWriteValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Filename", "S", DllPath)
+    End If
+End Sub
+
+
+Public Sub RegisterSGMPluginStartup()
+    Dim Wsa As String, wFl As Boolean, SGMVersion As String, Pos As Integer
+    Dim MajorVer As Double, DllPath As String, SGMPath As String
+    
+    SGMPath = fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Path", "S", "")
+    DllPath = F.BuildPath(App.Path, "SGMPlugIn\TTDXEdit.dll")
+    
+    If F.FileExists(DllPath) = False Then
+        Exit Sub
+    End If
+    
+    SGMVersion = fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Version", "S", "")
+    
+    On Error Resume Next
+    Pos = InStr(3, SGMVersion, ".")
+    MajorVer = CDbl(Left(SGMVersion, Pos - 1))
+    On Error GoTo 0
+    
+    If MajorVer <= 0 Then
+        Exit Sub
+    End If
+    
+    RegisterSGMPlugin MajorVer, DllPath, SGMPath
+End Sub
 Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
     On Error GoTo Error
     

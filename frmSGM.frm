@@ -140,7 +140,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
-Private SGMpath As String, DllPath As String, DllPath2 As String
+Private SGMPath As String, DllPath As String, DllPath2 As String, MajorVer As Double
 Private F As New FileSystemObject
 
 Private Sub cmdCancel_Click()
@@ -148,27 +148,29 @@ Private Sub cmdCancel_Click()
 End Sub
 
 Private Sub cmdDo_Click()
-    Dim Wa As Long, Wb As Double
-    F.CopyFile DllPath, DllPath2, True
-    Wb = Shell("Regsvr32 /s " + Chr(34) + DllPath2 + Chr(34))
-    Wa = fWriteValue(F.BuildPath(SGMpath, "plugins2.ini"), "TTDXEdit", "Class", "S", "SGMTTDXEdit")
-    Wa = fWriteValue(F.BuildPath(SGMpath, "plugins2.ini"), "TTDXEdit", "Enabled", "S", 1)
-    Wa = fWriteValue(F.BuildPath(SGMpath, "plugins2.ini"), "TTDXEdit", "Filename", "S", DllPath2)
-    Wa = fWriteValue(F.BuildPath(SGMpath, "plugins2.ini"), "Plugins", "TTDXEdit", "S", "TTDXEdit")
+    If RunningWin9x() = True Then
+        RegisterSGMPlugin MajorVer, DllPath, SGMPath
+    Else
+        Screen.MousePointer = 11
+        DoEvents
+        
+        StartElevated Me.hWnd, """" & MakePath(App.Path) & App.EXEName & ".exe""", "/SGM", App.Path, 0, "In order to install the Saved Game Manager plug-in, you need to be running as an administrator. If you press Yes, you'll be prompted to enter an Administrator password. If this fails, please try logging out and running TTDX Editor as an administrator." & vbCrLf & vbCrLf & "Do you want to proceed?"
+        Screen.MousePointer = 0
+    End If
+
     Update
 End Sub
 
 Private Sub Form_Load()
-    labC.Caption = "Transport Tycoon Saved Game Manager and the plugin module are: © Owen Rudge 2000-2002. All rights reserved."
+    labC.Caption = "Transport Tycoon Saved Game Manager and the plug-in module are: © Owen Rudge 2000-2012. All rights reserved."
     Update
 End Sub
 
 Private Sub Update()
-    Dim Wsa As String, wFl As Boolean
+    Dim Wsa As String, wFl As Boolean, SGMVersion As String, Pos As Integer
     labSt.Caption = "": wFl = True
-    SGMpath = fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Path", "S", "")
+    SGMPath = fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Path", "S", "")
     DllPath = F.BuildPath(App.Path, "SGMPlugIn\TTDXEdit.dll")
-    DllPath2 = F.BuildPath(SGMpath, "TTDXEdit.dll")
     
     If F.FileExists(DllPath) Then
         labSt.Caption = labSt.Caption + "Plugin file found." + Chr(13) + Chr(13)
@@ -177,19 +179,41 @@ Private Sub Update()
         wFl = False: DllPath = ""
     End If
     
-    If F.FileExists(F.BuildPath(SGMpath, "plugins2.ini")) Then
-        labSt.Caption = labSt.Caption + "Saved Game Manager v" + fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Version", "S", "") + " found in:" + Chr(13) + SGMpath
-        Wsa = fReadValue(F.BuildPath(SGMpath, "plugins2.ini"), "TTDXEdit", "Filename", "S", "")
+    SGMVersion = fReadValue("HKLM", "Software\Owen Rudge\InstalledSoftware\TTSGM", "Version", "S", "")
+    
+    On Error Resume Next
+    Pos = InStr(3, SGMVersion, ".")
+    MajorVer = CDbl(Left(SGMVersion, Pos - 1))
+    On Error GoTo 0
+    
+    If MajorVer <= 0 Then
+        labSt.Caption = labSt.Caption + "Saved Game Manager not found."
+        wFl = False
+    ElseIf MajorVer < 2.3 Then
+        If F.FileExists(F.BuildPath(SGMPath, "plugins2.ini")) Then
+            labSt.Caption = labSt.Caption + "Saved Game Manager v" + SGMVersion + " found in:" + Chr(13) + SGMPath
+            Wsa = fReadValue(F.BuildPath(SGMPath, "plugins2.ini"), "TTDXEdit", "Filename", "S", "")
+            If Wsa = "" Then
+                LabSt2.Caption = "Plug-in is not installed"
+            ElseIf Wsa = DllPath Then
+                LabSt2.Caption = "Plug-in is installed."
+            Else
+                LabSt2.Caption = "Plug-in is not properly installed."
+            End If
+        Else
+            labSt.Caption = labSt.Caption + "Saved Game Manager not found."
+            wFl = False
+        End If
+    Else
+        labSt.Caption = labSt.Caption + "Saved Game Manager v" + SGMVersion + " found in:" + Chr(13) + SGMPath
+        Wsa = fReadValue("HKLM", "Software\Owen Rudge\Transport Tycoon Saved Game Manager\Plugins\TTDXEdit", "Filename", "S", "")
         If Wsa = "" Then
             LabSt2.Caption = "Plug-in is not installed"
-        ElseIf Wsa = DllPath2 Then
+        ElseIf Wsa = DllPath Then
             LabSt2.Caption = "Plug-in is installed."
         Else
             LabSt2.Caption = "Plug-in is not properly installed."
         End If
-    Else
-        labSt.Caption = labSt.Caption + "Saved Game Manager not found."
-        wFl = False
     End If
     
     cmdDo.Enabled = wFl
