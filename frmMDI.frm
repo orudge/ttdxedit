@@ -739,20 +739,10 @@ Private Sub mnPedit_Click()
 End Sub
 
 Private Sub BasTests()
-    Dim Wsa As String, Wa As Long, OK As Boolean
+    Dim Wsa As String, Wa As Long
     Wsa = F.BuildPath(App.Path, App.EXEName & ".exe")
     
-    If RunningWin9x() = True Then
-        OK = True
-    Else
-        If IsUserAnAdmin() = 1 Then
-            OK = True
-        Else
-            OK = False
-        End If
-    End If
-    
-    If OK = True Then
+    If IsElevated() = True Then
         If fReadValue("HKLM", RegBaseKey, "Path", "S", "") <> Wsa Then
             Wa = MsgBox("This program has been moved since last run." + Chr(10) + "If you have assigned filetypes you should update them now.", 48)
             Wa = fWriteValue("HKLM", RegBaseKey, "Path", "S", Wsa)

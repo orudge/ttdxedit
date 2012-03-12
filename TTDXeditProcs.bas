@@ -17,7 +17,12 @@ Declare Function GetVersionExA Lib "kernel32" (lpVersionInformation As OSVERSION
 Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVal dwMilliseconds As Long) As Long
 Declare Function IsUserAnAdmin Lib "TTDXHelp.dll" () As Long
 
+Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+
 Global Const MF_BYPOSITION = &H400&
+
+Global Const BCM_FIRST = &H1600&
+Global Const BCM_SETSHIELD = (BCM_FIRST + &HC&)
 
 Public Type OSVERSIONINFO
     dwOSVersionInfoSize As Long
@@ -193,6 +198,19 @@ Global CurrencyMultiplier As Double
 Global CurrencyLabel As String
 Global CurrencySeparator As String
 Global CurrencySymbolBefore As Boolean
+
+Function IsElevated() As Boolean
+    If RunningWin9x() = True Then
+        IsElevated = True
+    Else
+        If IsUserAnAdmin() = 1 Then
+            IsElevated = True
+        Else
+            IsElevated = False
+        End If
+    End If
+End Function
+
 
 Public Sub RegisterSGMPlugin(ByVal MajorVer As Double, ByVal DllPath As String, ByVal SGMPath As String)
     Dim Wa As Long, Wb As Double
