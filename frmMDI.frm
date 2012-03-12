@@ -4,7 +4,7 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.MDIForm frmMDI 
    AutoShowChildren=   0   'False
    BackColor       =   &H8000000C&
-   Caption         =   "MDIForm1"
+   Caption         =   "TTDX Editor"
    ClientHeight    =   8160
    ClientLeft      =   165
    ClientTop       =   735
@@ -62,7 +62,6 @@ Begin VB.MDIForm frmMDI
             Style           =   3
             Alignment       =   1
             AutoSize        =   2
-            Enabled         =   0   'False
             Object.Width           =   609
             MinWidth        =   353
             TextSave        =   "INS"
@@ -307,6 +306,12 @@ Begin VB.MDIForm frmMDI
       End
       Begin VB.Menu mnOsgm 
          Caption         =   "&SGM Plugin..."
+      End
+      Begin VB.Menu mnuOSep3 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuOCheckUpdates 
+         Caption         =   "Check for &Updates..."
       End
    End
    Begin VB.Menu mnPlayer 
@@ -875,6 +880,84 @@ Private Sub mnuOCCur_Click(Index As Integer)
     Exit Sub
 Error:
     Select Case ErrorProc(Err, "Function: frmMDI.mnuOCCur_Click(" & Index & ")")
+        Case 3:
+            End
+        Case 2:
+            Resume Next
+        Case 1:
+            Resume
+    End Select
+End Sub
+
+Private Sub mnuOCheckUpdates_Click()
+    On Error GoTo Error
+    
+    Dim netConnection As New CWinInet
+    Dim strURL As String, SiteURL As String
+    Dim FileListName As String
+    Dim GG As New CGUID
+    Dim Tmp As String
+    Dim mm As Double
+    
+    FileListName = GetTempFileName()
+    
+    GG.CreateNew
+    strURL = "http://www.transporttycoon.net/manver.php?cmd=newver-ttdxedit&ID=" & GG.RegVal
+    SiteURL = "http://www.transporttycoon.net/manver.php?cmd=get-ttdxedit"
+    
+    netConnection.Init
+    
+    If netConnection.ReadUrl(strURL, FileListName, "updates") = False Then
+        MsgBox "Unable to connect to the TTDX Editor web site. Please try again later.", vbExclamation, "TTDX Editor"
+        netConnection.Term
+        
+        On Error Resume Next
+        Kill FileListName
+        On Error GoTo Error
+        
+        Exit Sub
+    End If
+    
+    netConnection.Term
+
+    Open FileListName For Input As #1
+    Line Input #1, Tmp
+    Close #1
+    
+    If Len(Tmp) < 16 Then
+        MsgBox "The update data is corrupt.", vbExclamation, "TTDX Editor"
+        Kill FileListName
+        Exit Sub
+    Else
+        If Left$(Tmp, 16) <> "CURRENT-VERSION:" Then
+            MsgBox "The update data is corrupt.", vbExclamation, "TTDX Editor"
+            Kill FileListName
+            Exit Sub
+        Else
+            Tmp = APITrim(Trim$(Right$(Tmp, Len(Tmp) - 16)))
+        End If
+    End If
+    
+    mm = CDbl(Left$(Tmp, 2) & "." & MID$(Tmp, 4, 2))
+    
+    If mm > CDbl(App.Major & "." & App.Minor) Then
+        If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
+            ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
+        End If
+    Else
+        If mm = CDbl(App.Major & "." & App.Minor) And CInt(Right$(Tmp, Len(Tmp) - 6)) > App.Revision Then
+            If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
+                ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
+            End If
+        Else
+            MsgBox "There are no new versions of TTDX Editor available.", vbInformation, "TTDX Editor"
+        End If
+    End If
+    
+    Kill FileListName
+    Exit Sub
+Error:
+    Select Case ErrorProc(Err, "Function: mnuOCheckUpdates_Click()")
         Case 3:
             End
         Case 2:

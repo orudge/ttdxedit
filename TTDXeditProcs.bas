@@ -18,6 +18,8 @@ Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVa
 Declare Function IsUserAnAdmin Lib "TTDXHelp.dll" () As Long
 
 Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Declare Function GetTempFileNameAPI Lib "kernel32" Alias "GetTempFileNameA" (ByVal lpszPath As String, ByVal lpPrefixString As String, ByVal wUnique As Long, ByVal lpTempFileName As String) As Long
+Declare Function GetTempPath Lib "kernel32" Alias "GetTempPathA" (ByVal nBufferLength As Long, ByVal lpBuffer As String) As Long
 
 Global Const MF_BYPOSITION = &H400&
 
@@ -198,6 +200,67 @@ Global CurrencyMultiplier As Double
 Global CurrencyLabel As String
 Global CurrencySeparator As String
 Global CurrencySymbolBefore As Boolean
+
+Function GetTempFileName()
+    On Error GoTo Error
+    
+    Dim TmpPath As String * 250
+    Dim TmpFN As String * 260
+    
+    GetTempPath 250, TmpPath
+    
+    If GetTempFileNameAPI(TmpPath, "TDX", 0, TmpFN) = 0 Then
+        MsgBox "Unable to create temporary filename.", vbCritical, "Error"
+        Exit Function
+    Else
+        GetTempFileName = APITrim(TmpFN)
+    End If
+    
+    Exit Function
+Error:
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.GetTempFileName")
+        Case 3:
+            End
+        Case 2:
+            Resume Next
+        Case 1:
+            Resume
+    End Select
+End Function
+
+Function APITrim(Buf As String) As String
+    On Error GoTo Error
+    
+    Dim Tmp As String
+    Dim NullPos As Integer
+       
+    Buf = Trim$(Buf)
+    NullPos = InStr(1, Buf, Chr$(0), 0)
+    
+    If NullPos <> 0 Then
+        Tmp = Left$(Buf, NullPos - 1)
+    Else
+        Tmp = Buf
+    End If
+    
+    If Right$(Tmp, 1) = Chr$(0) Then
+        Tmp = Left$(Tmp, Len(Tmp) - 1)
+    End If
+    
+    APITrim = Tmp
+    Exit Function
+Error:
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.APITrim(""" & Buf & """)")
+        Case 3:
+            End
+        Case 2:
+            Resume Next
+        Case 1:
+            Resume
+    End Select
+End Function
+
+
 
 Function IsElevated() As Boolean
     If RunningWin9x() = True Then
