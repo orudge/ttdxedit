@@ -714,7 +714,7 @@ Private Sub BasTests()
     Wsa = F.BuildPath(App.Path, App.EXEName & ".exe")
     
     If IsElevated() = True Then
-        If fReadValue("HKLM", RegBaseKey, "Path", "S", "") <> Wsa Then
+        If LCase$(fReadValue("HKLM", RegBaseKey, "Path", "S", "")) <> LCase$(Wsa) Then
             Wa = MsgBox("This program has been moved since last run." + Chr(10) + "If you have assigned filetypes you should update them now.", 48)
             Wa = fWriteValue("HKLM", RegBaseKey, "Path", "S", Wsa)
         End If
