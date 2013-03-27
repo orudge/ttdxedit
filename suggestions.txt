@@ -30,3 +30,5 @@ make file browser remember last path
 - finish file browser, replace listview there, make resizable
 
 - fix bug with sliders in station (and maybe other windows) where ticking box doesn't do anything
+
+- remove treeview/sliders on frmvehicle, eliminate mscomctl.ocx
