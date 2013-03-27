@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{A10D6B26-9A8F-4A87-A2D1-1D8C9EED0967}#1.3#0"; "StatBarU.ocx"
 Begin VB.MDIForm frmMDI 
    AutoShowChildren=   0   'False
@@ -191,16 +190,6 @@ Begin VB.MDIForm frmMDI
          Top             =   0
          Width           =   555
       End
-   End
-   Begin MSComDlg.CommonDialog CommonDialog1 
-      Left            =   120
-      Top             =   720
-      _ExtentX        =   847
-      _ExtentY        =   847
-      _Version        =   393216
-      CancelError     =   -1  'True
-      DialogTitle     =   "Save Game As"
-      Filter          =   $"frmMDI.frx":3E8E
    End
    Begin VB.Menu mnFile 
       Caption         =   "&File"
@@ -673,13 +662,13 @@ End Sub
 Private Sub mnFsaveAs_Click()
     On Error Resume Next
     
-    CommonDialog1.Flags = cdlOFNHideReadOnly Or cdlOFNPathMustExist Or cdlOFNOverwritePrompt
-    CommonDialog1.FileName = CurFile
-    CommonDialog1.ShowSave
-    
-    If Err = 0 Then
-        CallFileSave 0, CommonDialog1.FileName
-    End If
+    'CommonDialog1.Flags = cdlOFNHideReadOnly Or cdlOFNPathMustExist Or cdlOFNOverwritePrompt
+    'CommonDialog1.FileName = CurFile
+    'CommonDialog1.ShowSave
+    '
+    'If Err = 0 Then
+    '    CallFileSave 0, CommonDialog1.FileName
+    'End If
 End Sub
 
 Private Sub mnFsaveU_Click()
@@ -1088,4 +1077,6 @@ Private Sub SetMenus()
         mnFsaveAs.Enabled = False
     End If
 End Sub
+
+
 
