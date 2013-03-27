@@ -36,7 +36,6 @@ Source: "..\TTDXHelp.dll"; DestDir: "{app}"
 Source: "..\SGMPlugin\TTDXEdit.dll"; DestDir: "{app}\SGMPlugin"; Flags: regserver
 
 ; VB runtime files and OCXes
-Source: "vbrun\msvbvm60.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
 Source: "vbrun\mscomctl.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 Source: "vbrun\ExLvwU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 Source: "vbrun\ExTvwU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
