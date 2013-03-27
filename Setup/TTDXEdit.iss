@@ -18,6 +18,7 @@ Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
 RestartIfNeededByRun=yes
+MinVersion=5.1sp3
 
 [Tasks]
 ; NOTE: The following entry contains English phrases ("Create a desktop icon" and "Additional icons"). You are free to translate them into another language if required.
@@ -35,17 +36,13 @@ Source: "..\TTDXHelp.dll"; DestDir: "{app}"
 Source: "..\SGMPlugin\TTDXEdit.dll"; DestDir: "{app}\SGMPlugin"; Flags: regserver
 
 ; VB runtime files and OCXes
-Source: "vbrun\msvcrt.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "vbrun\mfc42.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "vbrun\stdole2.tlb";  DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regtypelib
 Source: "vbrun\msvbvm60.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "vbrun\oleaut32.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "vbrun\olepro32.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "vbrun\asycfilt.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile
-Source: "vbrun\comcat.dll";   DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
-Source: "vbrun\mfc42.dll"; DestDir: "{sys}"; OnlyBelowVersion: 0,6; Flags: restartreplace uninsneveruninstall sharedfile regserver
 Source: "vbrun\mscomctl.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
-Source: "vbrun\comdlg32.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\ExLvwU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\ExTvwU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\ShBrowserCtlsU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\StatBarU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
+Source: "vbrun\TrackBarCtlU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 
 [INI]
 Filename: "{app}\Owen's Transport Tycoon Station.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.transporttycoon.net/"
