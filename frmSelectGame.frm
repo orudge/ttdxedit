@@ -1,5 +1,7 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
+Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmSelectGame 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Select SaveGame"
@@ -16,6 +18,78 @@ Begin VB.Form frmSelectGame
    ScaleWidth      =   8655
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
+   Begin ExTVwLibUCtl.ExplorerTreeView tvDirs 
+      Height          =   3615
+      Left            =   120
+      TabIndex        =   6
+      Top             =   120
+      Width           =   3135
+      _cx             =   5530
+      _cy             =   6376
+      AllowDragDrop   =   -1  'True
+      AllowLabelEditing=   -1  'True
+      AlwaysShowSelection=   -1  'True
+      Appearance      =   1
+      AutoHScroll     =   -1  'True
+      AutoHScrollPixelsPerSecond=   150
+      AutoHScrollRedrawInterval=   15
+      BackColor       =   -2147483643
+      BlendSelectedItemsIcons=   0   'False
+      BorderStyle     =   0
+      BuiltInStateImages=   0
+      CaretChangedDelayTime=   500
+      DisabledEvents  =   1023
+      DontRedraw      =   0   'False
+      DragExpandTime  =   -1
+      DragScrollTimeBase=   -1
+      DrawImagesAsynchronously=   0   'False
+      EditBackColor   =   -2147483643
+      EditForeColor   =   -2147483640
+      EditHoverTime   =   -1
+      EditIMEMode     =   -1
+      Enabled         =   -1  'True
+      FadeExpandos    =   0   'False
+      FavoritesStyle  =   0   'False
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      FullRowSelect   =   0   'False
+      GroupBoxColor   =   -2147483632
+      HotTracking     =   0
+      HoverTime       =   -1
+      IMEMode         =   -1
+      Indent          =   16
+      IndentStateImages=   -1  'True
+      InsertMarkColor =   0
+      ItemBoundingBoxDefinition=   70
+      ItemHeight      =   17
+      ItemXBorder     =   3
+      ItemYBorder     =   0
+      LineColor       =   -2147483632
+      LineStyle       =   0
+      MaxScrollTime   =   100
+      MousePointer    =   0
+      OLEDragImageStyle=   0
+      ProcessContextMenuKeys=   -1  'True
+      RegisterForOLEDragDrop=   0   'False
+      RichToolTips    =   0   'False
+      RightToLeft     =   0
+      ScrollBars      =   2
+      ShowStateImages =   0   'False
+      ShowToolTips    =   -1  'True
+      SingleExpand    =   0
+      SortOrder       =   0
+      SupportOLEDragImages=   -1  'True
+      TreeViewStyle   =   3
+      UseSystemFont   =   -1  'True
+   End
    Begin VB.CheckBox chkHideTTD 
       Caption         =   "Hide TTD Info"
       BeginProperty Font 
@@ -29,7 +103,7 @@ Begin VB.Form frmSelectGame
       EndProperty
       Height          =   315
       Left            =   120
-      TabIndex        =   7
+      TabIndex        =   5
       Top             =   3780
       Width           =   2655
    End
@@ -46,7 +120,7 @@ Begin VB.Form frmSelectGame
       Height          =   315
       Left            =   3360
       Style           =   2  'Dropdown List
-      TabIndex        =   6
+      TabIndex        =   4
       Top             =   4140
       Width           =   3735
    End
@@ -62,7 +136,7 @@ Begin VB.Form frmSelectGame
       EndProperty
       Height          =   315
       Left            =   3360
-      TabIndex        =   5
+      TabIndex        =   3
       Top             =   3780
       Width           =   3735
    End
@@ -106,41 +180,9 @@ Begin VB.Form frmSelectGame
       EndProperty
       Height          =   315
       Left            =   7200
-      TabIndex        =   4
+      TabIndex        =   2
       Top             =   4140
       Width           =   1335
-   End
-   Begin VB.DriveListBox Drive1 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   315
-      Left            =   120
-      TabIndex        =   3
-      Top             =   120
-      Width           =   3255
-   End
-   Begin VB.DirListBox Dir1 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   3240
-      Left            =   120
-      TabIndex        =   2
-      Top             =   480
-      Width           =   3255
    End
    Begin MSComctlLib.ListView lvFiles 
       Height          =   3615
@@ -205,6 +247,39 @@ Begin VB.Form frmSelectGame
       Top             =   3780
       Width           =   1335
    End
+   Begin ShBrowserCtlsLibUCtl.ShellTreeView tvShell 
+      Left            =   2640
+      Top             =   3840
+      Version         =   256
+      AutoEditNewItems=   -1  'True
+      ColorCompressedItems=   -1  'True
+      ColorEncryptedItems=   -1  'True
+      DefaultManagedItemProperties=   511
+      BeginProperty DefaultNamespaceEnumSettings {CC889E2B-5A0D-42F0-AA08-D5FD5863410C} 
+         EnumerationFlags=   161
+         ExcludedFileItemFileAttributes=   0
+         ExcludedFileItemShellAttributes=   0
+         ExcludedFolderItemFileAttributes=   0
+         ExcludedFolderItemShellAttributes=   0
+         IncludedFileItemFileAttributes=   0
+         IncludedFileItemShellAttributes=   536870912
+         IncludedFolderItemFileAttributes=   0
+         IncludedFolderItemShellAttributes=   0
+      EndProperty
+      DisabledEvents  =   111
+      DisplayElevationShieldOverlays=   -1  'True
+      HandleOLEDragDrop=   7
+      HiddenItemsStyle=   2
+      InfoTipFlags    =   536870912
+      ItemEnumerationTimeout=   3000
+      ItemTypeSortOrder=   0
+      LimitLabelEditInput=   -1  'True
+      LoadOverlaysOnDemand=   -1  'True
+      PreselectBasenameOnLabelEdit=   -1  'True
+      ProcessShellNotifications=   -1  'True
+      UseGenericIcons =   1
+      UseSystemImageList=   1
+   End
 End
 Attribute VB_Name = "frmSelectGame"
 Attribute VB_GlobalNameSpace = False
@@ -225,11 +300,19 @@ Private fInit As Boolean
 Private LastPath As String
 
 Private Sub UpdateList()
-    Dim wFo As Folder, wFf As File, wDta As ListItem, Wsa As String
-    If CurPath = LastPath Then Exit Sub
+    Dim wFo As Folder, wFf As File, wDta As listItem, Wsa As String
+    
+    If CurPath = LastPath Then
+        Exit Sub
+    End If
+    
     lvFiles.Enabled = False
     lvFiles.ListItems.Clear
     Selected = ""
+    
+    If CurPath = "" Then
+        Exit Sub
+    End If
     
     If F.FolderExists(CurPath) Then
         Set wFo = F.GetFolder(CurPath)
@@ -302,47 +385,29 @@ Private Sub cmdOK_Click()
     End If
 End Sub
 
-Private Sub Dir1_Change()
-    CurPath = Dir1.Path: Dir1.Enabled = True: UpdateList
-End Sub
 
-Private Sub Dir1_Click()
-    CurPath = Dir1.List(Dir1.ListIndex): UpdateList
-End Sub
 
-Private Sub Drive1_Change()
-    Dim Wsa As String
-    If fInit Then Exit Sub
-    
-    Wsa = Left(Drive1.Drive, 1)
-    Dir1.Enabled = False
-    If Wsa > "" Then
-        If F.GetDrive(Wsa).IsReady Then Dir1.Path = F.GetDrive(Wsa).RootFolder: Dir1.Enabled = True
-    End If
-End Sub
+
 
 Private Sub Form_Activate()
-    Dim Wa As Integer, Wsa As String
     fInit = True
     
-    LastPath = ""
-    Wa = InStr(CurPath, ":")
-    Drive1.ListIndex = -1
-    If Wa > 0 Then
-        Wsa = Left(CurPath, Wa)
-        For Wa = 0 To Drive1.ListCount - 1
-            If Left(Drive1.List(Wa), Len(Wsa)) = Wsa Then Drive1.ListIndex = Wa: Exit For
-        Next Wa
-        If Drive1.ListIndex > -1 Then
-            Wsa = CurPath
-            While Not F.FolderExists(Wsa)
-                Wsa = F.GetParentFolderName(Wsa)
-            Wend
-            Dir1.Path = Wsa: CurPath = Wsa
+    Dim pIDLCurPath As Long
+    
+    GoTo SkipIDLTODO 'TODO
+    
+    If CurPath <> "" Then
+        If SHParseDisplayName(StrPtr(CurPath), 0, pIDLCurPath, 0, 0) = 0 Then
+            ILFree pIDLCurPath
         End If
     End If
+    
+SkipIDLTODO:
+
     Selected = ""
-    If FileMode = 0 Then txtSelected.Enabled = False Else txtSelected.Enabled = True
+    
+    txtSelected.Enabled = IIf(FileMode = 0, False, True)
+    
     cmbFtypes.ListIndex = FileSet
     UpdateList
     fInit = False
@@ -359,11 +424,30 @@ Private Sub Form_Load()
     cmbFtypes.AddItem "Uncompressed Scenarios"
     cmbFtypes.AddItem "All usable files"
     cmbFtypes.AddItem "All files"
+    
+    Dim itm As ShellTreeViewItem
+    Dim pIDLDesktop As Long
+    
+    tvShell.Attach tvDirs.hwnd
+    tvShell.hWndShellUIParentWindow = Me.hwnd
+    
+    If SHParseDisplayName(StrPtr(LastPath), 0, pIDLDesktop, 0, 0) <> 0 Then
+        SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
+    End If
+    
+    Set itm = tvShell.TreeItems.Add(pIDLDesktop, , InsertAfterConstants.iaFirst, , , HasExpandoConstants.heYes)
+    
+    If Not (itm Is Nothing) Then
+        Set tvDirs.CaretItem = itm.TreeViewItemObject
+        tvDirs.CaretItem.Expand
+    End If
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     Dim Wa As Long
     Wa = fWriteValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", chkHideTTD.Value)
+    
+    tvShell.Detach
 End Sub
 
 Private Sub lvFiles_ColumnClick(ByVal Wa As MSComctlLib.ColumnHeader)
@@ -398,7 +482,30 @@ Private Sub lvFiles_DblClick()
     End If
 End Sub
 
-Private Sub lvFiles_ItemClick(ByVal Item As MSComctlLib.ListItem)
+Private Sub lvFiles_ItemClick(ByVal Item As MSComctlLib.listItem)
     Selected = Item.Text
     txtSelected.Text = Selected
 End Sub
+
+Private Sub tvDirs_CaretChanged(ByVal previousCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal newCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal caretChangeReason As ExTVwLibUCtl.CaretChangeCausedByConstants)
+    Dim itm As ShellTreeViewItem
+    Dim slvns As ShellListViewNamespace
+    Dim Path As String
+    
+    Set itm = newCaretItem.ShellTreeViewItemObject
+    
+    If Not (itm Is Nothing) Then
+        Path = String$(MAX_PATH, Chr$(0))
+        SHGetPathFromIDList itm.FullyQualifiedPIDL, StrPtr(Path)
+        Path = Left$(Path, lstrlen(StrPtr(Path)))
+        If PathIsDirectory(StrPtr(Path)) = 0 Then
+            CurPath = ""
+        Else
+            CurPath = Path
+        End If
+        
+        UpdateList
+    End If
+End Sub
+
+

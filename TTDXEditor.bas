@@ -8,6 +8,16 @@ Public fFastMode As Boolean
 Private F As New FileSystemObject
 
 Private Declare Sub InitCommonControls Lib "comctl32.dll" ()
+Declare Function SHGetFolderLocation Lib "shell32.dll" (ByVal hwndOwner As Long, ByVal nFolder As Long, ByVal hToken As Long, ByVal dwReserved As Long, ppidl As Long) As Long
+Declare Function SHGetPathFromIDList Lib "shell32.dll" Alias "SHGetPathFromIDListW" (ByVal pIDL As Long, ByVal pszPath As Long) As Long
+Declare Function SHParseDisplayName Lib "shell32.dll" (ByVal pszName As Long, ByVal pbc As Long, ByRef ppidl As Long, ByVal sfgaoIn As Long, ByRef psfgaoOut As Long) As Long
+Declare Function lstrlen Lib "kernel32.dll" Alias "lstrlenW" (ByVal lpString As Long) As Long
+Declare Function PathIsDirectory Lib "shlwapi.dll" Alias "PathIsDirectoryW" (ByVal pszPath As Long) As Long
+Declare Sub ILFree Lib "shell32.dll" Alias "#155" (ByVal pIDL As Long)
+
+Public Const CSIDL_DESKTOP = &H0
+Public Const MAX_PATH = 260
+
 Sub Main()
     Dim Wsa As String, Wsb As String, Wdo As Integer
     
