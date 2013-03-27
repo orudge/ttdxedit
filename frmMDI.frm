@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
+Object = "{A10D6B26-9A8F-4A87-A2D1-1D8C9EED0967}#1.3#0"; "StatBarU.ocx"
 Begin VB.MDIForm frmMDI 
    AutoShowChildren=   0   'False
    BackColor       =   &H8000000C&
@@ -13,70 +13,118 @@ Begin VB.MDIForm frmMDI
    LinkTopic       =   "MDIForm1"
    OLEDropMode     =   1  'Manual
    StartUpPosition =   3  'Windows Default
-   Begin MSComctlLib.StatusBar stbar 
+   Begin StatBarLibUCtl.StatusBar stBar 
       Align           =   2  'Align Bottom
       Height          =   255
       Left            =   0
-      TabIndex        =   5
       Top             =   7905
       Width           =   11400
-      _ExtentX        =   20108
-      _ExtentY        =   450
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   7
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   1
-            AutoSize        =   2
-            Object.Width           =   1773
-            MinWidth        =   1764
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   1
-            AutoSize        =   2
-            Object.Width           =   1773
-            MinWidth        =   1764
-         EndProperty
-         BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   1
-            AutoSize        =   2
-            Object.Width           =   1773
-            MinWidth        =   1764
-         EndProperty
-         BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   1
-            AutoSize        =   2
-            Object.Width           =   1773
-            MinWidth        =   1764
-         EndProperty
-         BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Style           =   1
-            Alignment       =   1
-            AutoSize        =   2
-            Enabled         =   0   'False
-            Object.Width           =   847
-            MinWidth        =   441
-            TextSave        =   "CAPS"
-         EndProperty
-         BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Style           =   3
-            Alignment       =   1
-            AutoSize        =   2
-            Object.Width           =   609
-            MinWidth        =   353
-            TextSave        =   "INS"
-         EndProperty
-         BeginProperty Panel7 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-         EndProperty
-      EndProperty
+      Version         =   258
+      _cx             =   20108
+      _cy             =   450
+      Appearance      =   0
+      BackColor       =   -1
+      BorderStyle     =   0
+      CustomCapsLockText=   "frmMDI.frx":0442
+      CustomInsertKeyText=   "frmMDI.frx":0462
+      CustomKanaLockText=   "frmMDI.frx":0482
+      CustomNumLockText=   "frmMDI.frx":04A2
+      CustomScrollLockText=   "frmMDI.frx":04C2
+      DisabledEvents  =   7
+      DontRedraw      =   0   'False
+      Enabled         =   -1  'True
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "MS Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
+      EndProperty
+      ForceSizeGripperDisplay=   0   'False
+      HoverTime       =   -1
+      MinimumHeight   =   0
+      MousePointer    =   0
+      BeginProperty Panels {CCA75315-B100-4B5F-80F6-8DFE616F8FDB} 
+         Version         =   257
+         NumPanels       =   4
+         BeginProperty Panel1 {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
+            Version         =   258
+            Alignment       =   0
+            BorderStyle     =   0
+            Content         =   0
+            Enabled         =   -1  'True
+            ForeColor       =   -1
+            MinimumWidth    =   100
+            PanelData       =   0
+            ParseTabs       =   -1  'True
+            PreferredWidth  =   100
+            RightToLeftText =   0   'False
+            Text            =   "frmMDI.frx":04E2
+            Object.ToolTipText     =   "frmMDI.frx":0502
+         EndProperty
+         BeginProperty Panel2 {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
+            Version         =   258
+            Alignment       =   1
+            BorderStyle     =   0
+            Content         =   0
+            Enabled         =   -1  'True
+            ForeColor       =   -1
+            MinimumWidth    =   120
+            PanelData       =   0
+            ParseTabs       =   -1  'True
+            PreferredWidth  =   120
+            RightToLeftText =   0   'False
+            Text            =   "frmMDI.frx":0522
+            Object.ToolTipText     =   "frmMDI.frx":0542
+         EndProperty
+         BeginProperty Panel3 {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
+            Version         =   258
+            Alignment       =   1
+            BorderStyle     =   0
+            Content         =   0
+            Enabled         =   -1  'True
+            ForeColor       =   -1
+            MinimumWidth    =   150
+            PanelData       =   0
+            ParseTabs       =   -1  'True
+            PreferredWidth  =   150
+            RightToLeftText =   0   'False
+            Text            =   "frmMDI.frx":0562
+            Object.ToolTipText     =   "frmMDI.frx":0582
+         EndProperty
+         BeginProperty Panel4 {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
+            Version         =   258
+            Alignment       =   1
+            BorderStyle     =   0
+            Content         =   0
+            Enabled         =   -1  'True
+            ForeColor       =   -1
+            MinimumWidth    =   120
+            PanelData       =   0
+            ParseTabs       =   -1  'True
+            PreferredWidth  =   120
+            RightToLeftText =   0   'False
+            Text            =   "frmMDI.frx":05A2
+            Object.ToolTipText     =   "frmMDI.frx":05C2
+         EndProperty
+      EndProperty
+      PanelToAutoSize =   0
+      RegisterForOLEDragDrop=   0   'False
+      RightToLeftLayout=   0   'False
+      ShowToolTips    =   -1  'True
+      SimpleMode      =   0   'False
+      SupportOLEDragImages=   -1  'True
+      UseSystemFont   =   -1  'True
+      BeginProperty SimplePanel {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
+         Version         =   258
+         BorderStyle     =   1
+         PanelData       =   0
+         ParseTabs       =   -1  'True
+         RightToLeftText =   0   'False
+         Text            =   "frmMDI.frx":05E2
+         Object.ToolTipText     =   "frmMDI.frx":0602
       EndProperty
    End
    Begin VB.PictureBox picTools 
@@ -92,25 +140,25 @@ Begin VB.MDIForm frmMDI
       Begin VB.CommandButton cmdFinances 
          Height          =   540
          Left            =   720
-         Picture         =   "frmMDI.frx":0442
+         Picture         =   "frmMDI.frx":0622
          Style           =   1  'Graphical
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   0
          Width           =   540
       End
       Begin VB.CommandButton cmdVeh 
          Height          =   540
          Left            =   3120
-         Picture         =   "frmMDI.frx":0884
+         Picture         =   "frmMDI.frx":0A64
          Style           =   1  'Graphical
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   0
          Width           =   540
       End
       Begin VB.CommandButton cmdStations 
          Height          =   540
          Left            =   2520
-         Picture         =   "frmMDI.frx":1086
+         Picture         =   "frmMDI.frx":1266
          Style           =   1  'Graphical
          TabIndex        =   4
          Top             =   0
@@ -119,7 +167,7 @@ Begin VB.MDIForm frmMDI
       Begin VB.CommandButton cmdPlayer 
          Height          =   540
          Left            =   120
-         Picture         =   "frmMDI.frx":1B90
+         Picture         =   "frmMDI.frx":1D70
          Style           =   1  'Graphical
          TabIndex        =   3
          Top             =   0
@@ -128,7 +176,7 @@ Begin VB.MDIForm frmMDI
       Begin VB.CommandButton cmdIndu 
          Height          =   540
          Left            =   1920
-         Picture         =   "frmMDI.frx":269A
+         Picture         =   "frmMDI.frx":287A
          Style           =   1  'Graphical
          TabIndex        =   2
          Top             =   0
@@ -137,7 +185,7 @@ Begin VB.MDIForm frmMDI
       Begin VB.CommandButton cmdCity 
          Height          =   540
          Left            =   1320
-         Picture         =   "frmMDI.frx":31A4
+         Picture         =   "frmMDI.frx":3384
          Style           =   1  'Graphical
          TabIndex        =   1
          Top             =   0
@@ -152,7 +200,7 @@ Begin VB.MDIForm frmMDI
       _Version        =   393216
       CancelError     =   -1  'True
       DialogTitle     =   "Save Game As"
-      Filter          =   $"frmMDI.frx":3CAE
+      Filter          =   $"frmMDI.frx":3E8E
    End
    Begin VB.Menu mnFile 
       Caption         =   "&File"
@@ -603,12 +651,15 @@ Public Sub CallFileLoad(wFile As String)
     If (Wa = 0) And (Not fAutoMode) Then
         frmMap.UpdateInfo
         Wua = TTDXGeneralInfo
-        stbar.Panels(1).Text = "File: " + F.GetFileName(CurFile)
-        stbar.Panels(2).Text = "Climate: " + Wua.ClimName
-        stbar.Panels(3).Text = "City Names: " + Wua.CityNames
-        stbar.Panels(4).Text = "Vehicle Array: " + Format(Wua.VehSize)
+        stBar.Panels(0).Text = "File: " + F.GetFileName(CurFile)
+        stBar.Panels(1).Text = "Climate: " + Wua.ClimName
+        stBar.Panels(2).Text = "City Names: " + Wua.CityNames
+        stBar.Panels(3).Text = "Vehicle Array: " + Format(Wua.VehSize)
     ElseIf Wa < 100 Then
-        stbar.Panels(1).Text = "Load Error: " + TTDXLoadError(Wa)
+        stBar.Panels(0).Text = "Load Error: " + TTDXLoadError(Wa)
+        stBar.Panels(1).Text = ""
+        stBar.Panels(2).Text = ""
+        stBar.Panels(3).Text = ""
     End If
     SetMenus
     Unload frmWSplash
