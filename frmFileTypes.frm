@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{9FC6639B-4237-4FB5-93B8-24049D39DF74}#1.5#0"; "ExLvwU.ocx"
 Begin VB.Form frmFileTypes 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "File Associations"
@@ -7,7 +7,7 @@ Begin VB.Form frmFileTypes
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   7650
-   ControlBox      =   0   'False
+   Icon            =   "frmFileTypes.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
@@ -15,8 +15,127 @@ Begin VB.Form frmFileTypes
    ScaleWidth      =   7650
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
+   Begin ExLVwLibUCtl.ExplorerListView lvTypes 
+      Height          =   3975
+      Left            =   120
+      TabIndex        =   0
+      Top             =   120
+      Width           =   5775
+      _cx             =   10186
+      _cy             =   7011
+      AbsoluteBkImagePosition=   0   'False
+      AllowHeaderDragDrop=   0   'False
+      AllowLabelEditing=   0   'False
+      AlwaysShowSelection=   -1  'True
+      Appearance      =   1
+      AutoArrangeItems=   0
+      AutoSizeColumns =   -1  'True
+      BackColor       =   -2147483643
+      BackgroundDrawMode=   0
+      BkImagePositionX=   0
+      BkImagePositionY=   0
+      BkImageStyle    =   2
+      BlendSelectionLasso=   -1  'True
+      BorderSelect    =   0   'False
+      BorderStyle     =   0
+      CallBackMask    =   0
+      CheckItemOnSelect=   -1  'True
+      ClickableColumnHeaders=   -1  'True
+      ColumnHeaderVisibility=   1
+      DisabledEvents  =   3145725
+      DontRedraw      =   0   'False
+      DragScrollTimeBase=   -1
+      DrawImagesAsynchronously=   0   'False
+      EditBackColor   =   -2147483643
+      EditForeColor   =   -2147483640
+      EditHoverTime   =   -1
+      EditIMEMode     =   -1
+      EmptyMarkupTextAlignment=   1
+      Enabled         =   -1  'True
+      FilterChangedTimeout=   -1
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      FullRowSelect   =   0
+      GridLines       =   0   'False
+      GroupFooterForeColor=   -2147483640
+      GroupHeaderForeColor=   -2147483640
+      GroupMarginBottom=   0
+      GroupMarginLeft =   0
+      GroupMarginRight=   0
+      GroupMarginTop  =   12
+      GroupSortOrder  =   0
+      HeaderFullDragging=   -1  'True
+      HeaderHotTracking=   0   'False
+      HeaderHoverTime =   -1
+      HeaderOLEDragImageStyle=   0
+      HideLabels      =   0   'False
+      HotForeColor    =   -1
+      HotMousePointer =   0
+      HotTracking     =   0   'False
+      HotTrackingHoverTime=   -1
+      HoverTime       =   -1
+      IMEMode         =   -1
+      IncludeHeaderInTabOrder=   0   'False
+      InsertMarkColor =   0
+      ItemActivationMode=   2
+      ItemAlignment   =   0
+      ItemBoundingBoxDefinition=   70
+      ItemHeight      =   17
+      JustifyIconColumns=   0   'False
+      LabelWrap       =   -1  'True
+      MinItemRowsVisibleInGroups=   0
+      MousePointer    =   0
+      MultiSelect     =   0   'False
+      OLEDragImageStyle=   0
+      OutlineColor    =   -2147483633
+      OwnerDrawn      =   0   'False
+      ProcessContextMenuKeys=   -1  'True
+      Regional        =   0   'False
+      RegisterForOLEDragDrop=   0   'False
+      ResizableColumns=   -1  'True
+      RightToLeft     =   0
+      ScrollBars      =   1
+      SelectedColumnBackColor=   -1
+      ShowFilterBar   =   0   'False
+      ShowGroups      =   0   'False
+      ShowHeaderChevron=   0   'False
+      ShowHeaderStateImages=   0   'False
+      ShowStateImages =   -1  'True
+      ShowSubItemImages=   0   'False
+      SimpleSelect    =   0   'False
+      SingleRow       =   0   'False
+      SnapToGrid      =   0   'False
+      SortOrder       =   0
+      SupportOLEDragImages=   -1  'True
+      TextBackColor   =   -1
+      TileViewItemLines=   1
+      TileViewLabelMarginBottom=   0
+      TileViewLabelMarginLeft=   0
+      TileViewLabelMarginRight=   0
+      TileViewLabelMarginTop=   0
+      TileViewSubItemForeColor=   -1
+      TileViewTileHeight=   -1
+      TileViewTileWidth=   -1
+      ToolTips        =   3
+      UnderlinedItems =   0
+      UseMinColumnWidths=   0   'False
+      UseSystemFont   =   -1  'True
+      UseWorkAreas    =   0   'False
+      View            =   3
+      VirtualMode     =   0   'False
+      EmptyMarkupText =   "frmFileTypes.frx":000C
+      FooterIntroText =   "frmFileTypes.frx":002C
+   End
    Begin VB.OptionButton optTOver 
-      Caption         =   "Overwrite"
+      Caption         =   "&Overwrite"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -28,12 +147,12 @@ Begin VB.Form frmFileTypes
       EndProperty
       Height          =   255
       Left            =   6060
-      TabIndex        =   4
+      TabIndex        =   2
       Top             =   1200
       Width           =   1095
    End
    Begin VB.OptionButton optTplug 
-      Caption         =   """Plug-In"""
+      Caption         =   """&Plug-In"""
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -50,45 +169,6 @@ Begin VB.Form frmFileTypes
       Value           =   -1  'True
       Width           =   1095
    End
-   Begin MSComctlLib.ListView lvTypes 
-      Height          =   3975
-      Left            =   120
-      TabIndex        =   2
-      Top             =   120
-      Width           =   5775
-      _ExtentX        =   10186
-      _ExtentY        =   7011
-      View            =   3
-      LabelEdit       =   1
-      Sorted          =   -1  'True
-      LabelWrap       =   -1  'True
-      HideSelection   =   -1  'True
-      Checkboxes      =   -1  'True
-      _Version        =   393217
-      ForeColor       =   -2147483640
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      Appearance      =   1
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      NumItems        =   2
-      BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-         Text            =   "Filetype"
-         Object.Width           =   1677
-      EndProperty
-      BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-         SubItemIndex    =   1
-         Text            =   "Assigned to:"
-         Object.Width           =   7938
-      EndProperty
-   End
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
       Caption         =   "&Cancel"
@@ -103,7 +183,7 @@ Begin VB.Form frmFileTypes
       EndProperty
       Height          =   375
       Left            =   6000
-      TabIndex        =   1
+      TabIndex        =   5
       Top             =   3720
       Width           =   1575
    End
@@ -121,7 +201,7 @@ Begin VB.Form frmFileTypes
       EndProperty
       Height          =   375
       Left            =   6000
-      TabIndex        =   0
+      TabIndex        =   4
       Top             =   3240
       Width           =   1575
    End
@@ -138,7 +218,7 @@ Begin VB.Form frmFileTypes
       EndProperty
       Height          =   975
       Left            =   6000
-      TabIndex        =   5
+      TabIndex        =   1
       Top             =   120
       Width           =   1455
    End
@@ -188,7 +268,7 @@ Private Sub cmdCancel_Click()
 End Sub
 
 Private Sub cmdDo_Click()
-    Dim Wa As Integer, wDta As ListItem, Wsa As String
+    Dim Wa As Integer, wDta As ListViewItem, Wsa As String
     Dim FiletypeList As String
     
     If RunningWin9x() Then
@@ -205,8 +285,8 @@ Private Sub cmdDo_Click()
             '
             ' Only do something to selected types
             '
-            If wDta.Checked Then
-                Wa = Val(wDta.Tag)
+            If wDta.StateImageIndex = 2 Then
+                Wa = wDta.ItemData
                 Wsa = fReadValue("HKCR", "." + wDta.Text, "", "S", "TTDXEdit")
                 If (Wsa Like "TTDXEdit*") Or optTOver.Value Then
                     '
@@ -231,8 +311,8 @@ Private Sub cmdDo_Click()
             '
             ' Only do something to selected types
             '
-            If wDta.Checked Then
-                Wa = Val(wDta.Tag)
+            If wDta.StateImageIndex = 2 Then
+                Wa = wDta.ItemData
                 Wsa = fReadValue("HKCR", "." + wDta.Text, "", "S", "TTDXEdit")
                 If (Wsa Like "TTDXEdit*") Or optTOver.Value Then
                     '
@@ -297,22 +377,26 @@ Private Sub RefreshTypes()
     '
     ' Show a list of filetypes and their curent assign
     '
-    Dim Wva As Variant, Wa As Long, Wsa As String, Wsb As String, wDta As ListItem
+    Dim Wva As Variant, Wa As Long, Wsa As String, Wsb As String, wDta As ListViewItem
     ' The number before each type is used to select the types of events availeble.
     Const Types As String = "1sv1|1sv2|1ss1|2sv0|2ss0|3sv1dta|3sv2dta|3ss1dta|3sv0dta|3ss0dta|3sv1hdr|3sv2hdr|3ss1hdr|3sv0hdr|3ss0hdr"
     Wva = Split(Types, "|")
-    lvTypes.ListItems.Clear
+    lvTypes.ListItems.RemoveAll
     For Wa = 0 To UBound(Wva)
-        Set wDta = lvTypes.ListItems.Add
-        ' Get curent file reference (if any)
-        Wsa = MID(Wva(Wa), 2): Wsb = fReadValue("HKCR", "." + Wsa, "", "S", "")
+        Wsa = MID(Wva(Wa), 2)
+       
+        ' Get current file reference (if any)
+        Wsb = fReadValue("HKCR", "." + Wsa, "", "S", "")
+        
+        Set wDta = lvTypes.ListItems.Add(Wsa)
         wDta.Text = Wsa
-        wDta.Checked = True: wDta.Tag = Left(Wva(Wa), 1)
+        wDta.StateImageIndex = 2
+        wDta.ItemData = CLng(Left(Wva(Wa), 1))
         If Wsb Like "TTDXEdit*" Then
             Wsb = "This editor"
-            wDta.Bold = True
+            'wDta.Bold = True
         ElseIf Wsb > " " Then
-            ' Get the descriptionname curently assigned
+            ' Get the description name currently assigned
             Wsb = fReadValue("HKCR", Wsb, "", "S", "")
         End If
         wDta.SubItems(1) = Wsb
@@ -320,11 +404,28 @@ Private Sub RefreshTypes()
 End Sub
 
 
+
 Private Sub Form_Load()
+    lvTypes.Columns.Add "File Type"
+    lvTypes.Columns.Add "Assigned To"
+    
     RefreshTypes
 
     If IsElevated() = False Then
         SendMessage cmdDo.hwnd, BCM_SETSHIELD, 0, &HFFFFFFFF
     End If
 End Sub
+
+Private Sub lvTypes_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
+    If listItem Is Nothing Then
+        Exit Sub
+    End If
+    
+    If listItem.StateImageIndex = 1 Then
+        listItem.StateImageIndex = 2
+    Else
+        listItem.StateImageIndex = 1
+    End If
+End Sub
+
 

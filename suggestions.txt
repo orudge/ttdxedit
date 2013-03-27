@@ -20,3 +20,7 @@ Features in TTDEdit not in TTDX Editor:
 - change fonts to Microsoft Sans Serif
 
 - remove all unused separators, etc
+
+- fix bold in listview for filetypes
+
+- check tabstops
