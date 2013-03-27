@@ -6,3 +6,15 @@ cargo rates
 2012 todo list:
 
 Provide a download of scr56en.exe for Win95/98/2000/Me/NT 4.0 users, dcom95 for Windows 95 users
+
+
+Features in TTDEdit not in TTDX Editor:
+
+- Change game date
+- Max/actual passengers/mail not shown (shouldn't be editable though)
+- Vehicles: service interval? load number? max speed? build year? etc
+- Macros: cities - max ratings
+
+
+- unicode?
+- change fonts to Microsoft Sans Serif
