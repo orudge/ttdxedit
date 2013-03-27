@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{956B5A46-C53F-45A7-AF0E-EC2E1CC9B567}#1.5#0"; "TrackBarCtlU.ocx"
 Begin VB.Form frmStation 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Stations"
@@ -29,7 +29,7 @@ Begin VB.Form frmStation
       Height          =   615
       Index           =   3
       Left            =   3480
-      TabIndex        =   16
+      TabIndex        =   15
       Top             =   5040
       Width           =   3615
       Begin VB.CommandButton cmdRemStop 
@@ -45,7 +45,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   1440
-         TabIndex        =   18
+         TabIndex        =   17
          Top             =   240
          Width           =   1335
       End
@@ -62,7 +62,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   17
+         TabIndex        =   16
          Top             =   240
          Width           =   1335
       End
@@ -80,7 +80,7 @@ Begin VB.Form frmStation
       EndProperty
       Height          =   5535
       Left            =   0
-      TabIndex        =   13
+      TabIndex        =   12
       Top             =   120
       Width           =   3375
       Begin VB.ListBox lstStation 
@@ -96,7 +96,7 @@ Begin VB.Form frmStation
          Height          =   4740
          Left            =   120
          Sorted          =   -1  'True
-         TabIndex        =   15
+         TabIndex        =   14
          Top             =   600
          Width           =   3135
       End
@@ -113,7 +113,7 @@ Begin VB.Form frmStation
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   14
+         TabIndex        =   13
          Top             =   240
          Width           =   1575
       End
@@ -170,6 +170,47 @@ Begin VB.Form frmStation
       TabIndex        =   5
       Top             =   840
       Width           =   3615
+      Begin TrackBarCtlLibUCtl.TrackBar sliCrate 
+         Height          =   255
+         Index           =   0
+         Left            =   1440
+         TabIndex        =   18
+         Top             =   360
+         Width           =   1200
+         _cx             =   2117
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   26
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   26
+         Maximum         =   255
+         Minimum         =   0
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
+      End
       Begin VB.TextBox txtCam 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
@@ -187,20 +228,6 @@ Begin VB.Form frmStation
          TabIndex        =   7
          Top             =   360
          Width           =   855
-      End
-      Begin MSComctlLib.Slider sliCrate 
-         Height          =   255
-         Index           =   0
-         Left            =   1440
-         TabIndex        =   12
-         Top             =   360
-         Width           =   1200
-         _ExtentX        =   2117
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   26
-         Max             =   255
-         TickFrequency   =   26
       End
       Begin VB.CheckBox chkChasrate 
          Caption         =   "Check1"
@@ -378,7 +405,7 @@ Public Sub UpdateInfo()
                 chkChasrate(Wa).Top = Wb: Wb = Wb + 300
                 chkChasrate(Wa).Visible = True
                 chkChasrate(Wa).Caption = CargoTypes(Wa)
-                chkChasrate(Wa).Value = 0:  sliCrate(Wa).Value = 0: txtCam(Wa).Text = ""
+                chkChasrate(Wa).Value = 0:  sliCrate(Wa).CurrentPosition = 0: txtCam(Wa).Text = ""
             Else
                 sliCrate(Wa).Visible = False
                 txtCam(Wa).Visible = False
@@ -417,11 +444,11 @@ End Sub
 
 Private Sub chkChasrate_Click(Index As Integer)
     If chkChasrate(Index).Value = 1 Then
-        sliCrate(Index).Enabled = True: sliCrate(Index).Value = CurItm.CRate(Index)
+        sliCrate(Index).Enabled = True: sliCrate(Index).CurrentPosition = CurItm.CRate(Index)
         txtCam(Index).Enabled = True: txtCam(Index).Text = Format(CurItm.Cargo(Index))
         CurItm.CEnrout(Index) = CurItm.CEnroutOrg(Index)
     Else
-        sliCrate(Index).Enabled = False: sliCrate(Index).Value = 0
+        sliCrate(Index).Enabled = False: sliCrate(Index).CurrentPosition = 0
         txtCam(Index).Enabled = False: txtCam(Index).Text = ""
         CurItm.CEnrout(Index) = 255
     End If
@@ -575,7 +602,7 @@ Private Function AddRem(vX As Byte, vY As Byte, vW As Byte, vH As Byte) As Boole
     Next Wx
 End Function
 
-Private Sub Form_KeyUp(KeyCode As Integer, Shift As Integer)
+Private Sub Form_KeyUp(KeyCode As Integer, shift As Integer)
     'If Shift = 0 Then
     '    If KeyCode = vbKeyF1 Then ViewFile Me, App.Path + "/docs/3e.html"
     'End If
@@ -624,8 +651,8 @@ Private Sub Form_Load()
 End Sub
 
 
-Private Sub sliCrate_Change(Index As Integer)
-    CurItm.CRate(Index) = sliCrate(Index).Value
+Private Sub sliCrate_PositionChanged(Index As Integer, ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
+    CurItm.CRate(Index) = newPosition
     MarkGame 8
 End Sub
 
