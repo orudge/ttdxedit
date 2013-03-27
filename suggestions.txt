@@ -18,3 +18,5 @@ Features in TTDEdit not in TTDX Editor:
 
 - unicode?
 - change fonts to Microsoft Sans Serif
+
+- remove all unused separators, etc

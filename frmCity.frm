@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{956B5A46-C53F-45A7-AF0E-EC2E1CC9B567}#1.5#0"; "TrackBarCtlU.ocx"
 Begin VB.Form frmCity 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Cities"
@@ -33,20 +33,46 @@ Begin VB.Form frmCity
       TabIndex        =   6
       Top             =   1320
       Width           =   3735
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   0
          Left            =   840
          TabIndex        =   17
          Top             =   240
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 8"
@@ -192,110 +218,292 @@ Begin VB.Form frmCity
          Top             =   240
          Width           =   615
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   1
          Left            =   840
-         TabIndex        =   18
+         TabIndex        =   19
          Top             =   600
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   2
          Left            =   840
-         TabIndex        =   19
+         TabIndex        =   20
          Top             =   960
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   3
          Left            =   840
-         TabIndex        =   20
+         TabIndex        =   21
          Top             =   1320
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   4
          Left            =   840
-         TabIndex        =   21
+         TabIndex        =   22
          Top             =   1680
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   5
          Left            =   840
-         TabIndex        =   22
+         TabIndex        =   23
          Top             =   2040
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   6
          Left            =   840
-         TabIndex        =   23
+         TabIndex        =   24
          Top             =   2400
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
-      Begin MSComctlLib.Slider sliRat 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRat 
          Height          =   255
          Index           =   7
          Left            =   840
-         TabIndex        =   24
+         TabIndex        =   18
          Top             =   2760
          Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   50
-         Min             =   -999
-         Max             =   999
-         TickFrequency   =   100
+         _cx             =   4895
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   100
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   50
+         Maximum         =   999
+         Minimum         =   -999
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
    End
    Begin VB.Frame frmDta 
@@ -480,7 +688,7 @@ Private Sub chkRatE_Click(Index As Integer)
     Else
         sliRat(Index).Enabled = False
     End If
-    sliRat(Index).Value = CurItm.CRate(Index)
+    sliRat(Index).CurrentPosition = CurItm.CRate(Index)
     
     MarkGame 2
 End Sub
@@ -516,8 +724,9 @@ Private Sub UpdateFields()
     frmMap.SetHighlight CInt(CurItm.X), CInt(CurItm.Y)
 End Sub
 
-Private Sub sliRat_Change(Index As Integer)
-    CurItm.CRate(Index) = sliRat(Index).Value
+
+Private Sub sliRat_PositionChanged(Index As Integer, ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
+    CurItm.CRate(Index) = newPosition
     MarkGame 2
 End Sub
 
