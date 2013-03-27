@@ -44,6 +44,9 @@ Source: "vbrun\ShBrowserCtlsU.ocx"; DestDir: "{sys}"; Flags: restartreplace shar
 Source: "vbrun\StatBarU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 Source: "vbrun\TrackBarCtlU.ocx"; DestDir: "{sys}"; Flags: restartreplace sharedfile regserver
 
+; Visual C++ redistributable
+Source: "vbrun\vcredist_x86.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
+
 [INI]
 Filename: "{app}\Owen's Transport Tycoon Station.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.transporttycoon.net/"
 Filename: "{app}\The Transport Tycoon Forums.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://www.tt-forums.net/"
@@ -57,6 +60,7 @@ Name: "{userdesktop}\TTDX Editor"; Filename: "{app}\TTDXedit.exe"; Tasks: deskto
 
 [Run]
 Filename: "{app}\TTDXEdit.exe"; Description: "Launch TTDX Editor"; Flags: nowait postinstall skipifsilent
+Filename: "{tmp}\vcredist_x86.exe"; Parameters: "/q /promptrestart"; WorkingDir: "{tmp}"; StatusMsg: "Installing Visual C++ runtime..."
 
 [Registry]
 Root: HKLM; Subkey: "Software\Owen Rudge"; Flags: uninsdeletekeyifempty
