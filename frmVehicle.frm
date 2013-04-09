@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{956B5A46-C53F-45A7-AF0E-EC2E1CC9B567}#1.5#0"; "TrackBarCtlU.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
 Begin VB.Form frmVehicle 
    BorderStyle     =   3  'Fixed Dialog
@@ -84,6 +85,46 @@ Begin VB.Form frmVehicle
       TabIndex        =   11
       Top             =   1560
       Width           =   3135
+      Begin TrackBarCtlLibUCtl.TrackBar sliRel 
+         Height          =   255
+         Left            =   30
+         TabIndex        =   12
+         Top             =   450
+         Width           =   3075
+         _cx             =   5424
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   26
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   25
+         Maximum         =   255
+         Minimum         =   0
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
+      End
       Begin VB.TextBox txtAge 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
@@ -118,32 +159,45 @@ Begin VB.Form frmVehicle
          Top             =   1440
          Width           =   1335
       End
-      Begin MSComctlLib.Slider sliRDr 
+      Begin TrackBarCtlLibUCtl.TrackBar sliRdr 
          Height          =   255
          Left            =   30
          TabIndex        =   14
          Top             =   720
          Width           =   3075
-         _ExtentX        =   5424
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   200
-         SmallChange     =   40
-         Max             =   4000
-         TickFrequency   =   80
-      End
-      Begin MSComctlLib.Slider sliRel 
-         Height          =   255
-         Left            =   30
-         TabIndex        =   12
-         Top             =   450
-         Width           =   3075
-         _ExtentX        =   5424
-         _ExtentY        =   450
-         _Version        =   393216
-         LargeChange     =   25
-         Max             =   255
-         TickFrequency   =   26
+         _cx             =   5424
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   80
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   200
+         Maximum         =   4000
+         Minimum         =   0
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   40
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
       Begin VB.Label Label2 
          Caption         =   "Age (Days):"
@@ -249,18 +303,6 @@ Begin VB.Form frmVehicle
       TabIndex        =   4
       Top             =   3360
       Width           =   3135
-      Begin MSComctlLib.Slider sliMaxLoad 
-         Height          =   255
-         Left            =   30
-         TabIndex        =   8
-         Top             =   840
-         Width           =   3060
-         _ExtentX        =   5398
-         _ExtentY        =   450
-         _Version        =   393216
-         Max             =   600
-         TickFrequency   =   12
-      End
       Begin VB.ComboBox cmbCargo 
          BeginProperty Font 
             Name            =   "Tahoma"
@@ -277,6 +319,46 @@ Begin VB.Form frmVehicle
          TabIndex        =   5
          Top             =   240
          Width           =   2895
+      End
+      Begin TrackBarCtlLibUCtl.TrackBar sliMaxLoad 
+         Height          =   255
+         Left            =   30
+         TabIndex        =   8
+         Top             =   840
+         Width           =   3060
+         _cx             =   5397
+         _cy             =   450
+         Appearance      =   0
+         AutoTickFrequency=   12
+         AutoTickMarks   =   -1  'True
+         BackColor       =   -2147483633
+         BackgroundDrawMode=   0
+         BorderStyle     =   0
+         CurrentPosition =   0
+         DetectDoubleClicks=   -1  'True
+         DisabledEvents  =   779
+         DontRedraw      =   0   'False
+         DownIsLeft      =   -1  'True
+         Enabled         =   -1  'True
+         HoverTime       =   -1
+         LargeStepWidth  =   20
+         Maximum         =   600
+         Minimum         =   0
+         MousePointer    =   0
+         Orientation     =   0
+         ProcessContextMenuKeys=   -1  'True
+         RangeSelectionEnd=   0
+         RangeSelectionStart=   0
+         RegisterForOLEDragDrop=   0   'False
+         Reversed        =   0   'False
+         RightToLeftLayout=   0   'False
+         SelectionType   =   0
+         ShowSlider      =   -1  'True
+         SliderLength    =   -1
+         SmallStepWidth  =   1
+         SupportOLEDragImages=   -1  'True
+         TickMarksPosition=   1
+         ToolTipPosition =   2
       End
       Begin VB.Label Label1 
          Caption         =   "Liquid cargos are multiplied by 100 in TTD, 1000 in TTDPatch."
@@ -515,9 +597,9 @@ Private Sub UpdateFields()
         If cmbOwner.ItemData(Wa) = CurItm.Owner Then cmbOwner.ListIndex = Wa: Exit For
     Next Wa
     frmTechInfo.ShowInfo 5, CurItm.Name, CurItm.Offset
-    sliMaxLoad.Value = CurItm.CargoMax: sliMaxLoad_Change
-    sliRDr.Value = CurItm.RelDropRate: sliRDr_Change
-    sliRel.Value = CurItm.Rel: sliRel_Change
+    sliMaxLoad.CurrentPosition = CurItm.CargoMax
+    sliRdr.CurrentPosition = CurItm.RelDropRate
+    sliRel.CurrentPosition = CurItm.Rel
     If CurItm.SubClass <> 0 Then frmDta(1).Enabled = False
     txtAge.Text = CStr(CurItm.Age)
     txtAgeMax.Text = CStr(CurItm.AgeMax)
@@ -528,21 +610,21 @@ Private Sub Form_Unload(Cancel As Integer)
     PrepSave
 End Sub
 
-Private Sub sliMaxLoad_Change()
-    labCMax.Caption = "Max Units (" + Format(sliMaxLoad.Value) + ")"
-    CurItm.CargoMax = sliMaxLoad.Value
+Private Sub sliMaxLoad_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
+    labCMax.Caption = "Max Units (" + Format(newPosition) + ")"
+    CurItm.CargoMax = newPosition
     MarkGame 16
 End Sub
 
-Private Sub sliRDr_Change()
-    CurItm.RelDropRate = sliRDr.Value
-    labRel.Caption = "Reliability: " + Format(Fix(sliRel.Value / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
+Private Sub sliRdr_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
+    CurItm.RelDropRate = newPosition
+    labRel.Caption = "Reliability: " + Format(Fix(sliRel.CurrentPosition / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
     MarkGame 16
 End Sub
 
-Private Sub sliRel_Change()
-    CurItm.Rel = CByte(sliRel.Value)
-    labRel.Caption = "Reliability: " + Format(Fix(sliRel.Value / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
+Private Sub sliRel_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
+    CurItm.Rel = CByte(newPosition)
+    labRel.Caption = "Reliability: " + Format(Fix(newPosition / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
     MarkGame 16
 End Sub
 

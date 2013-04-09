@@ -32,3 +32,5 @@ make file browser remember last path
 - fix bug with sliders in station (and maybe other windows) where ticking box doesn't do anything
 
 - remove treeview/sliders on frmvehicle, eliminate mscomctl.ocx
+
+add recently opened games
