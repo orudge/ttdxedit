@@ -3,26 +3,35 @@ Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
 Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmSelectGame 
-   Caption         =   "Select SaveGame"
-   ClientHeight    =   4590
+   Caption         =   "Open Game"
+   ClientHeight    =   4770
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   8655
+   ClientWidth     =   10545
+   BeginProperty Font 
+      Name            =   "Microsoft Sans Serif"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    Icon            =   "frmSelectGame.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4590
-   ScaleWidth      =   8655
+   ScaleHeight     =   4770
+   ScaleWidth      =   10545
    StartUpPosition =   1  'CenterOwner
    Begin ExTVwLibUCtl.ExplorerTreeView tvDirs 
-      Height          =   3615
-      Left            =   120
-      TabIndex        =   6
-      Top             =   120
+      Height          =   3735
+      Left            =   0
+      TabIndex        =   0
+      Top             =   0
       Width           =   3135
       _cx             =   5530
-      _cy             =   6376
+      _cy             =   6588
       AllowDragDrop   =   -1  'True
       AllowLabelEditing=   -1  'True
       AlwaysShowSelection=   -1  'True
@@ -88,54 +97,27 @@ Begin VB.Form frmSelectGame
       UseSystemFont   =   -1  'True
    End
    Begin VB.CheckBox chkHideTTD 
-      Caption         =   "Hide TTD Info"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   315
+      Caption         =   "&Hide TTD Info"
+      Height          =   255
       Left            =   120
-      TabIndex        =   5
-      Top             =   3780
-      Width           =   2655
+      TabIndex        =   2
+      Top             =   3840
+      Width           =   1455
    End
    Begin VB.ComboBox cmbFtypes 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   315
-      Left            =   3360
+      Left            =   7440
       Style           =   2  'Dropdown List
-      TabIndex        =   4
-      Top             =   4140
-      Width           =   3735
+      TabIndex        =   5
+      Top             =   3840
+      Width           =   3015
    End
    Begin VB.TextBox txtSelected 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   315
-      Left            =   3360
-      TabIndex        =   3
-      Top             =   3780
-      Width           =   3735
+      Left            =   3195
+      TabIndex        =   4
+      Top             =   3840
+      Width           =   4095
    End
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   7920
@@ -166,29 +148,20 @@ Begin VB.Form frmSelectGame
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
       Caption         =   "Cancel"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   315
-      Left            =   7200
-      TabIndex        =   2
-      Top             =   4140
+      Height          =   375
+      Left            =   9120
+      TabIndex        =   7
+      Top             =   4320
       Width           =   1335
    End
    Begin MSComctlLib.ListView lvFiles 
-      Height          =   3615
-      Left            =   3360
+      Height          =   3735
+      Left            =   3195
       TabIndex        =   1
-      Top             =   120
-      Width           =   5175
-      _ExtentX        =   9128
-      _ExtentY        =   6376
+      Top             =   0
+      Width           =   7215
+      _ExtentX        =   12726
+      _ExtentY        =   6588
       View            =   3
       LabelEdit       =   1
       Sorted          =   -1  'True
@@ -202,7 +175,7 @@ Begin VB.Form frmSelectGame
       BorderStyle     =   1
       Appearance      =   1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -229,24 +202,33 @@ Begin VB.Form frmSelectGame
    Begin VB.CommandButton cmdOK 
       Caption         =   "OK"
       Default         =   -1  'True
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   315
-      Left            =   7200
-      TabIndex        =   0
-      Top             =   3780
+      Height          =   375
+      Left            =   7680
+      TabIndex        =   6
+      Top             =   4320
       Width           =   1335
    End
-   Begin ShBrowserCtlsLibUCtl.ShellTreeView tvShell 
-      Left            =   2640
+   Begin VB.Label lblFilename 
+      Alignment       =   1  'Right Justify
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Filename:"
+      Height          =   195
+      Left            =   2460
+      TabIndex        =   3
       Top             =   3840
+      Width           =   675
+   End
+   Begin VB.Image imgSplitter 
+      Height          =   3735
+      Left            =   3120
+      MousePointer    =   9  'Size W E
+      Top             =   0
+      Width           =   105
+   End
+   Begin ShBrowserCtlsLibUCtl.ShellTreeView tvShell 
+      Left            =   1440
+      Top             =   4320
       Version         =   256
       AutoEditNewItems=   -1  'True
       ColorCompressedItems=   -1  'True
@@ -295,6 +277,38 @@ Private F As New FileSystemObject
 Private wWork(48) As Byte
 Private fInit As Boolean
 Private LastPath As String
+
+Private bResizing As Boolean
+
+Private Sub SizeControls(Optional ByVal SplitterPos As Long = 0)
+    If SplitterPos <> 0 Then
+        imgSplitter.Left = SplitterPos - 15
+        tvDirs.Width = SplitterPos
+        lvFiles.Left = imgSplitter.Left + imgSplitter.Width - 15
+    End If
+    
+    lvFiles.Width = Me.ScaleWidth - lvFiles.Left - 60
+    
+    cmbFtypes.Left = Me.ScaleWidth - cmbFtypes.Width - 60
+    txtSelected.Width = Me.ScaleWidth - txtSelected.Left - cmbFtypes.Width - 100
+    
+    cmdCancel.Left = Me.ScaleWidth - cmdCancel.Width - 60
+    cmdOK.Left = cmdCancel.Left - cmdOK.Width - 100
+    
+    cmdCancel.Top = Me.ScaleHeight - cmdCancel.Height - 60
+    cmdOK.Top = cmdCancel.Top
+    
+    txtSelected.Top = cmdOK.Top - txtSelected.Height - 100
+    cmbFtypes.Top = txtSelected.Top
+    chkHideTTD.Top = txtSelected.Top
+    
+    lblFilename.Top = txtSelected.Top + ((txtSelected.Height - lblFilename.Height) / 2)
+    
+    tvDirs.Height = txtSelected.Top - 100
+    lvFiles.Height = tvDirs.Height
+    imgSplitter.Height = tvDirs.Height
+End Sub
+
 
 Private Sub UpdateList()
     Dim wFo As Folder, wFf As File, wDta As listItem, Wsa As String
@@ -469,32 +483,17 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Form_Resize()
-    If Me.Width < 8775 Then
-        Me.Width = 8775
+    If Me.Width < 10635 Then
+        Me.Width = 10635
         Exit Sub
     End If
     
-    If Me.Height < 4995 Then
-        Me.Height = 4995
+    If Me.Height < 5175 Then
+        Me.Height = 5175
         Exit Sub
     End If
     
-    tvDirs.Height = Me.ScaleHeight - 975
-    lvFiles.Height = tvDirs.Height
-    
-    lvFiles.Width = Me.ScaleWidth - 3600
-    txtSelected.Width = Me.ScaleWidth - 5040
-    cmbFtypes.Width = Me.ScaleWidth - 5040
-    
-    chkHideTTD.Top = Me.ScaleHeight - 810
-    txtSelected.Top = chkHideTTD.Top
-    cmdOK.Top = chkHideTTD.Top
-    
-    cmbFtypes.Top = Me.ScaleHeight - 450
-    cmdCancel.Top = cmbFtypes.Top
-    
-    cmdOK.Left = txtSelected.Left + txtSelected.Width + 105
-    cmdCancel.Left = cmdOK.Left
+    SizeControls
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
@@ -503,6 +502,38 @@ Private Sub Form_Unload(Cancel As Integer)
     
     tvShell.Detach
 End Sub
+
+
+Private Sub imgSplitter_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    bResizing = True
+End Sub
+
+
+Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Dim pos As Long
+    
+    If bResizing Then
+        X = Me.ScaleX(X, ScaleModeConstants.vbTwips, ScaleModeConstants.vbPixels)
+        Y = Me.ScaleY(Y, ScaleModeConstants.vbTwips, ScaleModeConstants.vbPixels)
+        
+        pos = X + imgSplitter.Left
+        
+        If pos < 100 Then
+            pos = 100
+        ElseIf pos > Me.ScaleWidth - 110 Then
+            pos = Me.ScaleWidth - 110
+        End If
+        
+        SizeControls pos
+    End If
+End Sub
+
+
+Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    SizeControls
+    bResizing = False
+End Sub
+
 
 Private Sub lvFiles_ColumnClick(ByVal Wa As MSComctlLib.ColumnHeader)
     If lvFiles.Sorted = False Then
