@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
 Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmSelectGame 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Select SaveGame"
@@ -380,6 +380,7 @@ Private Sub cmdOK_Click()
     If Selected > " " Then
         Selected = F.BuildPath(CurPath, lvFiles.SelectedItem.Text)
         If F.FileExists(Selected) Then
+            LastPath = CurPath
             Me.Hide
         End If
     End If
@@ -393,17 +394,25 @@ Private Sub Form_Activate()
     fInit = True
     
     Dim pIDLCurPath As Long
-    
-    GoTo SkipIDLTODO 'TODO
+    Dim stvi As ShellTreeViewItem
     
     If CurPath <> "" Then
         If SHParseDisplayName(StrPtr(CurPath), 0, pIDLCurPath, 0, 0) = 0 Then
+            Screen.MousePointer = MousePointerConstants.vbHourglass
+            
+            tvShell.EnsureItemIsLoaded pIDLCurPath
+            Set stvi = tvShell.TreeItems(pIDLCurPath, ShTvwItemIdentifierTypeConstants.stiitEqualPIDL)
+            
+            If Not (stvi Is Nothing) Then
+                Set tvDirs.CaretItem = stvi.TreeViewItemObject
+            End If
+            
             ILFree pIDLCurPath
+        
+            Screen.MousePointer = MousePointerConstants.vbDefault
         End If
     End If
     
-SkipIDLTODO:
-
     Selected = ""
     
     txtSelected.Enabled = IIf(FileMode = 0, False, True)
@@ -415,6 +424,7 @@ End Sub
 
 Private Sub Form_Load()
     Dim Wa As Long
+    
     chkHideTTD.Value = fReadValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", 0)
     'lvFiles.ColumnHeaders(2).Width = 0
     cmbFtypes.Clear
@@ -426,20 +436,38 @@ Private Sub Form_Load()
     cmbFtypes.AddItem "All files"
     
     Dim itm As ShellTreeViewItem
-    Dim pIDLDesktop As Long
+    Dim pIDLDesktop As Long, pIDLCurPath As Long
+    Dim OldPath As String
     
     tvShell.Attach tvDirs.hwnd
     tvShell.hWndShellUIParentWindow = Me.hwnd
     
-    If SHParseDisplayName(StrPtr(LastPath), 0, pIDLDesktop, 0, 0) <> 0 Then
-        SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
-    End If
+    OldPath = CurPath
+    
+    SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
     
     Set itm = tvShell.TreeItems.Add(pIDLDesktop, , InsertAfterConstants.iaFirst, , , HasExpandoConstants.heYes)
     
     If Not (itm Is Nothing) Then
         Set tvDirs.CaretItem = itm.TreeViewItemObject
         tvDirs.CaretItem.Expand
+    End If
+    
+    If OldPath <> "" Then
+        If SHParseDisplayName(StrPtr(OldPath), 0, pIDLCurPath, 0, 0) = 0 Then
+            Screen.MousePointer = MousePointerConstants.vbHourglass
+            
+            tvShell.EnsureItemIsLoaded pIDLCurPath
+            Set itm = tvShell.TreeItems(pIDLCurPath, ShTvwItemIdentifierTypeConstants.stiitEqualPIDL)
+            
+            If Not (itm Is Nothing) Then
+                Set tvDirs.CaretItem = itm.TreeViewItemObject
+            End If
+            
+            ILFree pIDLCurPath
+        
+            Screen.MousePointer = MousePointerConstants.vbDefault
+        End If
     End If
 End Sub
 
@@ -498,6 +526,7 @@ Private Sub tvDirs_CaretChanged(ByVal previousCaretItem As ExTVwLibUCtl.ITreeVie
         Path = String$(MAX_PATH, Chr$(0))
         SHGetPathFromIDList itm.FullyQualifiedPIDL, StrPtr(Path)
         Path = Left$(Path, lstrlen(StrPtr(Path)))
+        
         If PathIsDirectory(StrPtr(Path)) = 0 Then
             CurPath = ""
         Else
