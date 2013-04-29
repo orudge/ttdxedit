@@ -2,6 +2,7 @@ VERSION 5.00
 Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
 Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{A8F9B8E7-E699-4FCE-A647-72C877F8E632}#1.8#0"; "EditCtlsU.ocx"
 Begin VB.Form frmSelectGame 
    Caption         =   "Open Game"
    ClientHeight    =   4770
@@ -24,6 +25,74 @@ Begin VB.Form frmSelectGame
    ScaleHeight     =   4770
    ScaleWidth      =   10545
    StartUpPosition =   1  'CenterOwner
+   Begin EditCtlsLibUCtl.TextBox txtSelected 
+      Height          =   315
+      Left            =   3195
+      TabIndex        =   3
+      Top             =   3840
+      Width           =   4095
+      _cx             =   7223
+      _cy             =   556
+      AcceptNumbersOnly=   0   'False
+      AcceptTabKey    =   0   'False
+      AllowDragDrop   =   -1  'True
+      AlwaysShowSelection=   0   'False
+      Appearance      =   1
+      AutoScrolling   =   2
+      BackColor       =   -2147483643
+      BorderStyle     =   0
+      CancelIMECompositionOnSetFocus=   0   'False
+      CharacterConversion=   0
+      CompleteIMECompositionOnKillFocus=   0   'False
+      DisabledBackColor=   -2147483643
+      DisabledEvents  =   7179
+      DisabledForeColor=   -2147483640
+      DisplayCueBannerOnFocus=   0   'False
+      DontRedraw      =   0   'False
+      DoOEMConversion =   0   'False
+      DragScrollTimeBase=   -1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      FormattingRectangleHeight=   0
+      FormattingRectangleLeft=   0
+      FormattingRectangleTop=   0
+      FormattingRectangleWidth=   0
+      HAlignment      =   0
+      HoverTime       =   -1
+      IMEMode         =   -1
+      InsertMarkColor =   0
+      InsertSoftLineBreaks=   0   'False
+      LeftMargin      =   -1
+      MaxTextLength   =   -1
+      Modified        =   0   'False
+      MousePointer    =   0
+      MultiLine       =   0   'False
+      OLEDragImageStyle=   0
+      PasswordChar    =   0
+      ProcessContextMenuKeys=   -1  'True
+      ReadOnly        =   -1  'True
+      RegisterForOLEDragDrop=   0   'False
+      RightMargin     =   -1
+      RightToLeft     =   0
+      ScrollBars      =   0
+      SelectedTextMousePointer=   0
+      SupportOLEDragImages=   -1  'True
+      TabWidth        =   -1
+      UseCustomFormattingRectangle=   0   'False
+      UsePasswordChar =   0   'False
+      UseSystemFont   =   -1  'True
+      CueBanner       =   "frmSelectGame.frx":030A
+      Text            =   "frmSelectGame.frx":032A
+   End
    Begin ExTVwLibUCtl.ExplorerTreeView tvDirs 
       Height          =   3735
       Left            =   0
@@ -112,13 +181,6 @@ Begin VB.Form frmSelectGame
       Top             =   3840
       Width           =   3015
    End
-   Begin VB.TextBox txtSelected 
-      Height          =   315
-      Left            =   3195
-      TabIndex        =   4
-      Top             =   3840
-      Width           =   4095
-   End
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   7920
       Top             =   0
@@ -132,15 +194,15 @@ Begin VB.Form frmSelectGame
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   3
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":030A
+            Picture         =   "frmSelectGame.frx":034A
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":062E
+            Picture         =   "frmSelectGame.frx":066E
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":0A82
+            Picture         =   "frmSelectGame.frx":0AC2
             Key             =   ""
          EndProperty
       EndProperty
@@ -215,7 +277,7 @@ Begin VB.Form frmSelectGame
       Caption         =   "&Filename:"
       Height          =   195
       Left            =   2460
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   3840
       Width           =   675
    End

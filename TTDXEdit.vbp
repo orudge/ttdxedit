@@ -31,6 +31,7 @@ Form=finances.frm
 Class=CWinInet; wininet.cls
 Class=CGUID; GUID.cls
 ResFile32="TTDXEdit.res"
+Object={A8F9B8E7-E699-4FCE-A647-72C877F8E632}#1.8#0; EditCtlsU.ocx
 IconForm="frmMDI"
 Startup="Sub Main"
 HelpFile=""
