@@ -3,20 +3,17 @@ Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
 Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmSelectGame 
-   BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Select SaveGame"
    ClientHeight    =   4590
-   ClientLeft      =   45
-   ClientTop       =   435
+   ClientLeft      =   60
+   ClientTop       =   450
    ClientWidth     =   8655
-   ControlBox      =   0   'False
    Icon            =   "frmSelectGame.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   4590
    ScaleWidth      =   8655
-   ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
    Begin ExTVwLibUCtl.ExplorerTreeView tvDirs 
       Height          =   3615
@@ -469,6 +466,35 @@ Private Sub Form_Load()
             Screen.MousePointer = MousePointerConstants.vbDefault
         End If
     End If
+End Sub
+
+Private Sub Form_Resize()
+    If Me.Width < 8775 Then
+        Me.Width = 8775
+        Exit Sub
+    End If
+    
+    If Me.Height < 4995 Then
+        Me.Height = 4995
+        Exit Sub
+    End If
+    
+    tvDirs.Height = Me.ScaleHeight - 975
+    lvFiles.Height = tvDirs.Height
+    
+    lvFiles.Width = Me.ScaleWidth - 3600
+    txtSelected.Width = Me.ScaleWidth - 5040
+    cmbFtypes.Width = Me.ScaleWidth - 5040
+    
+    chkHideTTD.Top = Me.ScaleHeight - 810
+    txtSelected.Top = chkHideTTD.Top
+    cmdOK.Top = chkHideTTD.Top
+    
+    cmbFtypes.Top = Me.ScaleHeight - 450
+    cmdCancel.Top = cmbFtypes.Top
+    
+    cmdOK.Left = txtSelected.Left + txtSelected.Width + 105
+    cmdCancel.Left = cmdOK.Left
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
