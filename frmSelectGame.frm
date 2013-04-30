@@ -390,6 +390,48 @@ Private LastPath As String
 
 Private bResizing As Boolean
 
+Implements ISubclassedWindow
+
+Private Sub Subclass()
+    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidSelectGame) Then
+        Debug.Print "Subclassing failed!"
+    End If
+    
+    ' tell the controls to negotiate the correct format with the form
+    SendMessageAsLong txtSelected.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong lvFiles.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong tvDirs.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+End Sub
+
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If eSubclassID = EnumSubclassID.escidCity Then
+        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+    End If
+    
+StdHandler_End:
+    ISubclassedWindow_HandleMessage = lRet
+End Function
+
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If uMsg = WM_NOTIFYFORMAT Then
+        ' give the control a chance to request Unicode notifications
+        lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
+        
+        bCallDefProc = False
+    End If
+    
+StdHandler_End:
+    HandleMessage_Form = lRet
+End Function
+
 Private Sub SizeControls(Optional ByVal SplitterPos As Long = 0)
     If SplitterPos <> 0 Then
         imgSplitter.Left = SplitterPos - 15
@@ -463,15 +505,26 @@ Private Function GetName(wFile As String) As String
     Dim Wa As Integer, Wb As Long
     
     GetName = ""
+    
     If F.FileExists(wFile) Then
-        If F.GetFile(wFile).Size < 49 Then Exit Function
-        Open wFile For Binary As 1
-        Get 1, , wWork()
-        Close 1
+        If F.GetFile(wFile).Size < 49 Then
+            Exit Function
+        End If
+        
+        Dim hbf As New HugeBinaryFile
+        
+        hbf.OpenFile wFile
+        hbf.ReadBytes wWork()
+        hbf.CloseFile
+        
         Wb = TTDXCalcHdCheck(wWork)
+        
         If Wb = wWork(47) + wWork(48) * 256& Then
             For Wa = 0 To 46
-                If wWork(Wa) < 32 Then Exit For
+                If wWork(Wa) < 32 Then
+                    Exit For
+                End If
+                
                 GetName = GetName + Chr(wWork(Wa))
             Next Wa
         End If
@@ -540,6 +593,8 @@ End Sub
 
 Private Sub Form_Load()
     Dim Wa As Long
+    
+    Subclass
     
     chkHideTTD.Value = fReadValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", 0)
     
@@ -610,6 +665,7 @@ Private Sub Form_Unload(Cancel As Integer)
     Wa = fWriteValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", chkHideTTD.Value)
     
     tvShell.Detach
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidSelectGame
 End Sub
 
 

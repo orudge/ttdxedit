@@ -205,7 +205,7 @@ Begin VB.Form frmFileTypes
       Top             =   3240
       Width           =   1575
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblInfo 
       Caption         =   "Select what to do with filetypes associated with programs other than TTDX Editor:"
       BeginProperty Font 
          Name            =   "Tahoma"
@@ -232,6 +232,49 @@ Option Explicit
 
 Private F As New FileSystemObject
 
+Implements ISubclassedWindow
+
+Private Sub Subclass()
+    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidFileTypes) Then
+        Debug.Print "Subclassing failed!"
+    End If
+    
+    ' tell the controls to negotiate the correct format with the form
+    SendMessageAsLong lvTypes.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+    UnSubclassWindow Me.hwnd, EnumSubclassID.escidFileTypes
+End Sub
+
+Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If eSubclassID = EnumSubclassID.escidFileTypes Then
+        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+    End If
+    
+StdHandler_End:
+    ISubclassedWindow_HandleMessage = lRet
+End Function
+
+Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If uMsg = WM_NOTIFYFORMAT Then
+        ' give the control a chance to request Unicode notifications
+        lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
+        
+        bCallDefProc = False
+    End If
+    
+StdHandler_End:
+    HandleMessage_Form = lRet
+End Function
 Public Sub AssociateCmdLine()
     On Error GoTo Error
     
@@ -406,6 +449,8 @@ End Sub
 
 
 Private Sub Form_Load()
+    Subclass
+    
     lvTypes.Columns.Add "File Type"
     lvTypes.Columns.Add "Assigned To"
     

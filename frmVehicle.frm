@@ -384,6 +384,45 @@ Option Explicit
 
 Private CurItm As TTDXVehicle, CurItmNo As Long, fInit As Boolean
 
+Implements ISubclassedWindow
+
+Private Sub Subclass()
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidCity) Then
+        Debug.Print "Subclassing failed!"
+    End If
+    
+    ' tell the controls to negotiate the correct format with the form
+    SendMessageAsLong tvVeh.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
+End Sub
+
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If eSubclassID = EnumSubclassID.escidVehicle Then
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+    End If
+    
+StdHandler_End:
+    ISubclassedWindow_HandleMessage = lRet
+End Function
+
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If uMsg = WM_NOTIFYFORMAT Then
+        ' give the control a chance to request Unicode notifications
+        lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
+        
+        bCallDefProc = False
+    End If
+    
+StdHandler_End:
+    HandleMessage_Form = lRet
+End Function
 Public Sub UpdateInfo()
     Dim Wa As Integer, Wv As TTDXplayer
     
@@ -441,6 +480,7 @@ Private Sub cmbShowO_Click()
 End Sub
 
 Private Sub Form_Load()
+    Subclass
     UpdateInfo
 End Sub
 
@@ -465,13 +505,13 @@ Private Sub ShowList()
                 Wc = cmbShowO.ItemData(cmbShowO.ListIndex)
                 If (CurItm.Class > 0) And ((CurItm.Owner = Wc) Or (Wc = -1)) Then  ' removed And (CurItm.SubClass = 0)
                     If CurItm.Class = &H13 Then
-                        If CurItm.SubClass <= 2 Then
+                        If CurItm.Subclass <= 2 Then
                             OK = True
                         Else
                             OK = False
                         End If
                     Else
-                        If CurItm.SubClass <> 0 Then
+                        If CurItm.Subclass <> 0 Then
                             OK = False
                         Else
                             OK = True
@@ -526,6 +566,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidVehicle
 End Sub
 
 Private Sub sliMaxLoad_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)

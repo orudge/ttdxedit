@@ -21,6 +21,8 @@ Public Declare Function SendMessageAsLong Lib "user32.dll" Alias "SendMessageW" 
 Public Const NF_REQUERY = 4
 Public Const WM_NOTIFYFORMAT = &H55
 
+Public Const WM_USER = &H400
+Public Const OCM__BASE = WM_USER + &H1C00
 
 Public Function SubclassProc(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal uIdSubclass As Long, ByVal dwRefData As Long) As Long
     Dim bCallDefProc As Boolean
@@ -59,10 +61,14 @@ Public Function SubclassWindow(ByVal hWnd As Long, oClient As ISubclassedWindow,
     
     On Error GoTo StdHandler_Error
     
-    If SetWindowSubclass(hWnd, AddressOf basSubclassing.SubclassProc, eSubclassID, ObjPtr(oClient)) Then
-        bRet = True
+#If Subclassing = 1 Then
+    If App.LogMode <> 0 Then  ' not running in IDE
+        If SetWindowSubclass(hWnd, AddressOf basSubclassing.SubclassProc, eSubclassID, ObjPtr(oClient)) Then
+            bRet = True
+        End If
     End If
-    
+#End If
+
 StdHandler_Ende:
     SubclassWindow = bRet
     Exit Function
@@ -78,10 +84,14 @@ Public Function UnSubclassWindow(ByVal hWnd As Long, ByVal eSubclassID As EnumSu
     
     On Error GoTo StdHandler_Error
     
-    If RemoveWindowSubclass(hWnd, AddressOf basSubclassing.SubclassProc, eSubclassID) Then
-        bRet = True
+#If Subclassing = 1 Then
+    If App.LogMode <> 0 Then  ' not running in IDE
+        If RemoveWindowSubclass(hWnd, AddressOf basSubclassing.SubclassProc, eSubclassID) Then
+            bRet = True
+        End If
     End If
-    
+#End If
+
 StdHandler_Ende:
     UnSubclassWindow = bRet
     Exit Function

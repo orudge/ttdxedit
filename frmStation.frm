@@ -379,6 +379,49 @@ Attribute VB_Exposed = False
 Option Explicit
 Private CurItmNo As Integer, CurItm As TTDXStation
 
+Implements ISubclassedWindow
+
+Private Sub Subclass()
+    Dim i As Integer
+    
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidStation) Then
+        Debug.Print "Subclassing failed!"
+    End If
+    
+    ' tell the controls to negotiate the correct format with the form
+    For i = 0 To 11
+        SendMessageAsLong sliCrate(i).hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    Next i
+End Sub
+
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If eSubclassID = EnumSubclassID.escidCity Then
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+    End If
+    
+StdHandler_End:
+    ISubclassedWindow_HandleMessage = lRet
+End Function
+
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+    Dim lRet As Long
+    
+    On Error GoTo StdHandler_End
+    
+    If uMsg = WM_NOTIFYFORMAT Then
+        ' give the control a chance to request Unicode notifications
+        lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
+        
+        bCallDefProc = False
+    End If
+    
+StdHandler_End:
+    HandleMessage_Form = lRet
+End Function
 Public Sub UpdateInfo()
     Dim Wa As Integer, Wb As Integer, Wsa As String, Wv As TTDXplayer
     
@@ -610,6 +653,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidStation
 End Sub
 
 Private Sub lstStation_Click()
@@ -647,6 +691,7 @@ Private Sub Form_Load()
         Load sliCrate(Wa)
         Load txtCam(Wa)
     Next Wa
+    Subclass
     UpdateInfo
 End Sub
 

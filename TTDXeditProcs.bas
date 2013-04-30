@@ -377,7 +377,7 @@ WaitForTermination:
     Exit Function
     
 Error:
-    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hWnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hwnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
         Case 3:
             End
         Case 2:
@@ -533,6 +533,8 @@ Public Function TTDXLoadFile(ByVal vPath As String) As Integer
     Dim Wsa As String, NoMore As Boolean, Tmpstr As String, TmpPos As Long
     Dim j As Integer
     
+    Dim hbf As New HugeBinaryFile
+    
     TTDXLoadFile = 0: Wa = 0: Wb = 0
     
     If Not F.FileExists(vPath) Then TTDXLoadFile = 1: Exit Function
@@ -551,12 +553,15 @@ Public Function TTDXLoadFile(ByVal vPath As String) As Integer
         ' Reserve Mem and Load Data
         '
         ReDim wData(Wb - 1)
-        Open Wsa + "hdr" For Binary As 1
-        Get 1, , wHeadData()
-        Close 1
-        Open Wsa + "dta" For Binary As 1
-        Get 1, , wData()
-        Close 1
+        
+        hbf.OpenFile Wsa + "hdr"
+        hbf.ReadBytes wHeadData()
+        hbf.CloseFile
+
+        hbf.OpenFile Wsa + "dta"
+        hbf.ReadBytes wData()
+        hbf.CloseFile
+
         vPath = Wsa
     ElseIf InStr(".sv0.sv1.sv2.ss0.ss1.", "." + F.GetExtensionName(vPath) + ".") > 0 Then
         '
@@ -568,9 +573,11 @@ Public Function TTDXLoadFile(ByVal vPath As String) As Integer
         ' Load The Data
         '
         ReDim wWork(Wa - 1)
-        Open vPath For Binary As 1
-        Get 1, , wWork()
-        Close 1
+        
+        hbf.OpenFile vPath
+        hbf.ReadBytes wWork()
+        hbf.CloseFile
+        
         '
         ' Copy Headerinformation
         '
@@ -904,10 +911,18 @@ Public Function TTDXSaveFile(ByVal vPath As String) As Integer
         '
         ' Puttin´ on the disc
         '
-        Open vPath For Binary As 1
-        Put 1, , wWork()
-        Put 1, , CLng(Wc + 201100)
-        Close 1
+        Dim hbf As New HugeBinaryFile
+        Dim LongVar(0 To 3) As Byte
+        Dim LongVal As Long
+        
+        LongVal = CLng(Wc + 201100)
+        CopyMemory VarPtr(LongVar(0)), VarPtr(LongVal), 4
+        
+        hbf.OpenFile vPath
+        hbf.WriteBytes wWork()
+        hbf.WriteBytes LongVar()
+        hbf.CloseFile
+        
         FileChanged = False
     Else
         TTDXSaveFile = 1
@@ -939,16 +954,27 @@ Public Function TTDXSaveUncom(ByVal vPath As String) As Integer
         End If
         If F.FileExists(vPath + "hdr") Then F.DeleteFile (vPath + "hdr")
         Wc = TTDXCalcHdCheck(wHeadData)
-        Open vPath + "hdr" For Binary As 1
-        Put 1, , wHeadData()
-        Put 1, , CByte(Wc Mod 256)
-        Put 1, , CByte(Fix(Wc / 256))
-        Close 1
-        If F.FileExists(vPath + "dta") Then F.DeleteFile (vPath + "dta")
-        Open vPath + "dta" For Binary As 1
-        Put 1, , wData()
-        Close 1
         
+        Dim hbf As New HugeBinaryFile
+        Dim ByteData(1 To 1) As Byte
+        
+        hbf.OpenFile vPath & "hdr"
+        hbf.WriteBytes wHeadData()
+        
+        ByteData(1) = CByte(Wc Mod 256)
+        hbf.WriteBytes ByteData()
+        
+        ByteData(1) = CByte(Fix(Wc / 256))
+        hbf.WriteBytes ByteData()
+        
+        hbf.CloseFile
+                
+        If F.FileExists(vPath + "dta") Then F.DeleteFile (vPath + "dta")
+        
+        hbf.OpenFile vPath & "dta"
+        hbf.WriteBytes wData()
+        hbf.CloseFile
+
         FileChanged = False
     End If
     Exit Function

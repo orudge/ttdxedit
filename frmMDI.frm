@@ -539,48 +539,32 @@ End Sub
 
 
 Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
-    Const WM_NOTIFYFORMAT = &H55
-    Const WM_USER = &H400
-    Const OCM__BASE = WM_USER + &H1C00
     Dim lRet As Long
     
-    On Error GoTo StdHandler_Error
-    Select Case uMsg
-        Case WM_NOTIFYFORMAT
-          ' give the control a chance to request Unicode notifications
-          lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
+    On Error GoTo StdHandler_End
+    
+    If uMsg = WM_NOTIFYFORMAT Then
+        ' give the control a chance to request Unicode notifications
+        lRet = SendMessageAsLong(wParam, OCM__BASE + uMsg, wParam, lParam)
         
-          bCallDefProc = False
-    End Select
+        bCallDefProc = False
+    End If
     
-StdHandler_Ende:
+StdHandler_End:
     HandleMessage_Form = lRet
-    Exit Function
-    
-StdHandler_Error:
-    Debug.Print "Error in frmMDI.HandleMessage_Form: ", Err.Number, Err.Description
-    Resume StdHandler_Ende
 End Function
 
 Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
-    On Error GoTo StdHandler_Error
+    On Error GoTo StdHandler_End
     
-    Select Case eSubclassID
-        Case EnumSubclassID.escidMain
-            lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
-        Case Else
-            Debug.Print "frmMain.ISubclassedWindow_HandleMessage: Unknown Subclassing ID " & CStr(eSubclassID)
-    End Select
+    If eSubclassID = EnumSubclassID.escidMain Then
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+    End If
     
-StdHandler_Ende:
+StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
-    Exit Function
-    
-StdHandler_Error:
-    Debug.Print "Error in frmMain.ISubclassedWindow_HandleMessage (SubclassID=" & CStr(eSubclassID) & ": ", Err.Number, Err.Description
-    Resume StdHandler_Ende
 End Function
 
 Private Sub MDIForm_Load()
@@ -1040,12 +1024,12 @@ Private Sub mnuOCheckUpdates_Click()
     
     If mm > CDbl(App.Major & "." & App.Minor) Then
         If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
-            ShellExecute Me.hWnd, "open", SiteURL, vbNullString, vbNullString, 1
+            ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
         End If
     Else
         If mm = CDbl(App.Major & "." & App.Minor) And CInt(Right$(Tmp, Len(Tmp) - 6)) > App.Revision Then
             If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
-                ShellExecute Me.hWnd, "open", SiteURL, vbNullString, vbNullString, 1
+                ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
             End If
         Else
             MsgBox "There are no new versions of TTDX Editor available.", vbInformation, "TTDX Editor"

@@ -30,9 +30,10 @@ Form=finances.frm
 Class=CWinInet; wininet.cls
 Class=CGUID; GUID.cls
 Object={A8F9B8E7-E699-4FCE-A647-72C877F8E632}#1.8#0; EditCtlsU.ocx
-ResFile32="TTDXEdit.res"
 Module=basSubclassing; basSubClassing.bas
 Class=ISubclassedWindow; ISubclassedWindow.cls
+ResFile32="TTDXEdit.res"
+Class=HugeBinaryFile; HugeBinaryFile.cls
 IconForm="frmMDI"
 Startup="Sub Main"
 HelpFile=""
@@ -52,7 +53,7 @@ VersionCompanyName="Owen Rudge"
 VersionFileDescription="TTDX Editor"
 VersionLegalCopyright="Copyright © Jens Vang Petersen 2002. Copyright © Owen Rudge 2002-2012."
 VersionProductName="TTDX Editor"
-CondComp="MarkGame = 1"
+CondComp="MarkGame = 1 : Subclassing = 1"
 CompilationType=0
 OptimizationType=0
 FavorPentiumPro(tm)=0

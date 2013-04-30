@@ -34,6 +34,13 @@ Features in TTDEdit not in TTDX Editor:
 add recently opened games
 
 - add game type thing to select games window
+  - detect tto games in file load
 
 - put full path to game in status bar, put game name in title bar
 - display errors as message boxes
+
+- add menu accelerators, check tab indexes, etc
+
+- change "this year", etc, to actual years in finances
+
+- fix unexpected filesize error when loading .sv1dta files (TTDPatch?)
