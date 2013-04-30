@@ -474,6 +474,7 @@ Private Sub UpdateList(Optional ByVal Force = False)
     Selected = ""
     
     If CurPath = "" Then
+        LastPath = ""
         Exit Sub
     End If
     
@@ -502,6 +503,8 @@ Private Sub UpdateList(Optional ByVal Force = False)
     End If
 End Sub
 Private Function GetName(wFile As String) As String
+    On Error Resume Next
+    
     Dim Wa As Integer, Wb As Long
     
     GetName = ""
@@ -513,7 +516,9 @@ Private Function GetName(wFile As String) As String
         
         Dim hbf As New HugeBinaryFile
         
-        hbf.OpenFile wFile
+        Erase wWork()
+        
+        hbf.OpenFile wFile, False
         hbf.ReadBytes wWork()
         hbf.CloseFile
         

@@ -177,11 +177,11 @@ Public Sub Flush()
     FlushFileBuffers hFile
 End Sub
 
-Public Sub OpenFile(ByVal OpenFileName As String)
+Public Sub OpenFile(ByVal OpenFileName As String, Optional ByVal WriteAccess As Boolean = True)
     If hFile <> INVALID_HANDLE_VALUE Then
         RaiseError HBF_FILE_ALREADY_OPEN
     End If
-    hFile = CreateFile(StrPtr(OpenFileName), GENERIC_WRITE Or GENERIC_READ, 0, _
+    hFile = CreateFile(StrPtr(OpenFileName), IIf(WriteAccess, GENERIC_WRITE, 0) Or GENERIC_READ, 0, _
                        0, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0)
     If hFile = INVALID_HANDLE_VALUE Then
         RaiseError HBF_OPEN_FAILURE
@@ -255,6 +255,8 @@ End Sub
 Private Sub RaiseError(ByVal ErrorCode As HBF_Errors)
     Dim Win32Err As Long, Win32Text As String
 
+    Exit Sub ' TODO: Fix this
+    
     Win32Err = Err.LastDllError
     If Win32Err Then
         Win32Text = vbNewLine & "Error " & Win32Err & vbNewLine _

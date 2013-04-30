@@ -7,17 +7,17 @@ Private Declare Function GetUNIXTime Lib "TTDXHelp.dll" () As Long
 Declare Function CheckMenuRadioItem Lib "user32" (ByVal hMenu As Long, ByVal un1 As Long, ByVal un2 As Long, ByVal un3 As Long, ByVal un4 As Long) As Boolean
 Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
 Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
-Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
 
 Declare Function ShellExecuteEx Lib "Shell32.dll" Alias "ShellExecuteExA" (lpSEI As SHELLEXECUTEINFO) As Long
-Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Declare Function ShellExecuteExElevated Lib "elevate.dll" Alias "ShellExecuteExElevatedA" (lpSEI As SHELLEXECUTEINFO) As Long
 
 Declare Function GetVersionExA Lib "kernel32" (lpVersionInformation As OSVERSIONINFO) As Integer
 Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVal dwMilliseconds As Long) As Long
 Declare Function IsUserAnAdmin Lib "TTDXHelp.dll" () As Long
 
-Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Declare Function GetTempFileNameAPI Lib "kernel32" Alias "GetTempFileNameA" (ByVal lpszPath As String, ByVal lpPrefixString As String, ByVal wUnique As Long, ByVal lpTempFileName As String) As Long
 Declare Function GetTempPath Lib "kernel32" Alias "GetTempPathA" (ByVal nBufferLength As Long, ByVal lpBuffer As String) As Long
 
@@ -38,7 +38,7 @@ End Type
 Public Type SHELLEXECUTEINFO
     cbSize        As Long
     fMask         As Long
-    hwnd          As Long
+    hWnd          As Long
     lpVerb        As String
     lpFile        As String
     lpParameters  As String
@@ -324,7 +324,7 @@ Public Sub RegisterSGMPluginStartup()
     
     RegisterSGMPlugin MajorVer, DllPath, SGMPath
 End Sub
-Public Function StartElevated(ByVal hwnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
+Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
     On Error GoTo Error
     
     Dim sei As SHELLEXECUTEINFO
@@ -338,7 +338,7 @@ Public Function StartElevated(ByVal hwnd As Long, ByVal AppName As String, ByVal
     
     sei.cbSize = Len(sei)
     sei.fMask = SEE_MASK_NOCLOSEPROCESS
-    sei.hwnd = hwnd
+    sei.hWnd = hWnd
     sei.lpVerb = "open"
     sei.lpFile = AppName
     sei.lpParameters = Params
@@ -377,7 +377,7 @@ WaitForTermination:
     Exit Function
     
 Error:
-    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hwnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
+    Select Case ErrorProc(Err, "Function: TTDXeditProcs.StartElevated(" & hWnd & ", """ & AppName & """, """ & Params & """, """ & WorkingDir & """, " & Show & ")")
         Case 3:
             End
         Case 2:
@@ -554,11 +554,11 @@ Public Function TTDXLoadFile(ByVal vPath As String) As Integer
         '
         ReDim wData(Wb - 1)
         
-        hbf.OpenFile Wsa + "hdr"
+        hbf.OpenFile Wsa + "hdr", False
         hbf.ReadBytes wHeadData()
         hbf.CloseFile
 
-        hbf.OpenFile Wsa + "dta"
+        hbf.OpenFile Wsa + "dta", False
         hbf.ReadBytes wData()
         hbf.CloseFile
 
@@ -574,7 +574,7 @@ Public Function TTDXLoadFile(ByVal vPath As String) As Integer
         '
         ReDim wWork(Wa - 1)
         
-        hbf.OpenFile vPath
+        hbf.OpenFile vPath, False
         hbf.ReadBytes wWork()
         hbf.CloseFile
         
@@ -918,7 +918,7 @@ Public Function TTDXSaveFile(ByVal vPath As String) As Integer
         LongVal = CLng(Wc + 201100)
         CopyMemory VarPtr(LongVar(0)), VarPtr(LongVal), 4
         
-        hbf.OpenFile vPath
+        hbf.OpenFile vPath, False
         hbf.WriteBytes wWork()
         hbf.WriteBytes LongVar()
         hbf.CloseFile
@@ -958,7 +958,7 @@ Public Function TTDXSaveUncom(ByVal vPath As String) As Integer
         Dim hbf As New HugeBinaryFile
         Dim ByteData(1 To 1) As Byte
         
-        hbf.OpenFile vPath & "hdr"
+        hbf.OpenFile vPath & "hdr", True
         hbf.WriteBytes wHeadData()
         
         ByteData(1) = CByte(Wc Mod 256)
@@ -971,7 +971,7 @@ Public Function TTDXSaveUncom(ByVal vPath As String) As Integer
                 
         If F.FileExists(vPath + "dta") Then F.DeleteFile (vPath + "dta")
         
-        hbf.OpenFile vPath & "dta"
+        hbf.OpenFile vPath & "dta", True
         hbf.WriteBytes wData()
         hbf.CloseFile
 
