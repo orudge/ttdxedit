@@ -137,7 +137,7 @@ Begin VB.Form frmSelectGame
       ToolTips        =   3
       UnderlinedItems =   0
       UseMinColumnWidths=   0   'False
-      UseSystemFont   =   -1  'True
+      UseSystemFont   =   0   'False
       UseWorkAreas    =   0   'False
       View            =   3
       VirtualMode     =   0   'False
@@ -208,7 +208,7 @@ Begin VB.Form frmSelectGame
       TabWidth        =   -1
       UseCustomFormattingRectangle=   0   'False
       UsePasswordChar =   0   'False
-      UseSystemFont   =   -1  'True
+      UseSystemFont   =   0   'False
       CueBanner       =   "frmSelectGame.frx":034A
       Text            =   "frmSelectGame.frx":036A
    End
@@ -282,7 +282,7 @@ Begin VB.Form frmSelectGame
       SortOrder       =   0
       SupportOLEDragImages=   -1  'True
       TreeViewStyle   =   3
-      UseSystemFont   =   -1  'True
+      UseSystemFont   =   0   'False
    End
    Begin VB.CheckBox chkHideTTD 
       Caption         =   "&Hide TTD Info"
