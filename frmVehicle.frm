@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{956B5A46-C53F-45A7-AF0E-EC2E1CC9B567}#1.5#0"; "TrackBarCtlU.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
 Begin VB.Form frmVehicle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Vehicles"
@@ -8,6 +8,15 @@ Begin VB.Form frmVehicle
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   6975
+   BeginProperty Font 
+      Name            =   "Microsoft Sans Serif"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    Icon            =   "frmVehicle.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
@@ -18,15 +27,6 @@ Begin VB.Form frmVehicle
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmDta 
       Caption         =   "General"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   615
       Index           =   2
       Left            =   3750
@@ -35,15 +35,6 @@ Begin VB.Form frmVehicle
       Width           =   3135
       Begin VB.TextBox txtVal 
          Alignment       =   1  'Right Justify
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   1680
          TabIndex        =   20
@@ -52,15 +43,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label Label4 
          Caption         =   "Value (£):"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   21
@@ -70,15 +52,6 @@ Begin VB.Form frmVehicle
    End
    Begin VB.Frame frmDta 
       Caption         =   "Engine Related"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   1815
       Index           =   1
       Left            =   3750
@@ -127,15 +100,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.TextBox txtAge 
          Alignment       =   1  'Right Justify
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   1680
          TabIndex        =   16
@@ -144,15 +108,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.TextBox txtAgeMax 
          Alignment       =   1  'Right Justify
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   1680
          TabIndex        =   15
@@ -201,15 +156,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label Label2 
          Caption         =   "Age (Days):"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   18
@@ -218,15 +164,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label Label3 
          Caption         =   "Max Age (Days):"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   17
@@ -235,15 +172,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label labRel 
          Caption         =   "Reliability"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   13
@@ -253,15 +181,6 @@ Begin VB.Form frmVehicle
    End
    Begin VB.Frame Frame1 
       Caption         =   "Owner"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   615
       Left            =   5280
       TabIndex        =   6
@@ -269,15 +188,6 @@ Begin VB.Form frmVehicle
       Width           =   1575
       Begin VB.ComboBox cmbOwner 
          Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
@@ -288,15 +198,6 @@ Begin VB.Form frmVehicle
    End
    Begin VB.Frame frmDta 
       Caption         =   "Cargo"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   1815
       Index           =   0
       Left            =   3750
@@ -304,15 +205,6 @@ Begin VB.Form frmVehicle
       Top             =   3360
       Width           =   3135
       Begin VB.ComboBox cmbCargo 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
@@ -362,15 +254,6 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label Label1 
          Caption         =   "Liquid cargos are multiplied by 100 in TTD, 1000 in TTDPatch."
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   435
          Left            =   120
          TabIndex        =   10
@@ -379,6 +262,15 @@ Begin VB.Form frmVehicle
       End
       Begin VB.Label labCMax 
          Caption         =   "Max"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   9
@@ -388,23 +280,45 @@ Begin VB.Form frmVehicle
    End
    Begin VB.Frame Frame2 
       Caption         =   "Active Vehicles"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   5175
       Left            =   120
       TabIndex        =   0
       Top             =   0
       Width           =   3615
-      Begin VB.ComboBox cmbShowC 
-         BeginProperty Font 
-            Name            =   "Tahoma"
+      Begin ExTVwLibUCtl.ExplorerTreeView tvVeh 
+         Height          =   4455
+         Left            =   120
+         TabIndex        =   3
+         Top             =   600
+         Width           =   3375
+         _cx             =   5953
+         _cy             =   7858
+         AllowDragDrop   =   -1  'True
+         AllowLabelEditing=   0   'False
+         AlwaysShowSelection=   -1  'True
+         Appearance      =   1
+         AutoHScroll     =   -1  'True
+         AutoHScrollPixelsPerSecond=   150
+         AutoHScrollRedrawInterval=   15
+         BackColor       =   -2147483643
+         BlendSelectedItemsIcons=   0   'False
+         BorderStyle     =   0
+         BuiltInStateImages=   0
+         CaretChangedDelayTime=   500
+         DisabledEvents  =   263167
+         DontRedraw      =   0   'False
+         DragExpandTime  =   -1
+         DragScrollTimeBase=   -1
+         DrawImagesAsynchronously=   0   'False
+         EditBackColor   =   -2147483643
+         EditForeColor   =   -2147483640
+         EditHoverTime   =   -1
+         EditIMEMode     =   -1
+         Enabled         =   -1  'True
+         FadeExpandos    =   0   'False
+         FavoritesStyle  =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -412,6 +326,38 @@ Begin VB.Form frmVehicle
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   -2147483640
+         FullRowSelect   =   0   'False
+         GroupBoxColor   =   -2147483632
+         HotTracking     =   0
+         HoverTime       =   -1
+         IMEMode         =   -1
+         Indent          =   16
+         IndentStateImages=   -1  'True
+         InsertMarkColor =   0
+         ItemBoundingBoxDefinition=   94
+         ItemHeight      =   17
+         ItemXBorder     =   3
+         ItemYBorder     =   0
+         LineColor       =   -2147483632
+         LineStyle       =   1
+         MaxScrollTime   =   100
+         MousePointer    =   0
+         OLEDragImageStyle=   0
+         ProcessContextMenuKeys=   -1  'True
+         RegisterForOLEDragDrop=   0   'False
+         RichToolTips    =   0   'False
+         RightToLeft     =   0
+         ScrollBars      =   2
+         ShowStateImages =   0   'False
+         ShowToolTips    =   -1  'True
+         SingleExpand    =   0
+         SortOrder       =   0
+         SupportOLEDragImages=   -1  'True
+         TreeViewStyle   =   3
+         UseSystemFont   =   0   'False
+      End
+      Begin VB.ComboBox cmbShowC 
          Height          =   315
          Left            =   2160
          Style           =   2  'Dropdown List
@@ -420,47 +366,12 @@ Begin VB.Form frmVehicle
          Width           =   1335
       End
       Begin VB.ComboBox cmbShowO 
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
          TabIndex        =   1
          Top             =   240
          Width           =   1575
-      End
-      Begin MSComctlLib.TreeView tvVeh 
-         Height          =   4455
-         Left            =   120
-         TabIndex        =   3
-         Top             =   600
-         Width           =   3375
-         _ExtentX        =   5953
-         _ExtentY        =   7858
-         _Version        =   393217
-         Indentation     =   441
-         LabelEdit       =   1
-         LineStyle       =   1
-         Sorted          =   -1  'True
-         Style           =   6
-         FullRowSelect   =   -1  'True
-         Appearance      =   1
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
       End
    End
 End
@@ -538,11 +449,14 @@ Public Sub PrepSave()
 End Sub
 
 Private Sub ShowList()
-    Dim Wa As Long, Wb As Long, Wc As Integer, Wva As Node, Wva2 As Node
+    Dim Wa As Long, Wb As Long, Wc As Integer, Wva As TreeViewItem, Wva2 As TreeViewItem
     Dim OK As Boolean
     
     Screen.MousePointer = 11
-    tvVeh.Nodes.Clear
+    
+    tvVeh.TreeItems.RemoveAll
+    tvVeh.SortItems sobNone
+    
     If CurFile > " " Then
         Wb = (CLng(TTDXGeneralInfo.VehSize) * 850) - 1
         For Wa = 0 To Wb
@@ -565,13 +479,13 @@ Private Sub ShowList()
                     End If
                     
                     If OK = True Then
-                        Set Wva = tvVeh.Nodes.Add(, , "x" + Format(Wa, "00000"), CurItm.Name + " (" + Format(Wa + 1) + ")")
-                        Wva.Sorted = False
+                        Set Wva = tvVeh.TreeItems.Add(CurItm.Name + " (" + Format(Wa + 1) + ")", , , heNo, , , , Wa)
                         Set Wva2 = Wva
                         While CurItm.Next < &HFFFF&
                             CurItm = TTDXGetVeh(CurItm.Next)
                             'If CurItm.SubClass > 0 Then
-                                Set Wva2 = tvVeh.Nodes.Add(Wva.Index, 4, "x" + Format(CurItm.Number, "00000"), CurItm.Name + " (" + Format(CurItm.Number + 1) + ")")
+                                Set Wva2 = Wva.SubItems.Add(CurItm.Name + " (" + Format(CurItm.Number + 1) + ")", Wva, , heNo, , , , CurItm.Number)
+                                Wva.HasExpando = heYes
                             'Else
                                 'Wa = 1.23456789054646E+21
                             'End If
@@ -583,6 +497,10 @@ Private Sub ShowList()
             End If
         Next Wa
     End If
+    
+    tvVeh.SortOrder = soAscending
+    tvVeh.SortItems sobText
+    
     Screen.MousePointer = 0
 End Sub
 
@@ -628,10 +546,10 @@ Private Sub sliRel_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.Positi
     MarkGame 16
 End Sub
 
-Private Sub tvVeh_NodeClick(ByVal Node As MSComctlLib.Node)
+Private Sub tvVeh_CaretChanged(ByVal previousCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal newCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal caretChangeReason As ExTVwLibUCtl.CaretChangeCausedByConstants)
     Dim Wa As Integer, Wb As Long
     If CurItmNo > -1 Then TTDXPutVeh CurItm
-    Wb = Val(MID(Node.Key, 2))
+    Wb = newCaretItem.ItemData
     CurItm = TTDXGetVeh(Wb)
     CurItmNo = Wb
     For Wa = 0 To frmDta.UBound: frmDta(Wa).Enabled = True: Next Wa

@@ -32,3 +32,8 @@ Features in TTDEdit not in TTDX Editor:
 - remove treeview/sliders on frmvehicle, eliminate mscomctl.ocx
 
 add recently opened games
+
+- add game type thing to select games window
+
+- put full path to game in status bar, put game name in title bar
+- display errors as message boxes
