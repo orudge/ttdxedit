@@ -42,7 +42,7 @@ Begin VB.Form frmVehicle
          Width           =   1335
       End
       Begin VB.Label Label4 
-         Caption         =   "Value (£):"
+         Caption         =   "&Value (£):"
          Height          =   255
          Left            =   120
          TabIndex        =   21
@@ -61,7 +61,7 @@ Begin VB.Form frmVehicle
       Begin TrackBarCtlLibUCtl.TrackBar sliRel 
          Height          =   255
          Left            =   30
-         TabIndex        =   12
+         TabIndex        =   13
          Top             =   450
          Width           =   3075
          _cx             =   5424
@@ -110,7 +110,7 @@ Begin VB.Form frmVehicle
          Alignment       =   1  'Right Justify
          Height          =   285
          Left            =   1680
-         TabIndex        =   15
+         TabIndex        =   18
          Top             =   1440
          Width           =   1335
       End
@@ -155,15 +155,15 @@ Begin VB.Form frmVehicle
          ToolTipPosition =   2
       End
       Begin VB.Label Label2 
-         Caption         =   "Age (Days):"
+         Caption         =   "A&ge (Days):"
          Height          =   255
          Left            =   120
-         TabIndex        =   18
+         TabIndex        =   15
          Top             =   1110
          Width           =   1575
       End
       Begin VB.Label Label3 
-         Caption         =   "Max Age (Days):"
+         Caption         =   "&Max Age (Days):"
          Height          =   255
          Left            =   120
          TabIndex        =   17
@@ -171,10 +171,10 @@ Begin VB.Form frmVehicle
          Width           =   1575
       End
       Begin VB.Label labRel 
-         Caption         =   "Reliability"
+         Caption         =   "&Reliability:"
          Height          =   255
          Left            =   120
-         TabIndex        =   13
+         TabIndex        =   12
          Top             =   240
          Width           =   2775
       End
@@ -183,7 +183,7 @@ Begin VB.Form frmVehicle
       Caption         =   "Owner"
       Height          =   615
       Left            =   5280
-      TabIndex        =   6
+      TabIndex        =   4
       Top             =   0
       Width           =   1575
       Begin VB.ComboBox cmbOwner 
@@ -191,31 +191,31 @@ Begin VB.Form frmVehicle
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   7
+         TabIndex        =   5
          Top             =   240
          Width           =   1335
       End
    End
    Begin VB.Frame frmDta 
-      Caption         =   "Cargo"
+      Caption         =   "&Cargo"
       Height          =   1815
       Index           =   0
       Left            =   3750
-      TabIndex        =   4
+      TabIndex        =   6
       Top             =   3360
       Width           =   3135
       Begin VB.ComboBox cmbCargo 
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   5
+         TabIndex        =   7
          Top             =   240
          Width           =   2895
       End
       Begin TrackBarCtlLibUCtl.TrackBar sliMaxLoad 
          Height          =   255
          Left            =   30
-         TabIndex        =   8
+         TabIndex        =   9
          Top             =   840
          Width           =   3060
          _cx             =   5397
@@ -253,33 +253,26 @@ Begin VB.Form frmVehicle
          ToolTipPosition =   2
       End
       Begin VB.Label Label1 
+         AutoSize        =   -1  'True
          Caption         =   "Liquid cargos are multiplied by 100 in TTD, 1000 in TTDPatch."
-         Height          =   435
+         Height          =   390
          Left            =   120
          TabIndex        =   10
          Top             =   1320
          Width           =   2895
+         WordWrap        =   -1  'True
       End
       Begin VB.Label labCMax 
-         Caption         =   "Max"
-         BeginProperty Font 
-            Name            =   "Microsoft Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
+         Caption         =   "Ma&x:"
          Height          =   255
          Left            =   120
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   630
          Width           =   2415
       End
    End
    Begin VB.Frame Frame2 
-      Caption         =   "Active Vehicles"
+      Caption         =   "&Active Vehicles"
       Height          =   5175
       Left            =   120
       TabIndex        =   0
@@ -387,28 +380,28 @@ Private CurItm As TTDXVehicle, CurItmNo As Long, fInit As Boolean
 Implements ISubclassedWindow
 
 Private Sub Subclass()
-    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidCity) Then
+    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidCity) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the controls to negotiate the correct format with the form
-    SendMessageAsLong tvVeh.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
+    SendMessageAsLong tvVeh.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidVehicle Then
-        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
 End Function
 
-Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -558,7 +551,7 @@ Private Sub UpdateFields()
     sliMaxLoad.CurrentPosition = CurItm.CargoMax
     sliRdr.CurrentPosition = CurItm.RelDropRate
     sliRel.CurrentPosition = CurItm.Rel
-    If CurItm.SubClass <> 0 Then frmDta(1).Enabled = False
+    If CurItm.Subclass <> 0 Then frmDta(1).Enabled = False
     txtAge.Text = CStr(CurItm.Age)
     txtAgeMax.Text = CStr(CurItm.AgeMax)
     txtVal.Text = CStr(CurItm.Value)
@@ -566,7 +559,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
-    UnSubclassWindow Me.hWnd, EnumSubclassID.escidVehicle
+    UnSubclassWindow Me.hwnd, EnumSubclassID.escidVehicle
 End Sub
 
 Private Sub sliMaxLoad_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
@@ -577,13 +570,13 @@ End Sub
 
 Private Sub sliRdr_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
     CurItm.RelDropRate = newPosition
-    labRel.Caption = "Reliability: " + Format(Fix(sliRel.CurrentPosition / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
+    labRel.Caption = "&Reliability: " + Format(Fix(sliRel.CurrentPosition / 2.55)) + "%" + " Drop Rate " + Format(CurItm.RelDropRate)
     MarkGame 16
 End Sub
 
 Private Sub sliRel_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)
     CurItm.Rel = CByte(newPosition)
-    labRel.Caption = "Reliability: " + Format(Fix(newPosition / 2.55)) + "%" + " Droprate " + Format(CurItm.RelDropRate)
+    labRel.Caption = "&Reliability: " + Format(Fix(newPosition / 2.55)) + "%" + " Drop Rate " + Format(CurItm.RelDropRate)
     MarkGame 16
 End Sub
 

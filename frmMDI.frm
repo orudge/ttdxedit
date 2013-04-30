@@ -406,7 +406,7 @@ Begin VB.MDIForm frmMDI
       Begin VB.Menu mnImaxPro 
          Caption         =   "M&aximize Production"
          Begin VB.Menu mnMaxProAll 
-            Caption         =   "All"
+            Caption         =   "&All"
          End
          Begin VB.Menu mnSep4 
             Caption         =   "-"
@@ -419,7 +419,7 @@ Begin VB.MDIForm frmMDI
       Begin VB.Menu mnIminPro 
          Caption         =   "M&inimize Production"
          Begin VB.Menu mnMinProAll 
-            Caption         =   "All"
+            Caption         =   "&All"
          End
          Begin VB.Menu mnSep5 
             Caption         =   "-"
@@ -475,19 +475,19 @@ Private F As New FileSystemObject, CleanUp As Boolean
 Implements ISubclassedWindow
 
 Private Sub Subclass()
-    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidMain) Then
+    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidMain) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the control to negotiate the correct format with the form
-    SendMessageAsLong stBar.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
+    SendMessageAsLong stBar.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
 End Sub
 Sub CheckCurrencyItem(Item As Integer)
     On Error GoTo Error
     
     Dim MID As Long, TLMID As Long, SMID As Long
     
-    MID = GetMenu(hWnd)
+    MID = GetMenu(hwnd)
     TLMID = GetSubMenu(MID, 1)
     SMID = GetSubMenu(TLMID, 3)
     
@@ -538,7 +538,7 @@ End Sub
 
 
 
-Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -554,13 +554,13 @@ StdHandler_End:
     HandleMessage_Form = lRet
 End Function
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidMain Then
-        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
@@ -594,7 +594,7 @@ Private Sub MDIForm_Load()
     mnuOCCur_Click (Wa)
 End Sub
 
-Private Sub MDIForm_OLEDragDrop(Data As DataObject, Effect As Long, button As Integer, shift As Integer, x As Single, y As Single)
+Private Sub MDIForm_OLEDragDrop(Data As DataObject, Effect As Long, Button As Integer, shift As Integer, X As Single, Y As Single)
     Dim Wa As Long, Wsa As String
     
     If Data.GetFormat(15) Then
@@ -640,7 +640,7 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     If CleanUp Then Wa = fRecDeleteKey("HKCU", "Software\Owen Rudge", "TTDX Editor")
     If CleanUp Then Wa = fRecDeleteKey("HKLM", "Software\Owen Rudge", "TTDX Editor")
     
-    UnSubclassWindow Me.hWnd, EnumSubclassID.escidMain
+    UnSubclassWindow Me.hwnd, EnumSubclassID.escidMain
 End Sub
 
 Private Sub mnCedit_Click()
@@ -1103,8 +1103,8 @@ Private Sub SetMenus()
         mnIminPro.Enabled = True
         For Wa = 0 To 11
             If CargoTypes(Wa) > ">" Then
-                mnMaxPro(Wa).Visible = True: mnMaxPro(Wa).Caption = CargoTypes(Wa)
-                mnMinPro(Wa).Visible = True: mnMinPro(Wa).Caption = CargoTypes(Wa)
+                mnMaxPro(Wa).Visible = True: mnMaxPro(Wa).Caption = CargoTypesAccel(Wa)
+                mnMinPro(Wa).Visible = True: mnMinPro(Wa).Caption = CargoTypesAccel(Wa)
             Else
                 mnMaxPro(Wa).Visible = False
                 mnMinPro(Wa).Visible = False

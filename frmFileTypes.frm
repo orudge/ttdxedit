@@ -171,7 +171,7 @@ Begin VB.Form frmFileTypes
    End
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
-      Caption         =   "&Cancel"
+      Caption         =   "Cancel"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -461,7 +461,7 @@ Private Sub Form_Load()
     End If
 End Sub
 
-Private Sub lvTypes_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
+Private Sub lvTypes_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal Button As Integer, ByVal shift As Integer, ByVal X As Single, ByVal Y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
     If listItem Is Nothing Then
         Exit Sub
     End If

@@ -147,7 +147,7 @@ Begin VB.Form frmSelectGame
    Begin EditCtlsLibUCtl.TextBox txtSelected 
       Height          =   315
       Left            =   3195
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   3840
       Width           =   4095
       _cx             =   7223
@@ -332,7 +332,7 @@ Begin VB.Form frmSelectGame
       Caption         =   "&Filename:"
       Height          =   195
       Left            =   2460
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   3840
       Width           =   675
    End
@@ -669,16 +669,16 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 
-Private Sub imgSplitter_MouseDown(button As Integer, shift As Integer, x As Single, y As Single)
+Private Sub imgSplitter_MouseDown(Button As Integer, shift As Integer, X As Single, Y As Single)
     bResizing = True
 End Sub
 
 
-Private Sub imgSplitter_MouseMove(button As Integer, shift As Integer, x As Single, y As Single)
+Private Sub imgSplitter_MouseMove(Button As Integer, shift As Integer, X As Single, Y As Single)
     Dim Pos As Long
     
     If bResizing Then
-        Pos = x + imgSplitter.Left
+        Pos = X + imgSplitter.Left
         
         If Pos < 2055 Then
             Pos = 2055
@@ -691,13 +691,13 @@ Private Sub imgSplitter_MouseMove(button As Integer, shift As Integer, x As Sing
 End Sub
 
 
-Private Sub imgSplitter_MouseUp(button As Integer, shift As Integer, x As Single, y As Single)
+Private Sub imgSplitter_MouseUp(Button As Integer, shift As Integer, X As Single, Y As Single)
     SizeControls
     bResizing = False
 End Sub
 
 
-Private Sub lvFiles_ColumnClick(ByVal column As ExLVwLibUCtl.IListViewColumn, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HeaderHitTestConstants)
+Private Sub lvFiles_ColumnClick(ByVal column As ExLVwLibUCtl.IListViewColumn, ByVal Button As Integer, ByVal shift As Integer, ByVal X As Single, ByVal Y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HeaderHitTestConstants)
     If lvFiles.SortOrder = soAscending Then
         lvFiles.SortOrder = soDescending
     Else
@@ -707,7 +707,7 @@ Private Sub lvFiles_ColumnClick(ByVal column As ExLVwLibUCtl.IListViewColumn, By
     lvFiles.SortItems sobText, , , , , column
 End Sub
 
-Private Sub lvFiles_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
+Private Sub lvFiles_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal Button As Integer, ByVal shift As Integer, ByVal X As Single, ByVal Y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
     If Selected > " " Then
         cmdOK_Click
     End If

@@ -7,17 +7,17 @@ Private Declare Function GetUNIXTime Lib "TTDXHelp.dll" () As Long
 Declare Function CheckMenuRadioItem Lib "user32" (ByVal hMenu As Long, ByVal un1 As Long, ByVal un2 As Long, ByVal un3 As Long, ByVal un4 As Long) As Boolean
 Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
 Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal NPos As Long) As Long
-Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
+Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
 
 Declare Function ShellExecuteEx Lib "Shell32.dll" Alias "ShellExecuteExA" (lpSEI As SHELLEXECUTEINFO) As Long
-Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Declare Function ShellExecuteElevated Lib "elevate.dll" Alias "ShellExecuteElevatedA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Declare Function ShellExecuteExElevated Lib "elevate.dll" Alias "ShellExecuteExElevatedA" (lpSEI As SHELLEXECUTEINFO) As Long
 
 Declare Function GetVersionExA Lib "kernel32" (lpVersionInformation As OSVERSIONINFO) As Integer
 Declare Function WaitForSingleObject Lib "kernel32" (ByVal hHandle As Long, ByVal dwMilliseconds As Long) As Long
 Declare Function IsUserAnAdmin Lib "TTDXHelp.dll" () As Long
 
-Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Declare Function GetTempFileNameAPI Lib "kernel32" Alias "GetTempFileNameA" (ByVal lpszPath As String, ByVal lpPrefixString As String, ByVal wUnique As Long, ByVal lpTempFileName As String) As Long
 Declare Function GetTempPath Lib "kernel32" Alias "GetTempPathA" (ByVal nBufferLength As Long, ByVal lpBuffer As String) As Long
 
@@ -38,7 +38,7 @@ End Type
 Public Type SHELLEXECUTEINFO
     cbSize        As Long
     fMask         As Long
-    hWnd          As Long
+    hwnd          As Long
     lpVerb        As String
     lpFile        As String
     lpParameters  As String
@@ -67,8 +67,8 @@ Public Type TTDXgeneral
     VehSize As Byte
 End Type
 Public Type TTDXlandscape
-    x As Integer
-    y As Integer
+    X As Integer
+    Y As Integer
     Owner As Byte
     Object As Byte
     Height As Byte
@@ -107,8 +107,8 @@ Public Type TTDXplayer
 End Type
 Public Type TTDXIndInfo
     Number As Integer
-    x As Byte
-    y As Byte
+    X As Byte
+    Y As Byte
     W As Byte
     H As Byte
     Type As Byte
@@ -121,8 +121,8 @@ Public Type TTDXIndInfo
 End Type
 Public Type TTDXCitInfo
     Number As Integer
-    x As Byte
-    y As Byte
+    X As Byte
+    Y As Byte
     Population As Long
     CRate(7) As Long
     CRateE(7) As Boolean
@@ -167,7 +167,7 @@ End Type
 Public Type TTDXVehicle
     Number As Long
     Class As Byte
-    SubClass As Byte
+    Subclass As Byte
     Owner As Byte
     CargoT As Byte
     CargoMax As Long
@@ -185,7 +185,7 @@ Public Type TTDXVehicle
 End Type
 
 Public CurFile As String, FileChanged As Boolean
-Public CargoTypes(25) As String, IndustryTypes(50) As String
+Public CargoTypes(25) As String, CargoTypesAccel(25) As String, IndustryTypes(50) As String
 Public Cities(70) As String, Stations(250) As String
 
 Private F As New FileSystemObject
@@ -324,7 +324,7 @@ Public Sub RegisterSGMPluginStartup()
     
     RegisterSGMPlugin MajorVer, DllPath, SGMPath
 End Sub
-Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
+Public Function StartElevated(ByVal hwnd As Long, ByVal AppName As String, ByVal Params As String, ByVal WorkingDir As String, ByVal Show As Integer, ByVal Message As String) As Boolean
     On Error GoTo Error
     
     Dim sei As SHELLEXECUTEINFO
@@ -338,7 +338,7 @@ Public Function StartElevated(ByVal hWnd As Long, ByVal AppName As String, ByVal
     
     sei.cbSize = Len(sei)
     sei.fMask = SEE_MASK_NOCLOSEPROCESS
-    sei.hWnd = hWnd
+    sei.hwnd = hwnd
     sei.lpVerb = "open"
     sei.lpFile = AppName
     sei.lpParameters = Params
@@ -994,8 +994,8 @@ Public Function TTDXgetLandscape(Wx As Integer, Wy As Integer) As TTDXlandscape
     Woff = Wx + 256& * Wy
     If CurFile > " " Then
         With TTDXgetLandscape
-            .x = Wx
-            .y = Wy
+            .X = Wx
+            .Y = Wy
             .Owner = wData(&H4CBA + Woff)
             .Object = (wData(&H77179 + (wTTDPext - 1) * 108800 + Woff) And &HF0) / 16
             .Height = wData(&H77179 + (wTTDPext - 1) * 108800 + Woff) And &HF
@@ -1010,7 +1010,7 @@ End Function
 Public Sub TTDXputLandscape(wDta As TTDXlandscape)
     Dim Wa As Byte, Woff As Long
     With wDta
-        Woff = .x + 256& * .y
+        Woff = .X + 256& * .Y
         If .Owner <> wData(&H4CBA + Woff) Then FileChanged = True: wData(&H4CBA + Woff) = .Owner
         Wa = (.Object And &HF) * 16 + (.Height And &HF)
         If Wa <> wData(&H77179 + (wTTDPext - 1) * 108800 + Woff) Then FileChanged = True: wData(&H77179 + (wTTDPext - 1) * 108800 + Woff) = Wa
@@ -1043,8 +1043,8 @@ Public Function CityInfo(vCityNo As Integer) As TTDXCitInfo
     With CityInfo
         .Number = vCityNo
         .Offset = &H264 + &H5E * vCityNo
-        .x = CityData(vCityNo, 0)
-        .y = CityData(vCityNo, 1)
+        .X = CityData(vCityNo, 0)
+        .Y = CityData(vCityNo, 1)
         .Population = CityData(vCityNo, 2) + CityData(vCityNo, 3) * 256&
         .Name = Cities(vCityNo)
         For Wa = 0 To 7
@@ -1104,8 +1104,8 @@ Public Function TTDXIndustryInfo(vIndNo As Integer) As TTDXIndInfo
     '                                          1               2               3
     With TTDXIndustryInfo
         .Number = vIndNo
-        .x = TTDXIndustryData(vIndNo, 0)
-        .y = TTDXIndustryData(vIndNo, 1)
+        .X = TTDXIndustryData(vIndNo, 0)
+        .Y = TTDXIndustryData(vIndNo, 1)
         .W = TTDXIndustryData(vIndNo, 6)
         .H = TTDXIndustryData(vIndNo, 7)
         .HomeTown = CByte((((TTDXIndustryData(vIndNo, 2) + TTDXIndustryData(vIndNo, 3) * 256) - &H264) / &H5E) And &HFF)
@@ -1235,7 +1235,7 @@ Public Function TTDXGetVeh(wNo As Long) As TTDXVehicle
         'If .Class = 19 Then
             'MsgBox "aircraft"
         'End If
-        .SubClass = wData(sOff + 1)
+        .Subclass = wData(sOff + 1)
         .SpeedMax = wData(sOff + &H18) + wData(sOff + &H19) * 256&
         .Owner = wData(sOff + &H25)
         .CargoT = wData(sOff + &H39)
@@ -1251,7 +1251,7 @@ Public Function TTDXGetVeh(wNo As Long) As TTDXVehicle
         .Name = "Unknown"
         Select Case .Class
             Case &H10
-                Select Case .SubClass
+                Select Case .Subclass
                     Case 0
                         .Name = "Train " + Format(wData(sOff + &H45), "000")
                 End Select
@@ -1260,7 +1260,7 @@ Public Function TTDXGetVeh(wNo As Long) As TTDXVehicle
             Case &H12
                 .Name = "Ship " + Format(wData(sOff + &H45), "000")
             Case &H13
-                Select Case .SubClass
+                Select Case .Subclass
                     Case 0 ' copter
                         .Name = "Aircraft " + Format(wData(sOff + &H45), "000")
                     Case 2 ' plane
@@ -1435,7 +1435,7 @@ End Function
 '****************************************************************************************************
 
 Private Sub SetVars()
-    Dim Wva As Variant, Wsb As String, Wa As Integer, Wb As Integer, Woff As Long
+    Dim Wva As Variant, WvaA As Variant, Wsb As String, WsbA As String, Wa As Integer, Wb As Integer, Woff As Long
     '
     ' Cargo types
     '
@@ -1446,10 +1446,22 @@ Private Sub SetVars()
         Case 2: Wsb = "Passengers|Rubber|Mail|Oil|Fruit|Goods|Maize|Wood|Copper|Water|Diamonds|Food"
         Case 3: Wsb = "Passengers|Sugar|Mail|Toys|Batteries|Sweets|Toffee|Cola|Candyfloss|Bubbles|Plastics|Fizzy Drinks"
     End Select
+    
+    Select Case wClimate
+        Case 0: WsbA = "&Passengers|&Coal|&Mail|&Oil|&Livestock|&Goods|G&rain|&Wood|&Iron Ore|&Steel|&Valuables"
+        Case 1: WsbA = "&Passengers|&Coal|&Mail|&Oil|&Livestock|&Goods|W&heat|&Wood||P&aper|Gol&d|&Food"
+        Case 2: WsbA = "&Passengers|&Rubber|&Mail|&Oil|Frui&t|&Goods|Mai&ze|&Wood|&Copper|Wa&ter|&Diamonds|&Food"
+        Case 3: WsbA = "&Passengers|&Sugar|&Mail|&Toys|&Batteries|S&weets|To&ffee|Co&la|&Candyfloss|B&ubbles|Pl&astics|Fi&zzy Drinks"
+    End Select
+
     Wva = Split(Wsb, "|")
+    WvaA = Split(WsbA, "|")
     For Wa = 0 To UBound(CargoTypes): CargoTypes(Wa) = "<unknown " + Format(Wa) + ">": Next Wa
     For Wa = 0 To UBound(Wva)
-        If Trim(CStr(Wva(Wa))) > " " Then CargoTypes(Wa) = CStr(Wva(Wa))
+        If Trim(CStr(Wva(Wa))) > " " Then
+            CargoTypes(Wa) = CStr(Wva(Wa))
+            CargoTypesAccel(Wa) = CStr(WvaA(Wa))
+        End If
     Next Wa
     '
     ' Industry Types
@@ -1485,6 +1497,7 @@ Private Sub SetVars()
         End If
     Next Wa
 End Sub
+
 Private Function GetString(wNo As Long) As String
     Dim Wa As Long, Wb As Integer
     GetString = ""

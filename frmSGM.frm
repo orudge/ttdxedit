@@ -26,7 +26,7 @@ Begin VB.Form frmSGM
       EndProperty
       Height          =   855
       Left            =   120
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   1920
       Width           =   4575
       Begin VB.Label labC 
@@ -42,7 +42,7 @@ Begin VB.Form frmSGM
          EndProperty
          Height          =   495
          Left            =   120
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   240
          Width           =   4335
       End
@@ -60,7 +60,7 @@ Begin VB.Form frmSGM
       EndProperty
       Height          =   1815
       Left            =   120
-      TabIndex        =   2
+      TabIndex        =   0
       Top             =   0
       Width           =   4575
       Begin VB.Label LabSt2 
@@ -75,7 +75,7 @@ Begin VB.Form frmSGM
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   2
          Top             =   1440
          Width           =   4335
       End
@@ -91,7 +91,7 @@ Begin VB.Form frmSGM
          EndProperty
          Height          =   1095
          Left            =   120
-         TabIndex        =   3
+         TabIndex        =   1
          Top             =   240
          Width           =   4335
       End
@@ -111,13 +111,13 @@ Begin VB.Form frmSGM
       EndProperty
       Height          =   375
       Left            =   4800
-      TabIndex        =   1
+      TabIndex        =   5
       Top             =   1920
       Width           =   1575
    End
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
-      Caption         =   "&Cancel"
+      Caption         =   "Cancel"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -129,7 +129,7 @@ Begin VB.Form frmSGM
       EndProperty
       Height          =   375
       Left            =   4800
-      TabIndex        =   0
+      TabIndex        =   6
       Top             =   2400
       Width           =   1575
    End

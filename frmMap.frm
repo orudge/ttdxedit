@@ -1,14 +1,23 @@
 VERSION 5.00
 Begin VB.Form frmMap 
-   BorderStyle     =   4  'Fixed ToolWindow
+   BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Map"
    ClientHeight    =   8655
    ClientLeft      =   45
-   ClientTop       =   315
+   ClientTop       =   360
    ClientWidth     =   7845
-   ControlBox      =   0   'False
    FillColor       =   &H0000FF00&
+   BeginProperty Font 
+      Name            =   "Microsoft Sans Serif"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    ForeColor       =   &H0000C000&
+   Icon            =   "frmMap.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
@@ -24,6 +33,15 @@ Begin VB.Form frmMap
    End
    Begin VB.PictureBox picMap 
       AutoRedraw      =   -1  'True
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   6255
       Left            =   0
       MousePointer    =   2  'Cross
@@ -185,7 +203,7 @@ Private Sub Form_Load()
     UpdateInfo
 End Sub
 
-Private Sub picMap_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picMap_MouseMove(Button As Integer, shift As Integer, X As Single, Y As Single)
     Dim Wva As TTDXlandscape
     
     Wva = TTDXgetLandscape(254 - Fix(X / MapSize), Fix(Y / MapSize))

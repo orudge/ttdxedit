@@ -37,7 +37,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   0
          Left            =   840
-         TabIndex        =   17
+         TabIndex        =   8
          Top             =   240
          Width           =   2775
          _cx             =   4895
@@ -75,70 +75,70 @@ Begin VB.Form frmCity
          ToolTipPosition =   2
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 8"
+         Caption         =   "Pl. &8"
          Height          =   255
          Index           =   7
          Left            =   120
-         TabIndex        =   14
+         TabIndex        =   21
          Top             =   2760
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 7"
+         Caption         =   "Pl. &7"
          Height          =   255
          Index           =   6
          Left            =   120
-         TabIndex        =   13
+         TabIndex        =   19
          Top             =   2400
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 6"
+         Caption         =   "Pl. &6"
          Height          =   255
          Index           =   5
          Left            =   120
-         TabIndex        =   12
+         TabIndex        =   17
          Top             =   2040
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 5"
+         Caption         =   "Pl. &5"
          Height          =   255
          Index           =   4
          Left            =   120
-         TabIndex        =   11
+         TabIndex        =   15
          Top             =   1680
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 4"
+         Caption         =   "Pl. &4"
          Height          =   255
          Index           =   3
          Left            =   120
-         TabIndex        =   10
+         TabIndex        =   13
          Top             =   1320
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 3"
+         Caption         =   "Pl. &3"
          Height          =   255
          Index           =   2
          Left            =   120
-         TabIndex        =   9
+         TabIndex        =   11
          Top             =   960
          Width           =   735
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 2"
+         Caption         =   "Pl. &2"
          Height          =   255
          Index           =   1
          Left            =   120
-         TabIndex        =   8
+         TabIndex        =   9
          Top             =   600
          Width           =   615
       End
       Begin VB.CheckBox chkRatE 
-         Caption         =   "Pl. 1"
+         Caption         =   "Pl. &1"
          Height          =   255
          Index           =   0
          Left            =   120
@@ -150,7 +150,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   1
          Left            =   840
-         TabIndex        =   19
+         TabIndex        =   10
          Top             =   600
          Width           =   2775
          _cx             =   4895
@@ -191,7 +191,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   2
          Left            =   840
-         TabIndex        =   20
+         TabIndex        =   12
          Top             =   960
          Width           =   2775
          _cx             =   4895
@@ -232,7 +232,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   3
          Left            =   840
-         TabIndex        =   21
+         TabIndex        =   14
          Top             =   1320
          Width           =   2775
          _cx             =   4895
@@ -273,7 +273,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   4
          Left            =   840
-         TabIndex        =   22
+         TabIndex        =   16
          Top             =   1680
          Width           =   2775
          _cx             =   4895
@@ -314,7 +314,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   5
          Left            =   840
-         TabIndex        =   23
+         TabIndex        =   18
          Top             =   2040
          Width           =   2775
          _cx             =   4895
@@ -355,7 +355,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   6
          Left            =   840
-         TabIndex        =   24
+         TabIndex        =   20
          Top             =   2400
          Width           =   2775
          _cx             =   4895
@@ -396,7 +396,7 @@ Begin VB.Form frmCity
          Height          =   255
          Index           =   7
          Left            =   840
-         TabIndex        =   18
+         TabIndex        =   22
          Top             =   2760
          Width           =   2775
          _cx             =   4895
@@ -439,7 +439,7 @@ Begin VB.Form frmCity
       Height          =   615
       Index           =   2
       Left            =   5520
-      TabIndex        =   15
+      TabIndex        =   23
       Top             =   120
       Width           =   1935
       Begin VB.TextBox txtPop 
@@ -447,7 +447,7 @@ Begin VB.Form frmCity
          Enabled         =   0   'False
          Height          =   285
          Left            =   120
-         TabIndex        =   16
+         TabIndex        =   24
          Top             =   240
          Width           =   1695
       End
@@ -465,7 +465,7 @@ Begin VB.Form frmCity
          Enabled         =   0   'False
          Height          =   285
          Left            =   360
-         TabIndex        =   3
+         TabIndex        =   2
          Top             =   240
          Width           =   495
       End
@@ -474,7 +474,7 @@ Begin VB.Form frmCity
          Enabled         =   0   'False
          Height          =   285
          Left            =   1200
-         TabIndex        =   2
+         TabIndex        =   3
          Top             =   240
          Width           =   495
       End
@@ -482,7 +482,7 @@ Begin VB.Form frmCity
          Caption         =   "X:"
          Height          =   255
          Left            =   120
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   285
          Width           =   255
       End
@@ -490,7 +490,7 @@ Begin VB.Form frmCity
          Caption         =   "Y:"
          Height          =   255
          Left            =   960
-         TabIndex        =   4
+         TabIndex        =   5
          Top             =   285
          Width           =   255
       End
@@ -547,7 +547,7 @@ Public Sub UpdateInfo()
     If CurFile > " " Then
         For Wa = 0 To 69
             CurItm = CityInfo(Wa)
-            If CInt(CurItm.x) + CInt(CurItm.y) > 0& Then
+            If CInt(CurItm.X) + CInt(CurItm.Y) > 0& Then
                 lstCities.AddItem CurItm.Name + " (" + Format(Wa, "00") + ") "
                 lstCities.ItemData(lstCities.NewIndex) = Wa
             End If
@@ -613,8 +613,8 @@ Private Sub lstCities_Click()
 End Sub
 Private Sub UpdateFields()
     Dim Wa As Integer
-    txtX.Text = CStr(CurItm.x)
-    txtY.Text = CStr(CurItm.y)
+    txtX.Text = CStr(CurItm.X)
+    txtY.Text = CStr(CurItm.Y)
     txtPop.Text = CStr(CurItm.Population)
     For Wa = 0 To 7
         If CurItm.CRateE(Wa) Then chkRatE(Wa).Value = 1 Else: chkRatE(Wa).Value = 0
@@ -622,7 +622,7 @@ Private Sub UpdateFields()
     Next Wa
     
     frmTechInfo.ShowInfo 2, CurItm.Name, CurItm.Offset
-    frmMap.SetHighlight CInt(CurItm.x), CInt(CurItm.y)
+    frmMap.SetHighlight CInt(CurItm.X), CInt(CurItm.Y)
 End Sub
 
 

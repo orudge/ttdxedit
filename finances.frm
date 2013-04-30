@@ -28,7 +28,7 @@ Begin VB.Form frmFinances
       ItemData        =   "finances.frx":0442
       Left            =   120
       List            =   "finances.frx":0444
-      TabIndex        =   6
+      TabIndex        =   1
       Top             =   360
       Width           =   1335
    End
@@ -568,7 +568,7 @@ Begin VB.Form frmFinances
       EndProperty
       Height          =   195
       Left            =   3360
-      TabIndex        =   5
+      TabIndex        =   6
       Top             =   480
       Width           =   45
    End
@@ -586,7 +586,7 @@ Begin VB.Form frmFinances
       EndProperty
       Height          =   195
       Left            =   7800
-      TabIndex        =   4
+      TabIndex        =   5
       Top             =   120
       Width           =   780
    End
@@ -604,7 +604,7 @@ Begin VB.Form frmFinances
       EndProperty
       Height          =   195
       Left            =   5520
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   120
       Width           =   795
    End
@@ -622,7 +622,7 @@ Begin VB.Form frmFinances
       EndProperty
       Height          =   195
       Left            =   3360
-      TabIndex        =   2
+      TabIndex        =   3
       Top             =   120
       Width           =   1245
    End
@@ -640,13 +640,13 @@ Begin VB.Form frmFinances
       EndProperty
       Height          =   195
       Left            =   1560
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   480
       Width           =   1125
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblPlayer 
       AutoSize        =   -1  'True
-      Caption         =   "Player:"
+      Caption         =   "&Player:"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -660,7 +660,7 @@ Begin VB.Form frmFinances
       Left            =   120
       TabIndex        =   0
       Top             =   120
-      Width           =   510
+      Width           =   480
    End
 End
 Attribute VB_Name = "frmFinances"

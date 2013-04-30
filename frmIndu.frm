@@ -15,7 +15,7 @@ Begin VB.Form frmIndu
    ScaleWidth      =   7425
    ShowInTaskbar   =   0   'False
    Begin VB.Frame FrmDta 
-      Caption         =   "HomeTown"
+      Caption         =   "Home &Town"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -28,7 +28,7 @@ Begin VB.Form frmIndu
       Height          =   615
       Index           =   2
       Left            =   5520
-      TabIndex        =   15
+      TabIndex        =   18
       Top             =   840
       Width           =   1815
       Begin VB.ComboBox cmbTown 
@@ -45,13 +45,13 @@ Begin VB.Form frmIndu
          Left            =   120
          Sorted          =   -1  'True
          Style           =   2  'Dropdown List
-         TabIndex        =   16
+         TabIndex        =   19
          Top             =   240
          Width           =   1575
       End
    End
    Begin VB.Frame FrmDta 
-      Caption         =   "Accepts"
+      Caption         =   "&Accepts"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -64,7 +64,7 @@ Begin VB.Form frmIndu
       Height          =   1455
       Index           =   3
       Left            =   3600
-      TabIndex        =   18
+      TabIndex        =   14
       Top             =   840
       Width           =   1815
       Begin VB.ComboBox cmbDel 
@@ -81,7 +81,7 @@ Begin VB.Form frmIndu
          Index           =   2
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   21
+         TabIndex        =   17
          Top             =   960
          Width           =   1575
       End
@@ -99,7 +99,7 @@ Begin VB.Form frmIndu
          Index           =   1
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   20
+         TabIndex        =   16
          Top             =   600
          Width           =   1575
       End
@@ -117,13 +117,13 @@ Begin VB.Form frmIndu
          Index           =   0
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   19
+         TabIndex        =   15
          Top             =   240
          Width           =   1575
       End
    End
    Begin VB.Frame FrmDta 
-      Caption         =   "Production Type And Rate"
+      Caption         =   "&Production Type And Rate"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -136,7 +136,7 @@ Begin VB.Form frmIndu
       Height          =   2055
       Index           =   4
       Left            =   3600
-      TabIndex        =   10
+      TabIndex        =   20
       Top             =   2400
       Width           =   3615
       Begin VB.TextBox txtProR 
@@ -153,7 +153,7 @@ Begin VB.Form frmIndu
          Height          =   315
          Index           =   1
          Left            =   1920
-         TabIndex        =   14
+         TabIndex        =   25
          Top             =   600
          Width           =   495
       End
@@ -171,7 +171,7 @@ Begin VB.Form frmIndu
          Height          =   315
          Index           =   0
          Left            =   1920
-         TabIndex        =   13
+         TabIndex        =   22
          Top             =   240
          Width           =   495
       End
@@ -189,7 +189,7 @@ Begin VB.Form frmIndu
          Index           =   1
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   12
+         TabIndex        =   24
          Top             =   600
          Width           =   1695
       End
@@ -207,7 +207,7 @@ Begin VB.Form frmIndu
          Index           =   0
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   11
+         TabIndex        =   21
          Top             =   240
          Width           =   1695
       End
@@ -224,7 +224,7 @@ Begin VB.Form frmIndu
          Height          =   255
          Index           =   1
          Left            =   2520
-         TabIndex        =   27
+         TabIndex        =   26
          Top             =   600
          Width           =   975
       End
@@ -241,7 +241,7 @@ Begin VB.Form frmIndu
          Height          =   255
          Index           =   0
          Left            =   2520
-         TabIndex        =   26
+         TabIndex        =   23
          Top             =   240
          Width           =   975
       End
@@ -258,7 +258,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   975
          Left            =   120
-         TabIndex        =   17
+         TabIndex        =   27
          Top             =   960
          Width           =   3375
       End
@@ -277,7 +277,7 @@ Begin VB.Form frmIndu
       Height          =   615
       Index           =   1
       Left            =   5520
-      TabIndex        =   3
+      TabIndex        =   9
       Top             =   120
       Width           =   1815
       Begin VB.TextBox txtH 
@@ -294,7 +294,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   285
          Left            =   1200
-         TabIndex        =   5
+         TabIndex        =   11
          Top             =   240
          Width           =   495
       End
@@ -312,7 +312,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   285
          Left            =   360
-         TabIndex        =   4
+         TabIndex        =   10
          Top             =   240
          Width           =   495
       End
@@ -329,7 +329,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   255
          Left            =   960
-         TabIndex        =   9
+         TabIndex        =   13
          Top             =   285
          Width           =   255
       End
@@ -346,7 +346,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   8
+         TabIndex        =   12
          Top             =   285
          Width           =   255
       End
@@ -365,7 +365,7 @@ Begin VB.Form frmIndu
       Height          =   615
       Index           =   0
       Left            =   3600
-      TabIndex        =   0
+      TabIndex        =   4
       Top             =   120
       Width           =   1815
       Begin VB.TextBox txtY 
@@ -382,7 +382,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   285
          Left            =   1200
-         TabIndex        =   2
+         TabIndex        =   6
          Top             =   240
          Width           =   495
       End
@@ -400,7 +400,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   285
          Left            =   360
-         TabIndex        =   1
+         TabIndex        =   5
          Top             =   240
          Width           =   495
       End
@@ -417,7 +417,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   255
          Left            =   960
-         TabIndex        =   7
+         TabIndex        =   8
          Top             =   285
          Width           =   255
       End
@@ -434,13 +434,13 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   7
          Top             =   285
          Width           =   255
       End
    End
    Begin VB.Frame Frame2 
-      Caption         =   "Active Industries"
+      Caption         =   "Active &Industries"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -452,7 +452,7 @@ Begin VB.Form frmIndu
       EndProperty
       Height          =   4335
       Left            =   120
-      TabIndex        =   22
+      TabIndex        =   0
       Top             =   120
       Width           =   3375
       Begin VB.ComboBox cmbShowT 
@@ -468,7 +468,7 @@ Begin VB.Form frmIndu
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   25
+         TabIndex        =   1
          Top             =   240
          Width           =   1575
       End
@@ -486,7 +486,7 @@ Begin VB.Form frmIndu
          Left            =   1680
          Sorted          =   -1  'True
          Style           =   2  'Dropdown List
-         TabIndex        =   24
+         TabIndex        =   2
          Top             =   240
          Width           =   1575
       End
@@ -502,7 +502,7 @@ Begin VB.Form frmIndu
          EndProperty
          Height          =   3570
          Left            =   120
-         TabIndex        =   23
+         TabIndex        =   3
          Top             =   600
          Width           =   3135
       End

@@ -3,7 +3,7 @@ Object = "{956B5A46-C53F-45A7-AF0E-EC2E1CC9B567}#1.5#0"; "TrackBarCtlU.ocx"
 Begin VB.Form frmStation 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Stations"
-   ClientHeight    =   5775
+   ClientHeight    =   5865
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   7215
@@ -13,7 +13,7 @@ Begin VB.Form frmStation
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   5775
+   ScaleHeight     =   5865
    ScaleWidth      =   7215
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmDta 
@@ -26,14 +26,14 @@ Begin VB.Form frmStation
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   615
+      Height          =   735
       Index           =   3
       Left            =   3480
-      TabIndex        =   15
+      TabIndex        =   16
       Top             =   5040
       Width           =   3615
       Begin VB.CommandButton cmdRemStop 
-         Caption         =   "Add Rem. Part"
+         Caption         =   "Add &Rem. Part"
          BeginProperty Font 
             Name            =   "Microsoft Sans Serif"
             Size            =   8.25
@@ -43,14 +43,14 @@ Begin VB.Form frmStation
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   255
-         Left            =   1440
+         Height          =   375
+         Left            =   1560
          TabIndex        =   17
          Top             =   240
          Width           =   1335
       End
       Begin VB.CommandButton cmdAddHouse 
-         Caption         =   "Add Buildings"
+         Caption         =   "Add &Buildings"
          BeginProperty Font 
             Name            =   "Microsoft Sans Serif"
             Size            =   8.25
@@ -60,15 +60,15 @@ Begin VB.Form frmStation
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   255
+         Height          =   375
          Left            =   120
-         TabIndex        =   16
+         TabIndex        =   18
          Top             =   240
          Width           =   1335
       End
    End
    Begin VB.Frame Frame2 
-      Caption         =   "Stations"
+      Caption         =   "&Stations"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -78,9 +78,9 @@ Begin VB.Form frmStation
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   5535
+      Height          =   5655
       Left            =   0
-      TabIndex        =   12
+      TabIndex        =   0
       Top             =   120
       Width           =   3375
       Begin VB.ListBox lstStation 
@@ -93,10 +93,10 @@ Begin VB.Form frmStation
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   4740
+         Height          =   4935
          Left            =   120
          Sorted          =   -1  'True
-         TabIndex        =   14
+         TabIndex        =   2
          Top             =   600
          Width           =   3135
       End
@@ -113,7 +113,7 @@ Begin VB.Form frmStation
          Height          =   315
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   13
+         TabIndex        =   1
          Top             =   240
          Width           =   1575
       End
@@ -132,7 +132,7 @@ Begin VB.Form frmStation
       Height          =   615
       Index           =   2
       Left            =   5280
-      TabIndex        =   10
+      TabIndex        =   14
       Top             =   120
       Width           =   1815
       Begin VB.TextBox txtOwner 
@@ -148,13 +148,13 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   285
          Left            =   120
-         TabIndex        =   11
+         TabIndex        =   15
          Top             =   240
          Width           =   1575
       End
    End
    Begin VB.Frame frmDta 
-      Caption         =   "Cargo"
+      Caption         =   "&Cargo"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -167,14 +167,14 @@ Begin VB.Form frmStation
       Height          =   4095
       Index           =   1
       Left            =   3480
-      TabIndex        =   5
+      TabIndex        =   8
       Top             =   840
       Width           =   3615
       Begin TrackBarCtlLibUCtl.TrackBar sliCrate 
          Height          =   255
          Index           =   0
          Left            =   1440
-         TabIndex        =   18
+         TabIndex        =   11
          Top             =   360
          Width           =   1200
          _cx             =   2117
@@ -225,7 +225,7 @@ Begin VB.Form frmStation
          Height          =   285
          Index           =   0
          Left            =   2640
-         TabIndex        =   7
+         TabIndex        =   13
          Top             =   360
          Width           =   855
       End
@@ -243,7 +243,7 @@ Begin VB.Form frmStation
          Height          =   255
          Index           =   0
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   12
          Top             =   375
          Width           =   1335
       End
@@ -260,7 +260,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   2640
-         TabIndex        =   9
+         TabIndex        =   10
          Top             =   120
          Width           =   855
       End
@@ -277,7 +277,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   1560
-         TabIndex        =   8
+         TabIndex        =   9
          Top             =   120
          Width           =   615
       End
@@ -296,7 +296,7 @@ Begin VB.Form frmStation
       Height          =   615
       Index           =   0
       Left            =   3480
-      TabIndex        =   0
+      TabIndex        =   3
       Top             =   120
       Width           =   1815
       Begin VB.TextBox txtX 
@@ -313,7 +313,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   285
          Left            =   360
-         TabIndex        =   2
+         TabIndex        =   4
          Top             =   240
          Width           =   495
       End
@@ -331,7 +331,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   285
          Left            =   1200
-         TabIndex        =   1
+         TabIndex        =   5
          Top             =   240
          Width           =   495
       End
@@ -348,7 +348,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   4
+         TabIndex        =   6
          Top             =   285
          Width           =   255
       End
@@ -365,7 +365,7 @@ Begin VB.Form frmStation
          EndProperty
          Height          =   255
          Left            =   960
-         TabIndex        =   3
+         TabIndex        =   7
          Top             =   285
          Width           =   255
       End
@@ -384,7 +384,7 @@ Implements ISubclassedWindow
 Private Sub Subclass()
     Dim i As Integer
     
-    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidStation) Then
+    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidStation) Then
         Debug.Print "Subclassing failed!"
     End If
     
@@ -394,20 +394,20 @@ Private Sub Subclass()
     Next i
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidCity Then
-        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
 End Function
 
-Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -447,7 +447,7 @@ Public Sub UpdateInfo()
                 txtCam(Wa).Top = Wb - 15: txtCam(Wa).Visible = True
                 chkChasrate(Wa).Top = Wb: Wb = Wb + 300
                 chkChasrate(Wa).Visible = True
-                chkChasrate(Wa).Caption = CargoTypes(Wa)
+                chkChasrate(Wa).Caption = CargoTypesAccel(Wa)
                 chkChasrate(Wa).Value = 0:  sliCrate(Wa).CurrentPosition = 0: txtCam(Wa).Text = ""
             Else
                 sliCrate(Wa).Visible = False
@@ -653,7 +653,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
-    UnSubclassWindow Me.hWnd, EnumSubclassID.escidStation
+    UnSubclassWindow Me.hwnd, EnumSubclassID.escidStation
 End Sub
 
 Private Sub lstStation_Click()

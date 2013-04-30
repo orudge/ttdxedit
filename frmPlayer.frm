@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmPlayer 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Players"
-   ClientHeight    =   2235
+   ClientHeight    =   2430
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   4695
@@ -11,7 +11,7 @@ Begin VB.Form frmPlayer
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   2235
+   ScaleHeight     =   2430
    ScaleWidth      =   4695
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmDta 
@@ -25,14 +25,14 @@ Begin VB.Form frmPlayer
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   615
+      Height          =   735
       Index           =   2
       Left            =   2760
       TabIndex        =   5
       Top             =   1560
       Width           =   1815
       Begin VB.CommandButton cmdRemHQ 
-         Caption         =   "Remove HQ"
+         Caption         =   "Remove &HQ"
          BeginProperty Font 
             Name            =   "Microsoft Sans Serif"
             Size            =   8.25
@@ -42,7 +42,7 @@ Begin VB.Form frmPlayer
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   255
+         Height          =   375
          Left            =   120
          TabIndex        =   6
          Top             =   240
@@ -50,7 +50,7 @@ Begin VB.Form frmPlayer
       End
    End
    Begin VB.Frame frmDta 
-      Caption         =   "Debt (£)"
+      Caption         =   "&Loan (£)"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -85,7 +85,7 @@ Begin VB.Form frmPlayer
       End
    End
    Begin VB.Frame frmDta 
-      Caption         =   "Money (£)"
+      Caption         =   "&Money (£)"
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
          Size            =   8.25
@@ -129,7 +129,7 @@ Begin VB.Form frmPlayer
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   2010
+      Height          =   2205
       Left            =   120
       TabIndex        =   0
       Top             =   120
