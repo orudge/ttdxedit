@@ -1,7 +1,7 @@
 VERSION 5.00
+Object = "{9FC6639B-4237-4FB5-93B8-24049D39DF74}#1.5#0"; "ExLvwU.ocx"
 Object = "{1F9B9092-BEE4-4CAF-9C7B-9384AF087C63}#1.4#0"; "ShBrowserCtlsU.ocx"
 Object = "{1F8F0FE7-2CFB-4466-A2BC-ABB441ADEDD5}#2.3#0"; "ExTvwU.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Object = "{A8F9B8E7-E699-4FCE-A647-72C877F8E632}#1.8#0"; "EditCtlsU.ocx"
 Begin VB.Form frmSelectGame 
    Caption         =   "Open Game"
@@ -25,6 +25,125 @@ Begin VB.Form frmSelectGame
    ScaleHeight     =   4770
    ScaleWidth      =   10545
    StartUpPosition =   1  'CenterOwner
+   Begin ExLVwLibUCtl.ExplorerListView lvFiles 
+      Height          =   3735
+      Left            =   3195
+      TabIndex        =   1
+      Top             =   0
+      Width           =   7215
+      _cx             =   12726
+      _cy             =   6588
+      AbsoluteBkImagePosition=   0   'False
+      AllowHeaderDragDrop=   -1  'True
+      AllowLabelEditing=   -1  'True
+      AlwaysShowSelection=   -1  'True
+      Appearance      =   1
+      AutoArrangeItems=   0
+      AutoSizeColumns =   0   'False
+      BackColor       =   -2147483643
+      BackgroundDrawMode=   0
+      BkImagePositionX=   0
+      BkImagePositionY=   0
+      BkImageStyle    =   2
+      BlendSelectionLasso=   -1  'True
+      BorderSelect    =   0   'False
+      BorderStyle     =   0
+      CallBackMask    =   0
+      CheckItemOnSelect=   0   'False
+      ClickableColumnHeaders=   -1  'True
+      ColumnHeaderVisibility=   1
+      DisabledEvents  =   3144701
+      DontRedraw      =   0   'False
+      DragScrollTimeBase=   -1
+      DrawImagesAsynchronously=   0   'False
+      EditBackColor   =   -2147483643
+      EditForeColor   =   -2147483640
+      EditHoverTime   =   -1
+      EditIMEMode     =   -1
+      EmptyMarkupTextAlignment=   1
+      Enabled         =   -1  'True
+      FilterChangedTimeout=   -1
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      FullRowSelect   =   2
+      GridLines       =   0   'False
+      GroupFooterForeColor=   -2147483640
+      GroupHeaderForeColor=   -2147483640
+      GroupMarginBottom=   0
+      GroupMarginLeft =   0
+      GroupMarginRight=   0
+      GroupMarginTop  =   12
+      GroupSortOrder  =   0
+      HeaderFullDragging=   -1  'True
+      HeaderHotTracking=   0   'False
+      HeaderHoverTime =   -1
+      HeaderOLEDragImageStyle=   0
+      HideLabels      =   0   'False
+      HotForeColor    =   -1
+      HotMousePointer =   0
+      HotTracking     =   0   'False
+      HotTrackingHoverTime=   -1
+      HoverTime       =   -1
+      IMEMode         =   -1
+      IncludeHeaderInTabOrder=   0   'False
+      InsertMarkColor =   0
+      ItemActivationMode=   2
+      ItemAlignment   =   0
+      ItemBoundingBoxDefinition=   70
+      ItemHeight      =   17
+      JustifyIconColumns=   0   'False
+      LabelWrap       =   -1  'True
+      MinItemRowsVisibleInGroups=   0
+      MousePointer    =   0
+      MultiSelect     =   -1  'True
+      OLEDragImageStyle=   0
+      OutlineColor    =   -2147483633
+      OwnerDrawn      =   0   'False
+      ProcessContextMenuKeys=   -1  'True
+      Regional        =   0   'False
+      RegisterForOLEDragDrop=   0   'False
+      ResizableColumns=   -1  'True
+      RightToLeft     =   0
+      ScrollBars      =   1
+      SelectedColumnBackColor=   -1
+      ShowFilterBar   =   0   'False
+      ShowGroups      =   0   'False
+      ShowHeaderChevron=   0   'False
+      ShowHeaderStateImages=   -1  'True
+      ShowStateImages =   0   'False
+      ShowSubItemImages=   0   'False
+      SimpleSelect    =   0   'False
+      SingleRow       =   0   'False
+      SnapToGrid      =   0   'False
+      SortOrder       =   0
+      SupportOLEDragImages=   -1  'True
+      TextBackColor   =   -1
+      TileViewItemLines=   1
+      TileViewLabelMarginBottom=   0
+      TileViewLabelMarginLeft=   0
+      TileViewLabelMarginRight=   0
+      TileViewLabelMarginTop=   0
+      TileViewSubItemForeColor=   -1
+      TileViewTileHeight=   -1
+      TileViewTileWidth=   -1
+      ToolTips        =   3
+      UnderlinedItems =   0
+      UseMinColumnWidths=   0   'False
+      UseSystemFont   =   -1  'True
+      UseWorkAreas    =   0   'False
+      View            =   3
+      VirtualMode     =   0   'False
+      EmptyMarkupText =   "frmSelectGame.frx":030A
+      FooterIntroText =   "frmSelectGame.frx":032A
+   End
    Begin EditCtlsLibUCtl.TextBox txtSelected 
       Height          =   315
       Left            =   3195
@@ -90,8 +209,8 @@ Begin VB.Form frmSelectGame
       UseCustomFormattingRectangle=   0   'False
       UsePasswordChar =   0   'False
       UseSystemFont   =   -1  'True
-      CueBanner       =   "frmSelectGame.frx":030A
-      Text            =   "frmSelectGame.frx":032A
+      CueBanner       =   "frmSelectGame.frx":034A
+      Text            =   "frmSelectGame.frx":036A
    End
    Begin ExTVwLibUCtl.ExplorerTreeView tvDirs 
       Height          =   3735
@@ -181,32 +300,6 @@ Begin VB.Form frmSelectGame
       Top             =   3840
       Width           =   3015
    End
-   Begin MSComctlLib.ImageList ImageList1 
-      Left            =   7920
-      Top             =   0
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483643
-      ImageWidth      =   8
-      ImageHeight     =   8
-      MaskColor       =   12632256
-      _Version        =   393216
-      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   3
-         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":034A
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":066E
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmSelectGame.frx":0AC2
-            Key             =   ""
-         EndProperty
-      EndProperty
-   End
    Begin VB.CommandButton cmdCancel 
       Cancel          =   -1  'True
       Caption         =   "Cancel"
@@ -215,51 +308,6 @@ Begin VB.Form frmSelectGame
       TabIndex        =   7
       Top             =   4320
       Width           =   1335
-   End
-   Begin MSComctlLib.ListView lvFiles 
-      Height          =   3735
-      Left            =   3195
-      TabIndex        =   1
-      Top             =   0
-      Width           =   7215
-      _ExtentX        =   12726
-      _ExtentY        =   6588
-      View            =   3
-      LabelEdit       =   1
-      Sorted          =   -1  'True
-      LabelWrap       =   -1  'True
-      HideSelection   =   -1  'True
-      FullRowSelect   =   -1  'True
-      _Version        =   393217
-      ColHdrIcons     =   "ImageList1"
-      ForeColor       =   -2147483640
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      Appearance      =   1
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      NumItems        =   3
-      BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-         Text            =   "File"
-         Object.Width           =   1940
-      EndProperty
-      BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-         SubItemIndex    =   1
-         Text            =   "Date"
-         Object.Width           =   2999
-      EndProperty
-      BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
-         SubItemIndex    =   2
-         Text            =   "Name Of The Game"
-         Object.Width           =   5716
-      EndProperty
    End
    Begin VB.CommandButton cmdOK 
       Caption         =   "OK"
@@ -373,14 +421,14 @@ End Sub
 
 
 Private Sub UpdateList()
-    Dim wFo As Folder, wFf As File, wDta As listItem, Wsa As String
+    Dim wFo As Folder, wFf As File, wDta As ListViewItem, Wsa As String
     
     If CurPath = LastPath Then
         Exit Sub
     End If
     
     lvFiles.Enabled = False
-    lvFiles.ListItems.Clear
+    lvFiles.ListItems.RemoveAll
     Selected = ""
     
     If CurPath = "" Then
@@ -399,22 +447,19 @@ Private Sub UpdateList()
         End Select
         For Each wFf In wFo.Files
             If InStr(Wsa, "." + F.GetExtensionName(wFf.Path) + ".") Or Wsa = "" Then
+                Set wDta = lvFiles.ListItems.Add(wFf.Name)
+                wDta.SubItems(1) = Format(wFf.DateLastModified, "YYYY-MM-DD HH:MM:SS")
+                
                 If wFf.Name Like "tr?##.*" Then
-                    Set wDta = lvFiles.ListItems.Add
-                    wDta.Text = wFf.Name
-                    wDta.SubItems(1) = Format(wFf.DateLastModified, "YYYY-MM-DD HH:MM:SS")
-                    If chkHideTTD.Value <> 1 Then wDta.SubItems(2) = GetName(wFf.Path)
-                Else
-                    Set wDta = lvFiles.ListItems.Add
-                    wDta.Text = wFf.Name
-                    wDta.SubItems(1) = Format(wFf.DateLastModified, "YYYY-MM-DD HH:MM:SS")
+                    If chkHideTTD.Value <> 1 Then
+                        wDta.SubItems(2) = GetName(wFf.Path)
+                    End If
                 End If
             End If
         Next wFf
         LastPath = CurPath
         lvFiles.Enabled = True
     End If
-    UpdCols
 End Sub
 Private Function GetName(wFile As String) As String
     Dim Wa As Integer, Wb As Long
@@ -451,7 +496,7 @@ End Sub
 
 Private Sub cmdOK_Click()
     If Selected > " " Then
-        Selected = F.BuildPath(CurPath, lvFiles.SelectedItem.Text)
+        Selected = F.BuildPath(CurPath, Selected)
         If F.FileExists(Selected) Then
             LastPath = CurPath
             Me.Hide
@@ -499,7 +544,11 @@ Private Sub Form_Load()
     Dim Wa As Long
     
     chkHideTTD.Value = fReadValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", 0)
-    'lvFiles.ColumnHeaders(2).Width = 0
+    
+    lvFiles.Columns.Add "File", , 120
+    lvFiles.Columns.Add "Date", , 120
+    lvFiles.Columns.Add "Game Name", , 230
+    
     cmbFtypes.Clear
     cmbFtypes.AddItem "Savegames"
     cmbFtypes.AddItem "Scenarios"
@@ -594,41 +643,25 @@ Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single
 End Sub
 
 
-Private Sub lvFiles_ColumnClick(ByVal Wa As MSComctlLib.ColumnHeader)
-    If lvFiles.Sorted = False Then
-        lvFiles.Sorted = True
-        lvFiles.SortKey = Wa.Index - 1
+Private Sub lvFiles_ColumnClick(ByVal column As ExLVwLibUCtl.IListViewColumn, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HeaderHitTestConstants)
+    If lvFiles.SortOrder = soAscending Then
+        lvFiles.SortOrder = soDescending
     Else
-        If lvFiles.SortKey = Wa.Index - 1 Then
-            lvFiles.SortOrder = lvFiles.SortOrder * -1 + 1
-        Else
-            lvFiles.SortKey = Wa.Index - 1
-            lvFiles.SortOrder = 1
-        End If
+        lvFiles.SortOrder = soAscending
     End If
-    UpdCols
-End Sub
-Private Sub UpdCols()
-    Dim Wa As Integer
     
-    For Wa = 1 To lvFiles.ColumnHeaders.Count
-        lvFiles.ColumnHeaders.Item(Wa).Icon = 1
-    Next Wa
-    If lvFiles.Sorted Then
-        If lvFiles.SortOrder = 0 Then Wa = 3 Else Wa = 2
-        lvFiles.ColumnHeaders.Item(lvFiles.SortKey + 1).Icon = Wa
-    End If
+    lvFiles.SortItems sobText, , , , , column
 End Sub
 
-Private Sub lvFiles_DblClick()
+Private Sub lvFiles_DblClick(ByVal listItem As ExLVwLibUCtl.IListViewItem, ByVal listSubItem As ExLVwLibUCtl.IListViewSubItem, ByVal button As Integer, ByVal shift As Integer, ByVal x As Single, ByVal y As Single, ByVal hitTestDetails As ExLVwLibUCtl.HitTestConstants)
     If Selected > " " Then
         cmdOK_Click
     End If
 End Sub
 
-Private Sub lvFiles_ItemClick(ByVal Item As MSComctlLib.listItem)
-    Selected = Item.Text
-    txtSelected.Text = Selected
+Private Sub lvFiles_ItemSelectionChanged(ByVal listItem As ExLVwLibUCtl.IListViewItem)
+    Selected = listItem.Text
+    txtSelected.Text = listItem.Text
 End Sub
 
 Private Sub tvDirs_CaretChanged(ByVal previousCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal newCaretItem As ExTVwLibUCtl.ITreeViewItem, ByVal caretChangeReason As ExTVwLibUCtl.CaretChangeCausedByConstants)
