@@ -559,12 +559,12 @@ Private Sub Form_Load()
     Dim pIDLDesktop As Long, pIDLCurPath As Long
     Dim OldPath As String
     
-    tvShell.Attach tvDirs.hwnd
-    tvShell.hWndShellUIParentWindow = Me.hwnd
+    tvShell.Attach tvDirs.hWnd
+    tvShell.hWndShellUIParentWindow = Me.hWnd
     
     OldPath = CurPath
     
-    SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
+    SHGetFolderLocation Me.hWnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
     
     Set itm = tvShell.TreeItems.Add(pIDLDesktop, , InsertAfterConstants.iaFirst, , , HasExpandoConstants.heYes)
     
