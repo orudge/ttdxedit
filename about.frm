@@ -7,6 +7,15 @@ Begin VB.Form frmAbout
    ClientTop       =   1935
    ClientWidth     =   5730
    ClipControls    =   0   'False
+   BeginProperty Font 
+      Name            =   "Microsoft Sans Serif"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    Icon            =   "about.frx":0000
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
@@ -20,15 +29,6 @@ Begin VB.Form frmAbout
       Cancel          =   -1  'True
       Caption         =   "OK"
       Default         =   -1  'True
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   375
       Left            =   2198
       TabIndex        =   0
@@ -39,6 +39,15 @@ Begin VB.Form frmAbout
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
       ClipControls    =   0   'False
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   480
       Left            =   240
       Picture         =   "about.frx":000C
@@ -52,15 +61,6 @@ Begin VB.Form frmAbout
    Begin VB.Label Label3 
       AutoSize        =   -1  'True
       Caption         =   "With thanks to Josef Drexler, Marcin Grzegorczyk and Nick Hundley."
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   390
       Left            =   1080
       TabIndex        =   10
@@ -73,7 +73,7 @@ Begin VB.Form frmAbout
       AutoSize        =   -1  'True
       Caption         =   "owen@owenrudge.net"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -83,19 +83,19 @@ Begin VB.Form frmAbout
       EndProperty
       ForeColor       =   &H00FF0000&
       Height          =   195
-      Left            =   1920
+      Left            =   1935
       MouseIcon       =   "about.frx":044E
       MousePointer    =   99  'Custom
       TabIndex        =   9
       Top             =   2280
-      Width           =   1665
+      Width           =   1635
    End
    Begin VB.Label lblURL 
       Alignment       =   2  'Center
       AutoSize        =   -1  'True
       Caption         =   "http://www.transporttycoon.net/"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -110,86 +110,50 @@ Begin VB.Form frmAbout
       MousePointer    =   99  'Custom
       TabIndex        =   8
       Top             =   2040
-      Width           =   2445
+      Width           =   2325
    End
    Begin VB.Label Label4 
       AutoSize        =   -1  'True
       Caption         =   "E-mail:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   195
       Left            =   1080
       TabIndex        =   7
       Top             =   2280
-      Width           =   480
+      Width           =   465
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
       Caption         =   "Web site:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   195
       Left            =   1080
       TabIndex        =   6
       Top             =   2040
-      Width           =   690
+      Width           =   675
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblDescription2 
       AutoSize        =   -1  'True
-      Caption         =   "Copyright © Owen Rudge 2002-2012. All Rights Reserved."
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      Caption         =   "Copyright © Jens Vang Petersen 2002. All Rights Reserved."
       Height          =   195
       Left            =   1080
       TabIndex        =   5
       Top             =   1080
-      Width           =   4260
+      Width           =   4245
    End
    Begin VB.Label lblDescription 
       AutoSize        =   -1  'True
-      Caption         =   "Copyright © Jens Vang Petersen 2002. All Rights Reserved."
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      Caption         =   "Copyright © Owen Rudge 2002-2013. All Rights Reserved."
       ForeColor       =   &H00000000&
       Height          =   195
       Left            =   1080
       TabIndex        =   2
       Top             =   840
-      Width           =   4335
+      Width           =   4170
    End
    Begin VB.Label lblTitle 
       AutoSize        =   -1  'True
       Caption         =   "TTDX Editor"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -202,20 +166,11 @@ Begin VB.Form frmAbout
       Left            =   1080
       TabIndex        =   3
       Top             =   240
-      Width           =   975
+      Width           =   1050
    End
    Begin VB.Label lblVersion 
       AutoSize        =   -1  'True
       Caption         =   "Version"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   195
       Left            =   1080
       TabIndex        =   4

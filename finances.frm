@@ -16,7 +16,7 @@ Begin VB.Form frmFinances
    ShowInTaskbar   =   0   'False
    Begin VB.ListBox lstPlayers 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -35,7 +35,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearTrainIncome 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -52,7 +52,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearTrainIncome 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -69,7 +69,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoTrainIncome 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -87,7 +87,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Train Income:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -105,7 +105,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearPropertyMaintenance 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -122,7 +122,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearPropertyMaintenance 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -139,7 +139,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoPropertyMaintenance 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -157,7 +157,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Property Maintenance:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -175,7 +175,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearShipRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -192,7 +192,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearShipRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -209,7 +209,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoShipRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -227,7 +227,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Ship Running Costs:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -246,7 +246,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Aircraft Running Costs:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -264,7 +264,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoAircraftRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -281,7 +281,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearAircraftRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -298,7 +298,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearAircraftRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -315,7 +315,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearRoadVehRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -332,7 +332,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearRoadVehRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -349,7 +349,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoRoadVehRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -367,7 +367,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Road Vehicle Running Costs:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -386,7 +386,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Train Running Costs:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -404,7 +404,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoTrainRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -421,7 +421,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearTrainRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -438,7 +438,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearTrainRunningCosts 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -456,7 +456,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "New Vehicles:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -473,7 +473,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoNewVehicles 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -490,7 +490,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearNewVehicles 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -507,7 +507,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearNewVehicles 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -524,7 +524,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblThisYearConstruction 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -541,7 +541,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblLastYearConstruction 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -558,7 +558,7 @@ Begin VB.Form frmFinances
    Begin VB.Label lblTwoYearsAgoConstruction 
       AutoSize        =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -576,7 +576,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "This Year"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -594,7 +594,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Last Year"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -612,7 +612,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Two Years Ago"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -630,7 +630,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Construction:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -648,7 +648,7 @@ Begin VB.Form frmFinances
       AutoSize        =   -1  'True
       Caption         =   "Player:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

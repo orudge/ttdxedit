@@ -7,6 +7,15 @@ Begin VB.Form frmCity
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   7575
+   BeginProperty Font 
+      Name            =   "Microsoft Sans Serif"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    Icon            =   "frmCity.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
@@ -18,15 +27,6 @@ Begin VB.Form frmCity
    Begin VB.Frame frmDta 
       Caption         =   "Ratings"
       Enabled         =   0   'False
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   3135
       Index           =   1
       Left            =   3720
@@ -76,15 +76,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 8"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   7
          Left            =   120
@@ -94,15 +85,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 7"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   6
          Left            =   120
@@ -112,15 +94,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 6"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   5
          Left            =   120
@@ -130,15 +103,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 5"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   4
          Left            =   120
@@ -148,15 +112,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 4"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   3
          Left            =   120
@@ -166,15 +121,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 3"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   2
          Left            =   120
@@ -184,15 +130,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 2"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   1
          Left            =   120
@@ -202,15 +139,6 @@ Begin VB.Form frmCity
       End
       Begin VB.CheckBox chkRatE 
          Caption         =   "Pl. 1"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Index           =   0
          Left            =   120
@@ -508,15 +436,6 @@ Begin VB.Form frmCity
    End
    Begin VB.Frame frmDta 
       Caption         =   "Population"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   615
       Index           =   2
       Left            =   5520
@@ -526,15 +445,6 @@ Begin VB.Form frmCity
       Begin VB.TextBox txtPop 
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   120
          TabIndex        =   16
@@ -544,15 +454,6 @@ Begin VB.Form frmCity
    End
    Begin VB.Frame frmDta 
       Caption         =   "Location"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   615
       Index           =   0
       Left            =   3720
@@ -562,15 +463,6 @@ Begin VB.Form frmCity
       Begin VB.TextBox txtX 
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   360
          TabIndex        =   3
@@ -580,15 +472,6 @@ Begin VB.Form frmCity
       Begin VB.TextBox txtY 
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   285
          Left            =   1200
          TabIndex        =   2
@@ -597,15 +480,6 @@ Begin VB.Form frmCity
       End
       Begin VB.Label Label1 
          Caption         =   "X:"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   120
          TabIndex        =   5
@@ -614,15 +488,6 @@ Begin VB.Form frmCity
       End
       Begin VB.Label Label2 
          Caption         =   "Y:"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          Height          =   255
          Left            =   960
          TabIndex        =   4
@@ -631,15 +496,6 @@ Begin VB.Form frmCity
       End
    End
    Begin VB.ListBox lstCities 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   4350
       Left            =   120
       TabIndex        =   0
@@ -691,7 +547,7 @@ Public Sub UpdateInfo()
     If CurFile > " " Then
         For Wa = 0 To 69
             CurItm = CityInfo(Wa)
-            If CInt(CurItm.X) + CInt(CurItm.Y) > 0& Then
+            If CInt(CurItm.x) + CInt(CurItm.y) > 0& Then
                 lstCities.AddItem CurItm.Name + " (" + Format(Wa, "00") + ") "
                 lstCities.ItemData(lstCities.NewIndex) = Wa
             End If
@@ -757,8 +613,8 @@ Private Sub lstCities_Click()
 End Sub
 Private Sub UpdateFields()
     Dim Wa As Integer
-    txtX.Text = CStr(CurItm.X)
-    txtY.Text = CStr(CurItm.Y)
+    txtX.Text = CStr(CurItm.x)
+    txtY.Text = CStr(CurItm.y)
     txtPop.Text = CStr(CurItm.Population)
     For Wa = 0 To 7
         If CurItm.CRateE(Wa) Then chkRatE(Wa).Value = 1 Else: chkRatE(Wa).Value = 0
@@ -766,7 +622,7 @@ Private Sub UpdateFields()
     Next Wa
     
     frmTechInfo.ShowInfo 2, CurItm.Name, CurItm.Offset
-    frmMap.SetHighlight CInt(CurItm.X), CInt(CurItm.Y)
+    frmMap.SetHighlight CInt(CurItm.x), CInt(CurItm.y)
 End Sub
 
 

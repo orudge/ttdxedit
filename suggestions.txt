@@ -17,7 +17,6 @@ Features in TTDEdit not in TTDX Editor:
 
 
 - unicode?
-- change fonts to Microsoft Sans Serif
 
 - remove all unused separators, etc
 
@@ -28,8 +27,6 @@ Features in TTDEdit not in TTDX Editor:
 - add game rename option
 
 - fix bug with sliders in station (and maybe other windows) where ticking box doesn't do anything
-
-- remove treeview/sliders on frmvehicle, eliminate mscomctl.ocx
 
 add recently opened games
 

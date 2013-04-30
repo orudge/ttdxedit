@@ -245,7 +245,7 @@ Begin VB.Form frmSelectGame
       FadeExpandos    =   0   'False
       FavoritesStyle  =   0   'False
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -398,12 +398,12 @@ Private Sub Subclass()
     End If
     
     ' tell the controls to negotiate the correct format with the form
-    SendMessageAsLong txtSelected.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
-    SendMessageAsLong lvFiles.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
-    SendMessageAsLong tvDirs.hWnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong txtSelected.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong lvFiles.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong tvDirs.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -416,7 +416,7 @@ StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
 End Function
 
-Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -614,12 +614,12 @@ Private Sub Form_Load()
     Dim pIDLDesktop As Long, pIDLCurPath As Long
     Dim OldPath As String
     
-    tvShell.Attach tvDirs.hWnd
-    tvShell.hWndShellUIParentWindow = Me.hWnd
+    tvShell.Attach tvDirs.hwnd
+    tvShell.hWndShellUIParentWindow = Me.hwnd
     
     OldPath = CurPath
     
-    SHGetFolderLocation Me.hWnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
+    SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
     
     Set itm = tvShell.TreeItems.Add(pIDLDesktop, , InsertAfterConstants.iaFirst, , , HasExpandoConstants.heYes)
     
@@ -665,7 +665,7 @@ Private Sub Form_Unload(Cancel As Integer)
     Wa = fWriteValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", chkHideTTD.Value)
     
     tvShell.Detach
-    UnSubclassWindow Me.hWnd, EnumSubclassID.escidSelectGame
+    UnSubclassWindow Me.hwnd, EnumSubclassID.escidSelectGame
 End Sub
 
 

@@ -17,7 +17,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame FrmDta 
       Caption         =   "HomeTown"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -33,7 +33,7 @@ Begin VB.Form frmIndu
       Width           =   1815
       Begin VB.ComboBox cmbTown 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -53,7 +53,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame FrmDta 
       Caption         =   "Accepts"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -69,7 +69,7 @@ Begin VB.Form frmIndu
       Width           =   1815
       Begin VB.ComboBox cmbDel 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -87,7 +87,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ComboBox cmbDel 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -105,7 +105,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ComboBox cmbDel 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -125,7 +125,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame FrmDta 
       Caption         =   "Production Type And Rate"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -142,7 +142,7 @@ Begin VB.Form frmIndu
       Begin VB.TextBox txtProR 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -160,7 +160,7 @@ Begin VB.Form frmIndu
       Begin VB.TextBox txtProR 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -177,7 +177,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ComboBox cmbProd 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -195,7 +195,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ComboBox cmbProd 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -213,7 +213,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.Label lblRate 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -230,7 +230,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.Label lblRate 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -248,7 +248,7 @@ Begin VB.Form frmIndu
       Begin VB.Label Label5 
          Caption         =   $"frmIndu.frx":0442
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -266,7 +266,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame FrmDta 
       Caption         =   "Size"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -284,7 +284,7 @@ Begin VB.Form frmIndu
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -302,7 +302,7 @@ Begin VB.Form frmIndu
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -319,7 +319,7 @@ Begin VB.Form frmIndu
       Begin VB.Label Label4 
          Caption         =   "Y:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -336,7 +336,7 @@ Begin VB.Form frmIndu
       Begin VB.Label Label3 
          Caption         =   "X:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -354,7 +354,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame FrmDta 
       Caption         =   "Location"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -372,7 +372,7 @@ Begin VB.Form frmIndu
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -390,7 +390,7 @@ Begin VB.Form frmIndu
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -407,7 +407,7 @@ Begin VB.Form frmIndu
       Begin VB.Label Label2 
          Caption         =   "Y:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -424,7 +424,7 @@ Begin VB.Form frmIndu
       Begin VB.Label Label1 
          Caption         =   "X:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -442,7 +442,7 @@ Begin VB.Form frmIndu
    Begin VB.Frame Frame2 
       Caption         =   "Active Industries"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -457,7 +457,7 @@ Begin VB.Form frmIndu
       Width           =   3375
       Begin VB.ComboBox cmbShowT 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -474,7 +474,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ComboBox cmbShowC 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -492,7 +492,7 @@ Begin VB.Form frmIndu
       End
       Begin VB.ListBox lstIndu 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400

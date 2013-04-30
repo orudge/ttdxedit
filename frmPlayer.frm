@@ -17,7 +17,7 @@ Begin VB.Form frmPlayer
    Begin VB.Frame frmDta 
       Caption         =   "Options"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -34,7 +34,7 @@ Begin VB.Form frmPlayer
       Begin VB.CommandButton cmdRemHQ 
          Caption         =   "Remove HQ"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -52,7 +52,7 @@ Begin VB.Form frmPlayer
    Begin VB.Frame frmDta 
       Caption         =   "Debt (£)"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -69,7 +69,7 @@ Begin VB.Form frmPlayer
       Begin VB.TextBox txtDebt 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -87,7 +87,7 @@ Begin VB.Form frmPlayer
    Begin VB.Frame frmDta 
       Caption         =   "Money (£)"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -104,7 +104,7 @@ Begin VB.Form frmPlayer
       Begin VB.TextBox txtMoney 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -121,7 +121,7 @@ Begin VB.Form frmPlayer
    End
    Begin VB.ListBox lstPlay 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

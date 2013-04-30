@@ -16,7 +16,7 @@ Begin VB.Form frmSGM
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -32,7 +32,7 @@ Begin VB.Form frmSGM
       Begin VB.Label labC 
          Caption         =   "Label1"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -50,7 +50,7 @@ Begin VB.Form frmSGM
    Begin VB.Frame Frame1 
       Caption         =   "Status"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -65,7 +65,7 @@ Begin VB.Form frmSGM
       Width           =   4575
       Begin VB.Label LabSt2 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   9.75
             Charset         =   0
             Weight          =   700
@@ -81,7 +81,7 @@ Begin VB.Form frmSGM
       End
       Begin VB.Label labSt 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -101,7 +101,7 @@ Begin VB.Form frmSGM
       Default         =   -1  'True
       Enabled         =   0   'False
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -119,7 +119,7 @@ Begin VB.Form frmSGM
       Cancel          =   -1  'True
       Caption         =   "&Cancel"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

@@ -263,7 +263,7 @@ Begin VB.Form frmVehicle
       Begin VB.Label labCMax 
          Caption         =   "Max"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400

@@ -33,7 +33,7 @@ Begin VB.MDIForm frmMDI
       DontRedraw      =   0   'False
       Enabled         =   -1  'True
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -115,7 +115,7 @@ Begin VB.MDIForm frmMDI
       ShowToolTips    =   -1  'True
       SimpleMode      =   0   'False
       SupportOLEDragImages=   -1  'True
-      UseSystemFont   =   -1  'True
+      UseSystemFont   =   0   'False
       BeginProperty SimplePanel {CB0F173F-9E1F-4365-BF3C-6CC52F8C268B} 
          Version         =   258
          BorderStyle     =   1

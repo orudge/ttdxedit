@@ -54,7 +54,7 @@ Begin VB.Form frmFileTypes
       Enabled         =   -1  'True
       FilterChangedTimeout=   -1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -127,7 +127,7 @@ Begin VB.Form frmFileTypes
       ToolTips        =   3
       UnderlinedItems =   0
       UseMinColumnWidths=   0   'False
-      UseSystemFont   =   -1  'True
+      UseSystemFont   =   0   'False
       UseWorkAreas    =   0   'False
       View            =   3
       VirtualMode     =   0   'False
@@ -137,7 +137,7 @@ Begin VB.Form frmFileTypes
    Begin VB.OptionButton optTOver 
       Caption         =   "&Overwrite"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -154,7 +154,7 @@ Begin VB.Form frmFileTypes
    Begin VB.OptionButton optTplug 
       Caption         =   """&Plug-In"""
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -173,7 +173,7 @@ Begin VB.Form frmFileTypes
       Cancel          =   -1  'True
       Caption         =   "&Cancel"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -191,7 +191,7 @@ Begin VB.Form frmFileTypes
       Caption         =   "&Associate"
       Default         =   -1  'True
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -208,7 +208,7 @@ Begin VB.Form frmFileTypes
    Begin VB.Label lblInfo 
       Caption         =   "Select what to do with filetypes associated with programs other than TTDX Editor:"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

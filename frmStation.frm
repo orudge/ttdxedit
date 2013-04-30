@@ -18,7 +18,7 @@ Begin VB.Form frmStation
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmDta 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -35,7 +35,7 @@ Begin VB.Form frmStation
       Begin VB.CommandButton cmdRemStop 
          Caption         =   "Add Rem. Part"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -52,7 +52,7 @@ Begin VB.Form frmStation
       Begin VB.CommandButton cmdAddHouse 
          Caption         =   "Add Buildings"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -70,7 +70,7 @@ Begin VB.Form frmStation
    Begin VB.Frame Frame2 
       Caption         =   "Stations"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -85,7 +85,7 @@ Begin VB.Form frmStation
       Width           =   3375
       Begin VB.ListBox lstStation 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -102,7 +102,7 @@ Begin VB.Form frmStation
       End
       Begin VB.ComboBox cmbShowO 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -121,7 +121,7 @@ Begin VB.Form frmStation
    Begin VB.Frame frmDta 
       Caption         =   "Owner"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -138,7 +138,7 @@ Begin VB.Form frmStation
       Begin VB.TextBox txtOwner 
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -156,7 +156,7 @@ Begin VB.Form frmStation
    Begin VB.Frame frmDta 
       Caption         =   "Cargo"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -214,7 +214,7 @@ Begin VB.Form frmStation
       Begin VB.TextBox txtCam 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -232,7 +232,7 @@ Begin VB.Form frmStation
       Begin VB.CheckBox chkChasrate 
          Caption         =   "Check1"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -250,7 +250,7 @@ Begin VB.Form frmStation
       Begin VB.Label Label4 
          Caption         =   "Amount:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -267,7 +267,7 @@ Begin VB.Form frmStation
       Begin VB.Label Label3 
          Caption         =   "Rating:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -285,7 +285,7 @@ Begin VB.Form frmStation
    Begin VB.Frame frmDta 
       Caption         =   "Location (Sign)"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Microsoft Sans Serif"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -303,7 +303,7 @@ Begin VB.Form frmStation
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -321,7 +321,7 @@ Begin VB.Form frmStation
          Alignment       =   1  'Right Justify
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -338,7 +338,7 @@ Begin VB.Form frmStation
       Begin VB.Label Label1 
          Caption         =   "X:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -355,7 +355,7 @@ Begin VB.Form frmStation
       Begin VB.Label Label2 
          Caption         =   "Y:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Microsoft Sans Serif"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
