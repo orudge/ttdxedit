@@ -36,8 +36,10 @@ add recently opened games
 - put full path to game in status bar, put game name in title bar
 - display errors as message boxes
 
-- add menu accelerators, check tab indexes, etc
-
 - change "this year", etc, to actual years in finances
 
 - fix unexpected filesize error when loading .sv1dta files (TTDPatch?)
+
+- redesign some forms a bit, make them look better
+
+- click My Computer in select form, then c: - blank listview?

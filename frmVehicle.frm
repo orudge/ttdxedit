@@ -380,28 +380,28 @@ Private CurItm As TTDXVehicle, CurItmNo As Long, fInit As Boolean
 Implements ISubclassedWindow
 
 Private Sub Subclass()
-    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidCity) Then
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidCity) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the controls to negotiate the correct format with the form
-    SendMessageAsLong tvVeh.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong tvVeh.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidVehicle Then
-        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
 End Function
 
-Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -559,7 +559,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
-    UnSubclassWindow Me.hwnd, EnumSubclassID.escidVehicle
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidVehicle
 End Sub
 
 Private Sub sliMaxLoad_PositionChanged(ByVal changeType As TrackBarCtlLibUCtl.PositionChangeTypeConstants, ByVal newPosition As Long)

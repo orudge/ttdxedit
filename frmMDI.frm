@@ -474,20 +474,43 @@ Private F As New FileSystemObject, CleanUp As Boolean
 
 Implements ISubclassedWindow
 
+Public Sub CaptionW(Optional ByRef NewCaption As String)
+    ' update to new caption if a non vbNullString was passed
+    If StrPtr(NewCaption) Then
+        Me.Tag = NewCaption
+    End If
+    
+    ' must have active form
+    If Not Me.ActiveForm Is Nothing Then
+        ' see if window state is maximized
+        If Me.ActiveForm.WindowState = vbMaximized Then
+            ' show both child caption and MDI caption
+            UniCaption(Me) = UniCaption(Me.ActiveForm) & " - " & Me.Tag
+        Else
+            ' show only MDI caption
+            UniCaption(Me) = Me.Tag
+        End If
+    Else
+        ' show only MDI caption
+        UniCaption(Me) = Me.Tag
+    End If
+End Sub
+
+
 Private Sub Subclass()
-    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidMain) Then
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidMain) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the control to negotiate the correct format with the form
-    SendMessageAsLong stBar.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong stBar.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
 End Sub
 Sub CheckCurrencyItem(Item As Integer)
     On Error GoTo Error
     
     Dim MID As Long, TLMID As Long, SMID As Long
     
-    MID = GetMenu(hwnd)
+    MID = GetMenu(hWnd)
     TLMID = GetSubMenu(MID, 1)
     SMID = GetSubMenu(TLMID, 3)
     
@@ -538,7 +561,7 @@ End Sub
 
 
 
-Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -554,13 +577,13 @@ StdHandler_End:
     HandleMessage_Form = lRet
 End Function
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidMain Then
-        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
@@ -640,7 +663,7 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     If CleanUp Then Wa = fRecDeleteKey("HKCU", "Software\Owen Rudge", "TTDX Editor")
     If CleanUp Then Wa = fRecDeleteKey("HKLM", "Software\Owen Rudge", "TTDX Editor")
     
-    UnSubclassWindow Me.hwnd, EnumSubclassID.escidMain
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidMain
 End Sub
 
 Private Sub mnCedit_Click()
@@ -684,15 +707,19 @@ Public Sub CallFileLoad(wFile As String)
     If (Wa = 0) And (Not fAutoMode) Then
         frmMap.UpdateInfo
         Wua = TTDXGeneralInfo
-        stBar.Panels(0).Text = "File: " + F.GetFileName(CurFile)
+        stBar.Panels(0).Text = "File: " + CurFile
         stBar.Panels(1).Text = "Climate: " + Wua.ClimName
         stBar.Panels(2).Text = "City Names: " + Wua.CityNames
         stBar.Panels(3).Text = "Vehicle Array: " + Format(Wua.VehSize)
+        
+        Me.CaptionW "TTDX Editor - " & Wua.GameName & " [" & F.GetFileName(CurFile) & "]"
     ElseIf Wa < 100 Then
         stBar.Panels(0).Text = "Load Error: " + TTDXLoadError(Wa)
         stBar.Panels(1).Text = ""
         stBar.Panels(2).Text = ""
         stBar.Panels(3).Text = ""
+        
+        Me.Caption = "TTDX Editor"
     End If
     SetMenus
     Unload frmWSplash
@@ -1024,12 +1051,12 @@ Private Sub mnuOCheckUpdates_Click()
     
     If mm > CDbl(App.Major & "." & App.Minor) Then
         If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
-            ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
+            ShellExecute Me.hWnd, "open", SiteURL, vbNullString, vbNullString, 1
         End If
     Else
         If mm = CDbl(App.Major & "." & App.Minor) And CInt(Right$(Tmp, Len(Tmp) - 6)) > App.Revision Then
             If MsgBox("There is a new version of TTDX Editor available." & vbCrLf & vbCrLf & "Your version: " & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & "New version: " & CStr(CInt(Left$(Tmp, 2))) & "." & MID$(Tmp, 4, 2) & "." & CInt(Right$(Tmp, 4)) & vbCrLf & vbCrLf & "Do you want to go to the TTDX Editor web site to download the new version?", vbQuestion Or vbYesNo, "TTDX Editor") = vbYes Then
-                ShellExecute Me.hwnd, "open", SiteURL, vbNullString, vbNullString, 1
+                ShellExecute Me.hWnd, "open", SiteURL, vbNullString, vbNullString, 1
             End If
         Else
             MsgBox "There are no new versions of TTDX Editor available.", vbInformation, "TTDX Editor"

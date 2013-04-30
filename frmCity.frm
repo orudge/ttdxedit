@@ -516,16 +516,16 @@ Implements ISubclassedWindow
 Private Sub Subclass()
     Dim i As Integer
     
-    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidCity) Then
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidCity) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the controls to negotiate the correct format with the form
     For i = 1 To 7
-        SendMessageAsLong sliRat(i).hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+        SendMessageAsLong sliRat(i).hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
     Next i
 End Sub
-Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -583,13 +583,13 @@ Private Sub Form_Load()
     UpdateInfo
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidCity Then
-        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
@@ -599,7 +599,7 @@ End Function
 Private Sub Form_Unload(Cancel As Integer)
     PrepSave
     
-    UnSubclassWindow Me.hwnd, EnumSubclassID.escidCity
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidCity
 End Sub
 
 Private Sub lstCities_Click()

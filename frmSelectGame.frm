@@ -393,30 +393,30 @@ Private bResizing As Boolean
 Implements ISubclassedWindow
 
 Private Sub Subclass()
-    If Not SubclassWindow(Me.hwnd, Me, EnumSubclassID.escidSelectGame) Then
+    If Not SubclassWindow(Me.hWnd, Me, EnumSubclassID.escidSelectGame) Then
         Debug.Print "Subclassing failed!"
     End If
     
     ' tell the controls to negotiate the correct format with the form
-    SendMessageAsLong txtSelected.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
-    SendMessageAsLong lvFiles.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
-    SendMessageAsLong tvDirs.hwnd, WM_NOTIFYFORMAT, Me.hwnd, NF_REQUERY
+    SendMessageAsLong txtSelected.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
+    SendMessageAsLong lvFiles.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
+    SendMessageAsLong tvDirs.hWnd, WM_NOTIFYFORMAT, Me.hWnd, NF_REQUERY
 End Sub
 
-Private Function ISubclassedWindow_HandleMessage(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
+Private Function ISubclassedWindow_HandleMessage(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal eSubclassID As EnumSubclassID, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
     
     If eSubclassID = EnumSubclassID.escidCity Then
-        lRet = HandleMessage_Form(hwnd, uMsg, wParam, lParam, bCallDefProc)
+        lRet = HandleMessage_Form(hWnd, uMsg, wParam, lParam, bCallDefProc)
     End If
     
 StdHandler_End:
     ISubclassedWindow_HandleMessage = lRet
 End Function
 
-Private Function HandleMessage_Form(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
+Private Function HandleMessage_Form(ByVal hWnd As Long, ByVal uMsg As Long, ByVal wParam As Long, ByVal lParam As Long, bCallDefProc As Boolean) As Long
     Dim lRet As Long
     
     On Error GoTo StdHandler_End
@@ -614,12 +614,12 @@ Private Sub Form_Load()
     Dim pIDLDesktop As Long, pIDLCurPath As Long
     Dim OldPath As String
     
-    tvShell.Attach tvDirs.hwnd
-    tvShell.hWndShellUIParentWindow = Me.hwnd
+    tvShell.Attach tvDirs.hWnd
+    tvShell.hWndShellUIParentWindow = Me.hWnd
     
     OldPath = CurPath
     
-    SHGetFolderLocation Me.hwnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
+    SHGetFolderLocation Me.hWnd, CSIDL_DESKTOP, 0, 0, pIDLDesktop
     
     Set itm = tvShell.TreeItems.Add(pIDLDesktop, , InsertAfterConstants.iaFirst, , , HasExpandoConstants.heYes)
     
@@ -665,7 +665,7 @@ Private Sub Form_Unload(Cancel As Integer)
     Wa = fWriteValue("HKCU", RegBaseKey + "\Selector", "HideTTD", "D", chkHideTTD.Value)
     
     tvShell.Detach
-    UnSubclassWindow Me.hwnd, EnumSubclassID.escidSelectGame
+    UnSubclassWindow Me.hWnd, EnumSubclassID.escidSelectGame
 End Sub
 
 
