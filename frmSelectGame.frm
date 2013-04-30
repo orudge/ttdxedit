@@ -270,6 +270,13 @@ Begin VB.Form frmSelectGame
       Top             =   4320
       Width           =   1335
    End
+   Begin VB.Image imgSplitter 
+      Height          =   3735
+      Left            =   3120
+      MousePointer    =   9  'Size W E
+      Top             =   0
+      Width           =   105
+   End
    Begin VB.Label lblFilename 
       Alignment       =   1  'Right Justify
       AutoSize        =   -1  'True
@@ -280,13 +287,6 @@ Begin VB.Form frmSelectGame
       TabIndex        =   4
       Top             =   3840
       Width           =   675
-   End
-   Begin VB.Image imgSplitter 
-      Height          =   3735
-      Left            =   3120
-      MousePointer    =   9  'Size W E
-      Top             =   0
-      Width           =   105
    End
    Begin ShBrowserCtlsLibUCtl.ShellTreeView tvShell 
       Left            =   1440
@@ -575,15 +575,12 @@ Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Sing
     Dim pos As Long
     
     If bResizing Then
-        X = Me.ScaleX(X, ScaleModeConstants.vbTwips, ScaleModeConstants.vbPixels)
-        Y = Me.ScaleY(Y, ScaleModeConstants.vbTwips, ScaleModeConstants.vbPixels)
-        
         pos = X + imgSplitter.Left
         
-        If pos < 100 Then
-            pos = 100
-        ElseIf pos > Me.ScaleWidth - 110 Then
-            pos = Me.ScaleWidth - 110
+        If pos < 2055 Then
+            pos = 2055
+        ElseIf pos > Me.ScaleWidth - 2055 Then
+            pos = Me.ScaleWidth - 2055
         End If
         
         SizeControls pos
