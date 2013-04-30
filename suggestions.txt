@@ -25,8 +25,7 @@ Features in TTDEdit not in TTDX Editor:
 
 - check tabstops
 
-- finish file browser, replace listview there
-  - tidy up resizing
+- add game rename option
 
 - fix bug with sliders in station (and maybe other windows) where ticking box doesn't do anything
 

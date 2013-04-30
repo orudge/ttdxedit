@@ -117,7 +117,7 @@ Begin VB.Form frmSelectGame
       ShowFilterBar   =   0   'False
       ShowGroups      =   0   'False
       ShowHeaderChevron=   0   'False
-      ShowHeaderStateImages=   -1  'True
+      ShowHeaderStateImages=   0   'False
       ShowStateImages =   0   'False
       ShowSubItemImages=   0   'False
       SimpleSelect    =   0   'False
@@ -420,10 +420,10 @@ Private Sub SizeControls(Optional ByVal SplitterPos As Long = 0)
 End Sub
 
 
-Private Sub UpdateList()
+Private Sub UpdateList(Optional ByVal Force = False)
     Dim wFo As Folder, wFf As File, wDta As ListViewItem, Wsa As String
     
-    If CurPath = LastPath Then
+    If (CurPath = LastPath) And (Not Force) Then
         Exit Sub
     End If
     
@@ -448,12 +448,10 @@ Private Sub UpdateList()
         For Each wFf In wFo.Files
             If InStr(Wsa, "." + F.GetExtensionName(wFf.Path) + ".") Or Wsa = "" Then
                 Set wDta = lvFiles.ListItems.Add(wFf.Name)
-                wDta.SubItems(1) = Format(wFf.DateLastModified, "YYYY-MM-DD HH:MM:SS")
+                wDta.SubItems(1) = FormatDateTime(wFf.DateLastModified)
                 
-                If wFf.Name Like "tr?##.*" Then
-                    If chkHideTTD.Value <> 1 Then
-                        wDta.SubItems(2) = GetName(wFf.Path)
-                    End If
+                If chkHideTTD.Value <> 1 Then
+                    wDta.SubItems(2) = GetName(wFf.Path)
                 End If
             End If
         Next wFf
@@ -536,7 +534,7 @@ Private Sub Form_Activate()
     txtSelected.Enabled = IIf(FileMode = 0, False, True)
     
     cmbFtypes.ListIndex = FileSet
-    UpdateList
+    UpdateList True
     fInit = False
 End Sub
 
@@ -615,29 +613,29 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 
-Private Sub imgSplitter_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgSplitter_MouseDown(button As Integer, shift As Integer, x As Single, y As Single)
     bResizing = True
 End Sub
 
 
-Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    Dim pos As Long
+Private Sub imgSplitter_MouseMove(button As Integer, shift As Integer, x As Single, y As Single)
+    Dim Pos As Long
     
     If bResizing Then
-        pos = X + imgSplitter.Left
+        Pos = x + imgSplitter.Left
         
-        If pos < 2055 Then
-            pos = 2055
-        ElseIf pos > Me.ScaleWidth - 2055 Then
-            pos = Me.ScaleWidth - 2055
+        If Pos < 2055 Then
+            Pos = 2055
+        ElseIf Pos > Me.ScaleWidth - 2055 Then
+            Pos = Me.ScaleWidth - 2055
         End If
         
-        SizeControls pos
+        SizeControls Pos
     End If
 End Sub
 
 
-Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgSplitter_MouseUp(button As Integer, shift As Integer, x As Single, y As Single)
     SizeControls
     bResizing = False
 End Sub
