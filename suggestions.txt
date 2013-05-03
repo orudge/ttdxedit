@@ -43,3 +43,5 @@ add recently opened games
 - redesign some forms a bit, make them look better
 
 - click My Computer in select form, then c: - blank listview?
+
+- change description of file association text (e.g., "repack to gameformat")
